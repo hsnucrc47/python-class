@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電算社47屆Python班 - 課程網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .blog-post {
+            transition: border-color 0.3s ease;
+        }
+
+        .blog-post:hover {
+            border-color: #764ba2;
+        }
+    </style>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-8 py-4">
+                <a href="#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
+                <a href="#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
+                <a href="#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
+                <img src="img\python.png" height="110" width="110" class="block mx-auto"></img>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">📅 課程行事曆</h2>
+            </div>
+            <div class="flex justify-center">
+                <button onclick="openCalendar()"
+                    class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center space-x-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span>查看完整行事曆</span>
+                </button>
+            </div>
+            <div class="mt-12 grid md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-6 rounded-lg text-center">
+                    <div class="text-3xl mb-3">📚</div>
+                    <h3 class="font-semibold text-gray-800 mb-2">基礎語法</h3>
+                    <p class="text-gray-600 text-sm">上學期</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-lg text-center">
+                    <div class="text-3xl mb-3">🚀</div>
+                    <h3 class="font-semibold text-gray-800 mb-2">加深加廣</h3>
+                    <p class="text-gray-600 text-sm">下學期</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section id="instructors" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">關於我</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-1 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="text-center mb-4">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">昱山</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-600 text-center mb-12">
+                        <p>大家好我是電算社的學術長</p>
+                        <p>也是Python班的講師</p>
+                        <p>關於課程的問題都能來問我呵</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materials" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">課程簡報</h2>
+            </div>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Week 1 -->
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span
+                                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">第1週</span>
+                                <span class="text-gray-500 text-sm">2024/03/01</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">體驗社課</h3>
+                            <p class="text-gray-600 mb-4">認識電算社</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openSlide('week1')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看簡報
+                                </button>
+                                <button onclick="downloadCode('week1')"
+                                    class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    💾 下載範例
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="text-center mt-8">
+                <p class="text-gray-500">更多課程內容將陸續更新...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">電算社47屆Python班</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">聯絡資訊</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>電算社IG：@hsnu_crc</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">課程時間</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>🗓️ 每週五 15:10-16:00</p>
+                        <p>⏰ 共15週課程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Calendar function
+        function openCalendar() {
+            window.open('https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg', '_blank');
+        }
+
+        // Slide functions
+        function openSlide(week) {
+            const slideInfo = {
+                'week1': 'https://hackmd.io/@CRC-YUSHAN/S1OomO2Fge',
+                'week2': '',
+                'week3': '',
+                'week4': ''
+            };
+            // 實際使用時可以替換為：
+            window.open(`${slideInfo[week]}`, '_blank');
+        }
+
+        function downloadCode(week) {
+            const codeInfo = {
+                'week1': 'hello_world.py',
+                'week2': 'variables_demo.py',
+                'week3': 'control_flow.py',
+                'week4': 'functions_modules.py'
+            };
+
+            alert(`範例程式碼檔案準備中...`);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
