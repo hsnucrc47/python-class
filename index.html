@@ -156,6 +156,25 @@
         </div>
     </section>
 
+    <!-- Calendar Section -->
+    <section id="calendar" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">課程建議</h2>
+            </div>
+            <div class="flex justify-center">
+                <button onclick="openForm()"
+                    class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center space-x-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span>填寫表單</span>
+                </button>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-6">
@@ -185,7 +204,9 @@
         function openCalendar() {
             window.open('https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg', '_blank');
         }
-
+        function openForm() {
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSdza11kAhbhWBrZIB_0ATGWhdx0xyVnn6ric6VyNUfkO0pvEw/viewform', '_blank');
+        }
         // Slide functions
         function openSlide(week) {
             const slideInfo = {
