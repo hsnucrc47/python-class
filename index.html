@@ -149,6 +149,30 @@
                         </div>
                     </div>
                 </article>
+                <!-- Week 2 -->
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span
+                                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">第2週</span>
+                                <span class="text-gray-500 text-sm">2024/03/01</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">基本輸入輸出</h3>
+                            <p class="text-gray-600 mb-4">認識電算社</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openSlide('week2')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看簡報
+                                </button>
+                                <button onclick="downloadCode('week2')"
+                                    class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    💾 下載範例
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
 
             <div class="text-center mt-8">
@@ -212,7 +236,7 @@
         function openSlide(week) {
             const slideInfo = {
                 'week1': 'https://hackmd.io/@CRC-YUSHAN/S1OomO2Fge',
-                'week2': '',
+                'week2': 'https://hackmd.io/@CRC-YUSHAN/BySlh2r5ge#/',
                 'week3': '',
                 'week4': ''
             };
@@ -222,13 +246,12 @@
 
         function downloadCode(week) {
             const codeInfo = {
-                'week1': 'hello_world.py',
-                'week2': 'variables_demo.py',
-                'week3': 'control_flow.py',
-                'week4': 'functions_modules.py'
+                'week1': 'https://github.com/EthanPan-code/python-class-example',
+                'week2': '',
+                'week3': '',
+                'week4': ''
             };
-
-            alert(`範例程式碼檔案準備中...`);
+            window.open(`${codeInfo[week]}`, '_blank');
         }
 
         // Smooth scrolling for navigation links
