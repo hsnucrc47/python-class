@@ -185,6 +185,10 @@
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                                     📊 查看簡報
                                 </button>
+                                <button onclick="downloadCode('zerojudge')"
+                                    class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    🏆 ZEROJUDGE題目
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -262,6 +266,7 @@
 
         function downloadCode(week) {
             const codeInfo = {
+                'zerojudge': 'https://github.com/hsnucrc47/python-class-zerojudge',
                 'week1': 'https://github.com/EthanPan-code/python-class-example',
                 'week2': '',
                 'week3': '',
