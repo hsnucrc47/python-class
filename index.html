@@ -255,6 +255,19 @@
                         </div>
                     </div>
                 </article>
+                <!-- Week 7 -->
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span
+                                    class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">第7週</span>
+                                <span class="text-gray-500 text-sm">114/10/17</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">第一次社內賽</h3>
+                        </div>
+                    </div>
+                </article>
             </div>
 
             <div class="text-center mt-8">
@@ -262,7 +275,31 @@
             </div>
         </div>
     </section>
-
+ <!-- 補充資料 -->
+    <section id="materials" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">補充資料</h2>
+            </div>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Week 1 -->
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">math</h3>
+                            <p class="text-gray-600 mb-4">數學函式模組</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openSlide('math')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看語法
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
     <!-- Calendar Section -->
     <section id="calendar" class="py-16 bg-white">
         <div class="container mx-auto px-6">
@@ -321,7 +358,8 @@
                 'week2': 'https://hackmd.io/@CRC-YUSHAN/BySlh2r5ge#/',
                 'week3': 'https://hackmd.io/@CRC-YUSHAN/B1sorKHjlg',
                 'week4': 'https://hackmd.io/@CRC-YUSHAN/Sku3BKCslx',
-                'week5': 'https://hackmd.io/@CRC-YUSHAN/B1c4-HH2gx'
+                'week5': 'https://hackmd.io/@CRC-YUSHAN/B1c4-HH2gx',
+                'math':'https://hackmd.io/@CRC-YUSHAN/BkspH1Laxe'
             };
             window.open(`${slideInfo[week]}`, '_blank');
         }
