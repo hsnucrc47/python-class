@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img\favicon.png" type="image/x-icon">
+    <title>電算社47屆Python班 - 課程網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .blog-post {
+            transition: border-color 0.3s ease;
+        }
+
+        .blog-post:hover {
+            border-color: #764ba2;
+        }
+    </style>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-8 py-4">
+                <a href="#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
+                <a href="#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
+                <a href="#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
+                <img src="https://hsnucrc47.github.io/python-class/img/python.png" height="110" width="110" class="block mx-auto"></img>
+
+            </div>
+        </div>
+    </header>
+    <!-- Materials Section -->
+    <section id="materials" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Week 1 -->
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <section class="text-gray-800 mb-8">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <h3 class="text-xl font-bold">第一題　光（Light）</h3>
+                                </div>
+                                <h4 class="text-xl font-bold">問題描述</h4>
+                                <p class="text-gray-600 mt-2">「萬物皆有裂痕，那是光照進來的地方」— Leonard Cohen, Anthem</p>
+                            </div>
+
+                            <div class="space-y-4" style="text-indent: 2em;">
+                                <p>有些人喜歡追求完美，但如果「不完美」是注定的呢？如果萬物皆有裂痕，那何不嘗試著接受呢，也許那才造就了人們的獨一無二。</p>
+                                <p>被困在追求完美的渴求中的人們，花費時間糾結和自責，豈不是無用又痛苦。也許坦然接受不完美，才能在追求極致的過程中，保留自我的肯定和滿足。也許裂痕，正是光的來路。</p>
+                                <p>阿榮打開手機，Google 了一下，發現光速(c)=3.00×10⁸ (m/s)。</p>
+                                <p>剎那間，腦海閃過數學課本裡，科學記號的身影，那是解開謎底的鑰匙，是光亮的指引！</p>
+                                <p class="font-bold text-center">a × 10ⁿ</p>
+                                <p>請幫阿榮從兩個科學記號表示法的數字中，找出較大的數字並輸出。如果一樣請輸出字串 Same。</p>
+                                <p>科學記號表示法可以記作 a × 10ⁿ，測資共有四個數字以空白隔開，數字倆倆一組，表示 a1 n1 a2 n2。即兩個數字分別為 a1 × 10ⁿ¹ 和 a2 × 10ⁿ²。請依照範例輸出格式輸出。</p>
+                                <p>測資中所有輸入的 a 值皆為正數，且 1 ≤ a ＜ 10，不需處理 a 為負或不符合科學記號格式的情況。n 為整數，且可為正數或負數。本題以 × 表示乘法；ⁿ 表示次方。</p>
+                            </div>
+                            </section>
+                            <h4 class="text-xl font-bold">參考答案</h4>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                            <script>hljs.highlightAll();</script>
+                            <pre><code class="language-python">
+a1, n1, a2, n2 = input().split()
+a1, n1 = float(a1), int(n1)
+a2, n2 = float(a2), int(n2)
+
+num1 = a1 * (10 ** n1)
+num2 = a2 * (10 ** n2)
+
+if num1 > num2:
+    print(a1,"* 10 ^", n1)
+elif num2 > num1:
+    print(a2, "* 10 ^", n2)
+else:
+    print("Same")
+                            </code></pre>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">電算社47屆Python班</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">聯絡資訊</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>電算社IG：@hsnu_crc</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">課程時間</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>🗓️ 每週五 15:10-16:00</p>
+                        <p>⏰ 共15週課程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Calendar function
+        function openCalendar() {
+            window.open('https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg', '_blank');
+        }
+        function openForm() {
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSdza11kAhbhWBrZIB_0ATGWhdx0xyVnn6ric6VyNUfkO0pvEw/viewform', '_blank');
+        }
+        // Slide functions
+        function openSlide(week) {
+            const slideInfo = {
+                'week1': 'https://hackmd.io/@CRC-YUSHAN/S1OomO2Fge',
+                'week2': 'https://hackmd.io/@CRC-YUSHAN/BySlh2r5ge#/',
+                'week3': 'https://hackmd.io/@CRC-YUSHAN/B1sorKHjlg',
+                'week4': 'https://hackmd.io/@CRC-YUSHAN/Sku3BKCslx',
+                'week5': 'https://hackmd.io/@CRC-YUSHAN/B1c4-HH2gx',
+                'math':'https://hackmd.io/@CRC-YUSHAN/BkspH1Laxe'
+            };
+            window.open(`${slideInfo[week]}`, '_blank');
+        }
+
+        function downloadCode(week) {
+            const codeInfo = {
+                'zerojudge': 'https://github.com/hsnucrc47/python-class-zerojudge',
+                'week1': 'https://github.com/EthanPan-code/python-class-example',
+                'week2': '',
+                'week3': '',
+                'week4': '',
+                'week5': 'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/114_10_3'
+            };
+            window.open(`${codeInfo[week]}`, '_blank');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
