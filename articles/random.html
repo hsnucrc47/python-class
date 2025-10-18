@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img\favicon.png" type="image/x-icon">
+    <title>電算社47屆Python班 - 課程網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .blog-post {
+            transition: border-color 0.3s ease;
+        }
+
+        .blog-post:hover {
+            border-color: #764ba2;
+        }
+        .flex-1 {
+            min-width: 0;
+        }
+        code { 
+            background-color: #eee; padding: 2px 4px; border-radius: 4px; 
+        }
+        pre { 
+            background-color: #00000086; padding: 2px; border-radius: 4px; overflow-x: auto; 
+        }
+        section { 
+            margin-bottom: 20px; 
+        }
+    </style>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-8 py-4">
+                <a href="https://hsnucrc47.github.io/python-class/#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
+                <a href="https://hsnucrc47.github.io/python-class/#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
+                <a href="https://hsnucrc47.github.io/python-class/#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
+                <img src="https://hsnucrc47.github.io/python-class/img/python.png" height="110" width="110" class="block mx-auto"></img>
+
+            </div>
+        </div>
+    </header>
+    <!-- Materials Section -->
+    <section id="materials" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-full md:max-w-3xl">
+            <div class="mx-auto space-y-6">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <section class="text-gray-800 mb-8">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <h2 class="text-xl font-bold">random 模組</h2>
+                                </div>
+                            </div>
+                            <section>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                            <script>hljs.highlightAll();</script>
+                            <h2>匯入模組</h2>
+                            <pre><code>import random</code></pre>
+                            </section>
+
+                            <section>
+                            <h2>生成隨機整數</h2>
+                            <p><code>random.randint(a, b)</code>：產生介於 <code>a</code> 和 <code>b</code>（含）的整數。</p>
+                            <pre><code>random.randint(1, 6)  # 模擬骰子點數</code></pre>
+                            </section>
+
+                            <section>
+                            <h2>生成隨機浮點數</h2>
+                            <p><code>random.random()</code>：產生 0.0 ≤ x &lt; 1.0 的浮點數。</p>
+                            <pre><code>random.random()  # 例如 0.374</code></pre>
+
+                            <p><code>random.uniform(a, b)</code>：產生介於 <code>a</code> 和 <code>b</code> 的浮點數。</p>
+                            <pre><code>random.uniform(5, 10)  # 例如 7.328</code></pre>
+                            </section>
+
+                            <section>
+                            <h2>從序列中隨機選取元素</h2>
+                            <p><code>random.choice(seq)</code>：從序列（串列、字串等）中隨機選取一個元素。</p>
+                            <pre><code>random.choice(["剪刀", "石頭", "布"])
+random.choice("ABCDE")  # 例如 'C'</code></pre>
+                            </section>
+
+                            <section>
+                            <h2>隨機抽樣</h2>
+                            <p><code>random.sample(seq, k)</code>：從序列中選取 <strong>k 個不重複元素</strong>（回傳新串列）。</p>
+                            <pre><code>random.sample(range(10), 3)  # 例如 [1, 7, 4]</code></pre>
+
+                            <p><code>random.choices(seq, k=n)</code>：從序列中選取 <strong>k 個可重複元素</strong>。</p>
+                            <pre><code>random.choices("ABC", k=5)  # 例如 ['B', 'A', 'C', 'C', 'B']</code></pre>
+                            </section>
+
+                            <section>
+                            <h2>打亂順序</h2>
+                            <p><code>random.shuffle(list)</code>：將串列內的元素隨機重新排序（直接改變原串列）。</p>
+                            <pre><code>cards = ["A", "B", "C", "D"]
+random.shuffle(cards)
+print(cards)  # 例如 ['C', 'A', 'D', 'B']</code></pre>
+                            </section>
+
+                            <section>
+                            <h2>設定隨機種子（重現結果）</h2>
+                            <p><code>random.seed(x)</code>：設定隨機數種子，使結果可重現。</p>
+                            <pre><code>random.seed(10)
+print(random.random())  # 每次執行都會產生相同結果</code></pre>
+                            </section>
+
+                            <section>
+                            <h2>常見應用範例</h2>
+
+                            <h3>模擬擲硬幣</h3>
+                            <pre><code>coin = random.choice(["正面", "反面"])</code></pre>
+
+                            <h3>產生隨機密碼</h3>
+                            <pre><code>import string
+pw = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
+print(pw)</code></pre>
+
+                            <h3>模擬抽獎</h3>
+                            <pre><code>winners = random.sample(["小明", "小華", "小美", "小王"], 2)
+print(winners)</code></pre>
+                            </section>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">電算社47屆Python班</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">聯絡資訊</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>電算社IG：@hsnu_crc</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">課程時間</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>🗓️ 每週五 15:10-16:00</p>
+                        <p>⏰ 共15週課程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
