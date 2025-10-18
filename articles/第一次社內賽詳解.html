@@ -40,9 +40,9 @@
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex justify-center space-x-8 py-4">
-                <a href="#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
-                <a href="#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
-                <a href="#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+                <a href="https://hsnucrc47.github.io/python-class/#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
+                <a href="https://hsnucrc47.github.io/python-class/#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
+                <a href="https://hsnucrc47.github.io/python-class/#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
             </div>
         </div>
     </nav>
@@ -65,10 +65,14 @@
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto space-y-6">
                 <!-- Week 1 -->
-                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
                             <section class="text-gray-800 mb-8">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <h2 class="text-xl font-bold">114 學年度師大附中電算社第一次社內賽</h2>
+                                </div>
+                            </div>
                             <a href="https://hsnucrc47.github.io/python-class/files/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%A4%BE%E5%85%A7%E8%B3%BD%E5%AE%8C%E6%95%B4%E9%A1%8C%E6%9C%AC.pdf" class="text-blue-600 mt-2" download>📘 下載題本 PDF</a>
                             <div class="space-y-4" style="text-indent: 2em;">
                                 <p></p>
@@ -84,13 +88,16 @@
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
                             <script>hljs.highlightAll();</script>
                             <pre><code class="language-python">
+#輸入
 a1, n1, a2, n2 = input().split()
 a1, n1 = float(a1), int(n1)
 a2, n2 = float(a2), int(n2)
 
+#計算數值
 num1 = a1 * (10 ** n1)
 num2 = a2 * (10 ** n2)
 
+#比大小
 if num1 > num2:
     print(a1,"* 10 ^", n1)
 elif num2 > num1:
@@ -98,9 +105,95 @@ elif num2 > num1:
 else:
     print("Same")
                             </code></pre>
+                             <h4 class="text-xl font-bold">解說</h4>
+                            <div class="space-y-4" style="text-indent: 2em;">
+                                <p></p>
+                                <p>第一題要利用條件判斷比大小，由於我們沒有練習過一行輸入多個變數，因此直接給大家第一行到第三行的輸入方式。</p>
+                                <p>處理好輸入後，我們就得思考如何運用這些變數。首先，我們分別計算兩數的值，令第一個數為 num1 ；第二個數為 num2 。
+                                    再來用到 if 條件判斷，如果 num1 大於 num2 ，印出「a1 * 10 ^ n1」，否則如果 num1 小於 num2 ，印出「a2 * 10 ^ n2」。
+                                    如果前面兩個條件都不符合，就印出「Same」。要注意印出科學記號時符號與數字之間都要有空格。</p>
+                            </div>
+                            <br><br>
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <h3 class="text-xl font-bold">第二題 血壓（blood pressure）</h3>
+                                </div>
+                            </div>
+                            <h4 class="text-xl font-bold">參考答案</h4>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                            <script>hljs.highlightAll();</script>
+                            <pre><code class="language-python">
+s = int(input()) # 收縮壓
+d = int(input()) # 舒張壓
+if s >= 160 or d >= 100:
+    print("第二期高血壓")
+elif 140 <= s <= 159 or 90 <= d <= 99:
+    print("第一期高血壓")
+elif 120 <= s <= 139 or 80 <= d <= 89:
+    print("高血壓前期")
+else:
+    print("正常血壓")
+                            </code></pre>
+                             <h4 class="text-xl font-bold">解說</h4>
+                            <div class="space-y-4" style="text-indent: 2em;">
+                                <p></p>
+                                <p>這題是我出的，也是考大家條件判斷，只要寫出正確的判斷就能答對，不過這題有個小陷阱。
+                                    如果條件判斷順序顛倒，從正常血壓的條件開始判斷、第二期高血壓放在else就會出錯。
+                                    因為條件裡面有「or」，假設收縮壓為 170 、 舒張壓為 95 ，應該判斷為「第二期高血壓」。
+                                    但若條件判斷順序，會被低估為「第一期高血壓」，要特別注意。
+                                </p>
+                            </div>
+                            <br><br>
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    
+                                    <h3 class="text-xl font-bold">第三題 種樹（plant trees）</h3>
+                                </div>
+                            </div>
+                            <h4 class="text-xl font-bold">參考答案</h4>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                            <script>hljs.highlightAll();</script>
+                            <pre><code class="language-python">
+n = int(input())
+k = int(input())
+
+# 樹的葉子
+for i in range(2, n + 2):
+    for j in range(1, i + 1):
+        print('B' * (n + 1 - j) + 'A' * (j * 2 - 1) + 'B' * (n + 1 - j))
+
+# 樹幹
+for _ in range(k):
+    print('B' * n + 'C' + 'B' * n)
+                            </code></pre>
+                             <h4 class="text-xl font-bold">解說</h4>
+                            <div class="space-y-4" style="text-indent: 2em;">
+                                <img src="https://hsnucrc47.github.io/python-class/img/tree.png" width="450" >
+                                <p>這題是魔王題，兩班沒有任何一個人答對，真的很有難度，答不出來也不用太灰心。</p>
+                                <p>這題要用迴圈解，因為有 n 層且最高層為兩行，所以範圍為 range(2, n + 2) ，要記得 i 不會碰到 n+2 所以 i 最大為 n+1 。
+                                </p>
+                                <p>
+                                    再來我們在迴圈內層設另一個迴圈處理 A 的遞增與 B 的遞減，範圍為 range(1, i + 1)，因為每一層遞增與遞減次數為該層層數
+                                    （ i ），所以讓變數 j 從 1 跑到 j 。
+                                </p>
+                                <p>
+                                    最困難的部分是寫出 A 與 B 的輸出。兩側 B 的數量會從 n 開始遞減且公差為 -1 ； j 從 1 開始越變越大，因此 B 的數量公式為
+                                     (n + 1 - j) ，且左右兩邊都要有 B 。中間的 A 會從 n 開始遞增且公差為 2 ； j 從 1 開始越變越大，因此 A 的數量公式為
+                                     (j * 2 - 1)。
+                                </p>
+                                <p>
+                                    最後的樹幹就比較輕鬆了，左右兩邊 B 的數量分別都是 n 。中間則是夾著一個 C 。
+                                </p>
+                                <p>
+                                    我覺得這題非常值得大家深入研究，因為 APCS 很常考這種將外層 for 迴圈的變數 i 放到內層 for 迴圈
+                                    的 range() 。看完解說後，如果你可以全部理解並自己重新做一遍，那我覺得你可以輕鬆應對 APCS 的迴圈題目了。
+                                </p>
+                            </div>
+                            </section>
                         </div>
                     </div>
-                </article>
             </div>
         </div>
     </section>
@@ -129,38 +222,6 @@ else:
     </footer>
 
     <script>
-        // Calendar function
-        function openCalendar() {
-            window.open('https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg', '_blank');
-        }
-        function openForm() {
-            window.open('https://docs.google.com/forms/d/e/1FAIpQLSdza11kAhbhWBrZIB_0ATGWhdx0xyVnn6ric6VyNUfkO0pvEw/viewform', '_blank');
-        }
-        // Slide functions
-        function openSlide(week) {
-            const slideInfo = {
-                'week1': 'https://hackmd.io/@CRC-YUSHAN/S1OomO2Fge',
-                'week2': 'https://hackmd.io/@CRC-YUSHAN/BySlh2r5ge#/',
-                'week3': 'https://hackmd.io/@CRC-YUSHAN/B1sorKHjlg',
-                'week4': 'https://hackmd.io/@CRC-YUSHAN/Sku3BKCslx',
-                'week5': 'https://hackmd.io/@CRC-YUSHAN/B1c4-HH2gx',
-                'math':'https://hackmd.io/@CRC-YUSHAN/BkspH1Laxe'
-            };
-            window.open(`${slideInfo[week]}`, '_blank');
-        }
-
-        function downloadCode(week) {
-            const codeInfo = {
-                'zerojudge': 'https://github.com/hsnucrc47/python-class-zerojudge',
-                'week1': 'https://github.com/EthanPan-code/python-class-example',
-                'week2': '',
-                'week3': '',
-                'week4': '',
-                'week5': 'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/114_10_3'
-            };
-            window.open(`${codeInfo[week]}`, '_blank');
-        }
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
