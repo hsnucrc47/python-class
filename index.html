@@ -270,6 +270,10 @@
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                                     📊 查看詳解
                                 </button>
+                                <button onclick="openVideo('01')"
+                                    class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    🎬 影片解說
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -374,6 +378,12 @@
                 '01': 'articles/第一次社內賽詳解'
             };
             window.open(`${articleInfo[num]}`, '_blank');
+        }
+        function openVideo(mp4) {
+            const videoInfo = {
+                '01': 'https://youtu.be/6h2xrxmE6ow?si=exWU2OPFs-WlQlqq'
+            };
+            window.open(`${videoInfo[mp4]}`, '_blank');
         }
 
         function downloadCode(week) {
