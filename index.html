@@ -296,7 +296,7 @@
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">math</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">math 模組</h3>
                             <p class="text-gray-600 mb-4">數學函式模組</p>
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('math')"
@@ -310,10 +310,24 @@
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">random</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">random 模組</h3>
                             <p class="text-gray-600 mb-4">亂數函式模組</p>
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('random')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看語法
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">str 類別</h3>
+                            <p class="text-gray-600 mb-4">字串轉換方法</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openArticlce('str')"
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                                     📊 查看語法
                                 </button>
@@ -390,7 +404,8 @@
         function openArticlce(num) {
             const articleInfo = {
                 '01': 'articles/第一次社內賽詳解',
-                'random':'https://hsnucrc47.github.io/python-class/articles/random'
+                'random':'https://hsnucrc47.github.io/python-class/articles/random',
+                'str':'https://hsnucrc47.github.io/python-class/articles/string'
             };
             window.open(`${articleInfo[num]}`, '_blank');
         }
