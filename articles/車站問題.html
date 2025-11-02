@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://hsnucrc47.github.io/python-class/img/favicon.png" type="image/x-icon">
+    <title>電算社47屆Python班 - 課程網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+
+        .blog-post {
+            transition: border-color 0.3s ease;
+        }
+
+        .blog-post:hover {
+            border-color: #764ba2;
+        }
+        .flex-1 {
+            min-width: 0;
+        }
+        code { 
+            background-color: #eee; padding: 2px 4px; border-radius: 4px; 
+        }
+        pre { 
+            background-color: #00000086; padding: 2px; border-radius: 4px; overflow-x: auto; 
+        }
+        section { 
+            margin-bottom: 20px; 
+        }
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1em 0;
+        }
+
+        th, td {
+        border: 1px solid #bbb;
+        padding: 8px;
+        text-align: left;
+        }
+
+        th {
+        background-color: #f0f4f8;
+        }
+    </style>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-8 py-4">
+                <a href="https://hsnucrc47.github.io/python-class/#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
+                <a href="https://hsnucrc47.github.io/python-class/#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
+                <a href="https://hsnucrc47.github.io/python-class/#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
+                <img src="https://hsnucrc47.github.io/python-class/img/python.png" height="110" width="110" class="block mx-auto"></img>
+
+            </div>
+        </div>
+    </header>
+    <!-- Materials Section -->
+    <section id="materials" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-full md:max-w-3xl">
+            <div class="mx-auto space-y-6">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <section class="text-gray-800 mb-8">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <h2 class="text-xl font-bold">車站問題</h2>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <section>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                            <script>hljs.highlightAll();</script>
+                            <br></br>
+                            <a href="https://zerojudge.tw/ShowProblem?problemid=c123" class="text-blue-600 mt-2">📘 題目連結</a>
+                            <br></br>
+                            <p>參考答案：</p>
+                            <br></br>
+                            <pre><code>while True:
+    n = int(input()) #有 n 節車廂
+
+    #沒有火車的話直接結束
+    if n == 0: 
+        break
+    
+    while True:
+        
+        #想要的排列方式
+        a = list(map(int, input().split()))
+
+        #當遇到僅含有一個 0 的一列，代表該組測試資料結束。
+        if a[0] == 0:
+            break
+
+        cur = 0 #目前要出站的車廂
+        stack = [] #以 stack 模擬車廂
+
+        #模擬火車進站
+        for i in range(1, n + 1):
+            stack.append(i)
+
+            #如果最上面的車廂剛好是我們要的順序 a[cur] ，那就讓它出站（pop）
+            while stack and stack[-1] == a[cur]:
+                stack.pop()
+                cur += 1
+
+        #判斷火車能否以一特定的排列方式在B方向的鐵軌上
+        if not stack:
+            print("Yes")
+        else:
+            print("No")
+    print()
+                            </code></pre>
+                            <br></br>
+                            <p>解說：</p>
+                            <br></br>
+                            <p>第一層 while True:</p>
+                            <pre><code>while True:
+    n = int(input())
+    if n == 0:
+        break
+                            </code></pre>
+                            <p style="text-indent: 2em;">控制「有幾個車廂」的迴圈，沒有的話直接結束。
+                            </p>
+                           <br></br>
+                            <br></br>
+                            <p>第二層 while True:</p>
+                            <pre><code>    while True:
+        a = list(map(int, input().split()))
+        if a[0] == 0:
+            break
+                            </code></pre>
+                            <p style="text-indent: 2em;">處理每一組排列的測試。若為零表示本次測試結束
+                            </p>
+                            <br></br>
+                            <p>主體模擬</p>
+                            <pre><code>        cur = 0
+        stack = []
+        for i in range(1, n + 1):
+            stack.append(i)
+            while stack and stack[-1] == a[cur]:
+                stack.pop()
+                cur += 1
+                            </code></pre>
+                            <p style="text-indent: 2em;">模擬車廂依序進入。 stack 為依序進來的車廂 ； cur 為目前要出站的車廂，預設為 0 （第一個要出去的），負責當 a 的索引值。當發現進入 stack 的車廂剛好是現在要出去的車廂時，讓車廂出去。並改偵測下一個車廂（cur += 1）。
+                            </p>
+
+                            </section>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">電算社47屆Python班</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">聯絡資訊</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>電算社IG：@hsnu_crc</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">課程時間</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>🗓️ 每週五 15:10-16:00</p>
+                        <p>⏰ 共15週課程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
