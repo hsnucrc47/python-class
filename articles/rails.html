@@ -118,11 +118,11 @@
             break
 
         cur = 0 #目前要出站的車廂
-        stack = [] #以 stack 模擬車廂
+        stack = [] #以 stack 模擬車站
 
         #模擬火車進站
         for i in range(1, n + 1):
-            stack.append(i)
+            stack.append(i) #車廂進站
 
             #如果最上面的車廂剛好是我們要的順序 a[cur] ，那就讓它出站（pop）
             while stack and stack[-1] == a[cur]:
@@ -167,7 +167,16 @@
                 stack.pop()
                 cur += 1
                             </code></pre>
-                            <p style="text-indent: 2em;">模擬車廂依序進入。 stack 為依序進來的車廂 ； cur 為目前要出站的車廂，預設為 0 （第一個要出去的），負責當 a 的索引值。當發現進入 stack 的車廂剛好是現在要出去的車廂時，讓車廂出去。並改偵測下一個車廂（cur += 1）。
+                            <p style="text-indent: 2em;">模擬車廂依序進入。 stack 為車站 ； cur 為目前要出站的車廂，預設為 0 （第一個要出去的），負責當 a 的索引值。當發現進入 stack 的車廂剛好是現在要出去的車廂時，讓車廂出去。並改偵測下一個車廂（cur += 1）。
+                            </p>
+                            <br></br>
+                            <p>判斷結果</p>
+                            <pre><code>        if not stack:
+            print("Yes")
+        else:
+            print("No")
+                            </code></pre>
+                            <p style="text-indent: 2em;">如果跑完後沒有車廂留在車站，表示能夠成功；如果跑完後還有車廂留在車站，表示不可能成功。
                             </p>
 
                             </section>
