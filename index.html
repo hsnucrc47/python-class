@@ -378,12 +378,11 @@
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">補充資料</h2>
             </div>
             <div class="max-w-4xl mx-auto space-y-6">
-                <!-- Week 1 -->
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-gray-800 mb-2">【語法】math 模組</h3>
-                            <p class="text-gray-600 mb-4">數學函式模組</p>
+                            <p class="text-gray-600 mb-4">數學函式</p>
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('math')"
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -397,7 +396,7 @@
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-gray-800 mb-2">【語法】random 模組</h3>
-                            <p class="text-gray-600 mb-4">亂數函式模組</p>
+                            <p class="text-gray-600 mb-4">亂數函式</p>
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('random')"
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -422,6 +421,20 @@
                             <p class="text-gray-600 mb-4">字串轉換方法</p>
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('str')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看語法
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">【語法】time 模組</h3>
+                            <p class="text-gray-600 mb-4">日期時間函式</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openArticlce('time')"
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                                     📊 查看語法
                                 </button>
@@ -518,7 +531,8 @@
                 'random':'https://hsnucrc47.github.io/python-class/articles/random',
                 'str':'https://hsnucrc47.github.io/python-class/articles/string',
                 'float':'https://hsnucrc47.github.io/python-class/articles/浮點數運算問題與限制',
-                'rails':'https://hsnucrc47.github.io/python-class/articles/rails'
+                'rails':'https://hsnucrc47.github.io/python-class/articles/rails',
+                'time':'https://hsnucrc47.github.io/python-class/articles/time'
             };
             window.open(`${articleInfo[num]}`, '_blank');
         }
