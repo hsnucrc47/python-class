@@ -318,6 +318,14 @@
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                                     📊 查看簡報
                                 </button>
+                                <button onclick="downloadCode('week9')"
+                                    class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    💾 題目解答
+                                </button>
+                                <button onclick="openSlide('kahoot1')"
+                                    class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    🏅 Kahoot 練習
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -513,6 +521,7 @@
         // Slide functions
         function openSlide(week) {
             const slideInfo = {
+                'kahoot1':'https://kahoot.it/solo/?quizId=07e1b7a3-e1c7-45ae-8821-4297c53209a6&gameMode=nano',
                 'week1': 'https://hackmd.io/@CRC-YUSHAN/S1OomO2Fge',
                 'week2': 'https://hackmd.io/@CRC-YUSHAN/BySlh2r5ge#/',
                 'week3': 'https://hackmd.io/@CRC-YUSHAN/B1sorKHjlg',
@@ -552,7 +561,8 @@
                 'week2': '',
                 'week3': '',
                 'week4': '',
-                'week5': 'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/114_10_3'
+                'week5': 'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/114_10_3',
+                'week9':'https://github.com/hsnucrc47/python-class-zerojudge/blob/main/114_10_31/%E7%9F%A9%E9%99%A3%E7%BF%BB%E8%BD%89.py'
             };
             window.open(`${codeInfo[week]}`, '_blank');
         }
