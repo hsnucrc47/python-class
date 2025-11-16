@@ -510,7 +510,24 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        import { animate, stagger, splitText } from 'https://esm.sh/animejs';
+
+        // splitText 需要的是選擇器，而不是字串
+        const { chars } = splitText('h1', { words: false, chars: true });
+
+        animate(chars, {
+        y: [
+            { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+            { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+        ],
+        rotate: {
+            from: '-1turn',
+            delay: 0
+        },
+        delay: stagger(50),
+        ease: 'inOutCirc',
+        });
         // Calendar function
         function openCalendar() {
             window.open('https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg', '_blank');
