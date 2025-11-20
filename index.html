@@ -373,6 +373,29 @@
                         </div>
                     </div>
                 </article>
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1 ">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span
+                                    class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">第12週</span>
+                                <span class="text-gray-500 text-sm">114/11/21</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">遞迴</h3>
+                            <p class="text-gray-600 mb-4">遞迴函數</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openSlide('week12')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看簡報
+                                </button>
+                                <button onclick="openArticlce('towel_of_Hanoi')"
+                                    class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    🧩 河內塔模擬
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
 
             <div class="text-center mt-8">
@@ -550,6 +573,7 @@
                 'week9': 'https://hackmd.io/@CRC-YUSHAN/ryb1DhYRlg',
                 'week10': 'https://hackmd.io/@CRC-YUSHAN/r1leEJQkZg#/',
                 'week11': 'https://hackmd.io/@CRC-YUSHAN/Skt2Hm3y-x',
+                'week12': 'https://hackmd.io/@CRC-YUSHAN/SJyZKu2gbl',
                 'math':'https://hackmd.io/@CRC-YUSHAN/BkspH1Laxe'
             };
             window.open(`${slideInfo[week]}`, '_blank');
@@ -561,7 +585,8 @@
                 'str':'https://hsnucrc47.github.io/python-class/articles/string',
                 'float':'https://hsnucrc47.github.io/python-class/articles/浮點數運算問題與限制',
                 'rails':'https://hsnucrc47.github.io/python-class/articles/rails',
-                'time':'https://hsnucrc47.github.io/python-class/articles/time'
+                'time':'https://hsnucrc47.github.io/python-class/articles/time',
+                'towel_of_Hanoi':'https://hsnucrc47.github.io/python-class/games/towel_of_Hanoi'
             };
             window.open(`${articleInfo[num]}`, '_blank');
         }
