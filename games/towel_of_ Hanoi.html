@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="zh-TW">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://hsnucrc47.github.io/python-class/img/favicon.png" type="image/x-icon">
+  <title>電算社47屆Python班 - 課程網站</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    #app {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      margin: 0 0 10px 0;
+      text-align: center;
+    }
+
+    .subtitle {
+      margin: 0 0 30px 0;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .info {
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .controls {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .game-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 60px;
+      padding: 40px;
+      border-radius: 16px;
+      min-height: 400px;
+    }
+
+    .tower {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      position: relative;
+      width: 200px;
+      min-height: 350px;
+    }
+
+    .tower-base {
+      width: 180px;
+      height: 20px;
+      border-radius: 4px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .tower-pole {
+      width: 12px;
+      height: 280px;
+      border-radius: 6px;
+      position: absolute;
+      bottom: 20px;
+    }
+
+    .disk {
+      height: 30px;
+      border-radius: 15px;
+      position: absolute;
+      cursor: grab;
+      transition: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .disk:active {
+      cursor: grabbing;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    .disk.dragging {
+      opacity: 0.8;
+      z-index: 1000;
+    }
+
+    .tower.highlight {
+      opacity: 1;
+    }
+
+    .tower.highlight .tower-pole {
+      box-shadow: 0 0 20px rgba(255,255,255,0.5);
+    }
+    .tower-base {
+      background-color: #8b4513;  /* 柱子底座顏色 */
+    }
+
+    .tower-pole {
+      background-color: #8b4513;  /* 柱子顏色 */
+    }
+
+    @keyframes diskMove {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .disk.animating {
+      animation: diskMove 0.3s ease-in-out;
+    }
+
+    .success-message {
+      margin-top: 30px;
+      padding: 20px 40px;
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+    body {
+        font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .blog-post {
+        transition: border-color 0.3s ease;
+    }
+
+    .blog-post:hover {
+        border-color: #764ba2;
+    }
+    .flex-1 {
+        min-width: 0;
+    }
+    code { 
+        background-color: #eee; padding: 2px 4px; border-radius: 4px; 
+    }
+    pre { 
+        background-color: #00000086; padding: 2px; border-radius: 4px; overflow-x: auto; 
+    }
+    section { 
+        margin-bottom: 20px; 
+    }
+
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-8 py-4">
+                <a href="https://hsnucrc47.github.io/python-class/#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
+                <a href="https://hsnucrc47.github.io/python-class/#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
+                <a href="https://hsnucrc47.github.io/python-class/#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+                <a href="https://hsnucrc47.github.io/python-class/#additional_information" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">補充資料</a>
+                <a href="https://hsnucrc47.github.io/python-class/#suggestion" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">回饋表單</a>
+            </div>
+        </div>
+    </nav>
+<body class="bg-gray-50">
+    <!-- Header -->
+
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
+                <img src="https://hsnucrc47.github.io/python-class/img/python.png" height="110" width="110" class="block mx-auto"></img>
+
+            </div>
+        </div>
+    </header>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+  <div id="app">
+   <h1 id="main-title" class="text-xl font-bold text-center">河內塔遊戲</h1>
+   <br></br>
+   <p class="subtitle" id="subtitle">將所有圓盤移動到最右邊的柱子上</p>
+   <div class="info"><span>移動次數: <strong id="move-count">0</strong></span> <span style="margin-left: 30px;">最短步數: <strong id="min-moves">7</strong></span>
+   </div>
+   <div class="controls"><button id="solve-btn" class = "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">自動解題</button> <button id="reset-btn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">重置</button> <button id="unlock-btn" class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">🔒 解除鎖定</button>
+   </div>
+   <div class="game-container" id="game-container">
+    <div class="tower" data-tower="0">
+     <div class="tower-pole"></div>
+     <div class="tower-base"></div>
+    </div>
+    <div class="tower" data-tower="1">
+     <div class="tower-pole"></div>
+     <div class="tower-base"></div>
+    </div>
+    <div class="tower" data-tower="2">
+     <div class="tower-pole"></div>
+     <div class="tower-base"></div>
+    </div>
+   </div>
+   <div class="success-message" id="success-message">
+    🎉 恭喜完成！🎉
+   </div>
+  </div>
+      <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">電算社47屆Python班</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">聯絡資訊</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>電算社IG：@hsnu_crc</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">課程時間</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>🗓️ 每週五 15:10-16:00</p>
+                        <p>⏰ 共15週課程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+  <script>
+    const defaultConfig = {
+      background_color: '#1a1a2e',
+      surface_color: '#16213e',
+      text_color: '#eaeaea',
+      primary_action_color: '#0f4c75',
+      secondary_action_color: '#3282b8',
+      main_title: '河內塔遊戲',
+      subtitle: '將所有圓盤移動到最右邊的柱子上',
+      solve_button_text: '自動解題',
+      reset_button_text: '重置',
+      unlock_button_text: '解除鎖定',
+      font_family: 'Arial',
+      font_size: 16
+    };
+
+    const NUM_DISKS = 4;
+    let towers = [[], [], []];
+    let moveCount = 0;
+    let isDragging = false;
+    let currentDisk = null;
+    let isAnimating = false;
+    let isSolving = false;
+    let isUnlocked = false;
+
+    const diskColors = ['#e74c3c', '#f39c12', '#2ecc71', '#3498db', '#9b59b6'];
+
+    function initGame() {
+      towers = [[], [], []];
+      for (let i = NUM_DISKS; i >= 1; i--) {
+        towers[0].push(i);
+      }
+      moveCount = 0;
+      isSolving = false;
+      updateMoveCount();
+      updateMinMoves();
+      renderDisks();
+      hideSuccessMessage();
+    }
+
+    function updateMoveCount() {
+      document.getElementById('move-count').textContent = moveCount;
+    }
+
+    function updateMinMoves() {
+      const minMoves = Math.pow(2, NUM_DISKS) - 1;
+      document.getElementById('min-moves').textContent = minMoves;
+    }
+
+    function renderDisks() {
+      document.querySelectorAll('.disk').forEach(disk => disk.remove());
+
+      towers.forEach((tower, towerIndex) => {
+        const towerElement = document.querySelector(`[data-tower="${towerIndex}"]`);
+        tower.forEach((diskSize, position) => {
+          const disk = createDiskElement(diskSize, towerIndex, position);
+          towerElement.appendChild(disk);
+        });
+      });
+    }
+
+    function createDiskElement(size, towerIndex, position) {
+      const disk = document.createElement('div');
+      disk.className = 'disk';
+      disk.dataset.size = size;
+      disk.dataset.tower = towerIndex;
+      
+      const width = 60 + (size * 30);
+      disk.style.width = `${width}px`;
+      disk.style.backgroundColor = diskColors[size - 1];
+      disk.style.color = '#ffffff';
+      disk.textContent = size;
+      
+      const bottomPos = 20 + (position * 35);
+      disk.style.bottom = `${bottomPos}px`;
+
+      disk.addEventListener('mousedown', startDrag);
+      disk.addEventListener('touchstart', startDrag, { passive: false });
+
+      return disk;
+    }
+
+    function startDrag(e) {
+      if (isAnimating || isSolving) return;
+
+      e.preventDefault();
+      const disk = e.target;
+      const towerIndex = parseInt(disk.dataset.tower);
+      const diskSize = parseInt(disk.dataset.size);
+
+      if (!isUnlocked && towers[towerIndex][towers[towerIndex].length - 1] !== diskSize) {
+        return;
+      }
+
+      isDragging = true;
+      currentDisk = disk;
+      disk.classList.add('dragging');
+      disk.style.zIndex = '1000';
+
+      const moveHandler = (e) => handleDragMove(e, disk);
+      const endHandler = (e) => endDrag(e, disk, moveHandler, endHandler);
+
+      document.addEventListener('mousemove', moveHandler);
+      document.addEventListener('mouseup', endHandler);
+      document.addEventListener('touchmove', moveHandler, { passive: false });
+      document.addEventListener('touchend', endHandler);
+    }
+
+    function handleDragMove(e, disk) {
+      if (!isDragging) return;
+      e.preventDefault();
+
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+
+      disk.style.left = `${clientX - disk.offsetWidth / 2}px`;
+      disk.style.top = `${clientY - disk.offsetHeight / 2}px`;
+      disk.style.position = 'fixed';
+
+      highlightNearestTower(clientX);
+    }
+
+    function highlightNearestTower(x) {
+      document.querySelectorAll('.tower').forEach(tower => {
+        tower.classList.remove('highlight');
+      });
+
+      const towers = document.querySelectorAll('.tower');
+      let nearest = null;
+      let minDist = Infinity;
+
+      towers.forEach(tower => {
+        const rect = tower.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const dist = Math.abs(x - centerX);
+        if (dist < minDist) {
+          minDist = dist;
+          nearest = tower;
+        }
+      });
+
+      if (nearest && minDist < 150) {
+        nearest.classList.add('highlight');
+      }
+    }
+
+    function endDrag(e, disk, moveHandler, endHandler) {
+      if (!isDragging) return;
+
+      document.removeEventListener('mousemove', moveHandler);
+      document.removeEventListener('mouseup', endHandler);
+      document.removeEventListener('touchmove', moveHandler);
+      document.removeEventListener('touchend', endHandler);
+
+      disk.classList.remove('dragging');
+      document.querySelectorAll('.tower').forEach(tower => {
+        tower.classList.remove('highlight');
+      });
+
+      if (isUnlocked) {
+        // 解除鎖定模式：圓盤停留在當前位置，不回到柱子
+        isDragging = false;
+        currentDisk = null;
+        return;
+      }
+
+      // 正常模式：依照規則移動到柱子
+      const clientX = e.clientX || (e.changedTouches && e.changedTouches[0].clientX);
+      const targetTower = findNearestTower(clientX);
+
+      if (targetTower !== null) {
+        const fromTower = parseInt(disk.dataset.tower);
+        const diskSize = parseInt(disk.dataset.size);
+
+        if (canMoveDisk(fromTower, targetTower, diskSize)) {
+          moveDisk(fromTower, targetTower);
+          moveCount++;
+          updateMoveCount();
+        }
+      }
+
+      isDragging = false;
+      currentDisk = null;
+      renderDisks();
+      checkWin();
+    }
+
+    function findNearestTower(x) {
+      const towers = document.querySelectorAll('.tower');
+      let nearest = null;
+      let minDist = Infinity;
+
+      towers.forEach((tower, index) => {
+        const rect = tower.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const dist = Math.abs(x - centerX);
+        if (dist < minDist && dist < 150) {
+          minDist = dist;
+          nearest = index;
+        }
+      });
+
+      return nearest;
+    }
+
+    function canMoveDisk(fromTower, toTower, diskSize) {
+      if (fromTower === toTower) return false;
+      if (towers[toTower].length === 0) return true;
+      return diskSize < towers[toTower][towers[toTower].length - 1];
+    }
+
+    function moveDisk(from, to) {
+      const disk = towers[from].pop();
+      towers[to].push(disk);
+    }
+
+    function checkWin() {
+      if (towers[2].length === NUM_DISKS) {
+        showSuccessMessage();
+      }
+    }
+
+    function showSuccessMessage() {
+      const message = document.getElementById('success-message');
+      message.classList.add('show');
+    }
+
+    function hideSuccessMessage() {
+      const message = document.getElementById('success-message');
+      message.classList.remove('show');
+    }
+
+    async function solveTowerOfHanoi() {
+      if (isSolving) return;
+      
+      isSolving = true;
+      document.getElementById('solve-btn').disabled = true;
+      document.getElementById('reset-btn').disabled = true;
+      initGame();
+      
+      const moves = [];
+      
+      function generateMoves(n, from, to, aux) {
+        if (n === 1) {
+          moves.push([from, to]);
+          return;
+        }
+        generateMoves(n - 1, from, aux, to);
+        moves.push([from, to]);
+        generateMoves(n - 1, aux, to, from);
+      }
+
+      generateMoves(NUM_DISKS, 0, 2, 1);
+
+      for (const [from, to] of moves) {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        moveDisk(from, to);
+        moveCount++;
+        updateMoveCount();
+        renderDisks();
+      }
+
+      checkWin();
+      isSolving = false;
+      document.getElementById('solve-btn').disabled = false;
+      document.getElementById('reset-btn').disabled = false;
+    }
+
+    function toggleUnlock() {
+      isUnlocked = !isUnlocked;
+      const btn = document.getElementById('unlock-btn');
+      if (isUnlocked) {
+        btn.textContent = '🔓 ' + (window.elementSdk?.config.unlock_button_text || defaultConfig.unlock_button_text);
+        btn.style.opacity = '1';
+      } else {
+        btn.textContent = '🔒 ' +(window.elementSdk?.config.unlock_button_text || defaultConfig.unlock_button_text);
+        btn.style.opacity = '0.7';
+      }
+    }
+
+    document.getElementById('solve-btn').addEventListener('click', solveTowerOfHanoi);
+    document.getElementById('reset-btn').addEventListener('click', initGame);
+    document.getElementById('unlock-btn').addEventListener('click', toggleUnlock);
+
+    async function onConfigChange(config) {
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+
+      document.getElementById('app').style.backgroundColor = backgroundColor;
+      document.getElementById('game-container').style.backgroundColor = surfaceColor;
+      document.getElementById('success-message').style.backgroundColor = primaryActionColor;
+      
+      document.body.style.color = textColor;
+      document.querySelectorAll('.info, .subtitle').forEach(el => {
+        el.style.color = textColor;
+      });
+
+      document.querySelectorAll('.tower-base, .tower-pole').forEach(el => {
+        el.style.backgroundColor = secondaryActionColor;
+      });
+
+      const solveBtn = document.getElementById('solve-btn');
+      solveBtn.style.backgroundColor = primaryActionColor;
+      solveBtn.style.color = textColor;
+
+      const resetBtn = document.getElementById('reset-btn');
+      resetBtn.style.backgroundColor = secondaryActionColor;
+      resetBtn.style.color = textColor;
+
+      document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('subtitle').textContent = config.subtitle || defaultConfig.subtitle;
+      document.getElementById('solve-btn').textContent = config.solve_button_text || defaultConfig.solve_button_text;
+      document.getElementById('reset-btn').textContent = config.reset_button_text || defaultConfig.reset_button_text;
+      const unlockBtn = document.getElementById('unlock-btn');
+      const unlockText = config.unlock_button_text || defaultConfig.unlock_button_text;
+      unlockBtn.textContent = isUnlocked ? '🔓 ' + unlockText : unlockText;
+
+      const baseFontStack = 'Microsoft JhengHei, sans-serif';
+      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+
+      document.getElementById('main-title').style.fontSize = `${fontSize * 2}px`;
+      document.querySelector('.subtitle').style.fontSize = `${fontSize}px`;
+      document.querySelector('.info').style.fontSize = `${fontSize}px`;
+      document.querySelectorAll('button').forEach(btn => {
+        btn.style.fontSize = `${fontSize}px`;
+      });
+    }
+
+    document.getElementById('unlock-btn').style.opacity = '0.7';
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['main_title', config.main_title || defaultConfig.main_title],
+          ['subtitle', config.subtitle || defaultConfig.subtitle],
+          ['solve_button_text', config.solve_button_text || defaultConfig.solve_button_text],
+          ['reset_button_text', config.reset_button_text || defaultConfig.reset_button_text],
+          ['unlock_button_text', config.unlock_button_text || defaultConfig.unlock_button_text]
+        ])
+      });
+    }
+
+    initGame();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a17472720ed8446',t:'MTc2MzYzNDY4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
