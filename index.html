@@ -41,16 +41,35 @@
 </head>
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-center space-x-8 py-4">
+        <div class="container mx-auto px-6 py-4 
+                    flex items-center 
+                    justify-between md:justify-center">
+
+            <div class="hidden md:flex space-x-8">
                 <a href="#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
                 <a href="#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
                 <a href="#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
                 <a href="#additional_information" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">補充資料</a>
                 <a href="#suggestion" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">回饋表單</a>
             </div>
+
+            <button id="menu-btn" class="md:hidden focus:outline-none">
+                <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden flex-col space-y-3 px-6 pb-4 md:hidden">
+            <a href="#calendar" class="block text-gray-700 hover:text-blue-600 font-medium">行事曆</a>
+            <a href="#instructors" class="block text-gray-700 hover:text-blue-600 font-medium">講師介紹</a>
+            <a href="#materials" class="block text-gray-700 hover:text-blue-600 font-medium">課程簡報</a>
+            <a href="#additional_information" class="block text-gray-700 hover:text-blue-600 font-medium">補充資料</a>
+            <a href="#suggestion" class="block text-gray-700 hover:text-blue-600 font-medium">回饋表單</a>
         </div>
     </nav>
+
 
 <body class="bg-gray-50">
     <!-- Header -->
@@ -535,6 +554,7 @@
     </footer>
 
     <script type="module">
+        
         import { animate, stagger, splitText } from 'https://esm.sh/animejs';
 
         // splitText 需要的是選擇器，而不是字串
@@ -554,6 +574,12 @@
         });
     </script>
     <script>
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
         // Calendar function
         function openCalendar() {
             window.open('https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg', '_blank');
@@ -614,7 +640,7 @@
 
         function scrollToLatest() {
             const articles = document.querySelectorAll("article");
-            const latest = articles[articles.length - 6] ;
+            const latest = articles[articles.length - 7] ;
             latest.scrollIntoView({ behavior: "smooth" });
         }
 
