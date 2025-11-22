@@ -217,6 +217,41 @@
     section { 
         margin-bottom: 20px; 
     }
+    @media (max-width: 640px) {
+
+      .game-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+      }
+
+      .tower {
+        width: 120px;        /* 從 200px 調小 */
+        min-height: 220px;
+      }
+
+      .tower-base {
+        width: 100px;        /* 從 180px 調小 */
+      }
+
+      .tower-pole {
+        height: 180px;       /* 從 280px 調小 */
+      }
+
+      .disk {
+        height: 24px;
+      }
+
+      .controls button {
+        padding: 8px 14px;   /* 縮小按鈕避免擠出螢幕 */
+        font-size: 14px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
 
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
