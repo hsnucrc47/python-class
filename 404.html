@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <title>電算社47屆Python班 - 課程網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .blog-post {
+            transition: border-color 0.3s ease;
+        }
+        .picture-post{
+            transition: transform 0.15s ease-out;
+        }
+        .blog-post:hover {
+            border-color: #0c0711;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .glitch {
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+
+            2%,
+            64% {
+                transform: translate(2px, 0) skew(0deg);
+            }
+
+            4%,
+            60% {
+                transform: translate(-2px, 0) skew(0deg);
+            }
+
+            62% {
+                transform: translate(0, 0) skew(5deg);
+            }
+        }
+
+        .code-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .code-char {
+            position: absolute;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+            animation: rain 4s linear infinite;
+        }
+
+        @keyframes rain {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 
+                    flex items-center 
+                    justify-between md:justify-center">
+
+            <div class="hidden md:flex space-x-8">
+                <a href="https://hsnucrc47.github.io/python-class/#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
+                <a href="https://hsnucrc47.github.io/python-class/#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
+                <a href="https://hsnucrc47.github.io/python-class/#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+                <a href="https://hsnucrc47.github.io/python-class/#additional_information" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">補充資料</a>
+                <a href="https://hsnucrc47.github.io/python-class/#suggestion" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">回饋表單</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden focus:outline-none">
+                <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden flex-col space-y-3 px-6 pb-4 md:hidden">
+            <a href="https://hsnucrc47.github.io/python-class/#calendar" class="block text-gray-700 hover:text-blue-600 font-medium">行事曆</a>
+            <a href="https://hsnucrc47.github.io/python-class/#instructors" class="block text-gray-700 hover:text-blue-600 font-medium">講師介紹</a>
+            <a href="https://hsnucrc47.github.io/python-class/#materials" class="block text-gray-700 hover:text-blue-600 font-medium">課程簡報</a>
+            <a href="https://hsnucrc47.github.io/python-class/#additional_information" class="block text-gray-700 hover:text-blue-600 font-medium">補充資料</a>
+            <a href="https://hsnucrc47.github.io/python-class/#suggestion" class="block text-gray-700 hover:text-blue-600 font-medium">回饋表單</a>
+        </div>
+    </nav>
+
+
+<body class="bg-gray-50">
+    <!-- Header -->
+
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="text-center ">
+                <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
+                <img id="python-img" src="https://hsnucrc47.github.io/python-class/img/python.png" height="110" width="110" class="block mx-auto picture-post"></img>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Materials Section -->
+    <section id="materials" class="py-16 bg-white">
+        <div class="text-center container mx-auto px-6">
+            <div class="mb-12">
+                <h1
+                    class="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 glitch">
+                    404
+                </h1>
+            </div>
+            <div class="mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">糟糕！頁面走丟了</h2>
+                <p class="text-xl text-gray-600 mb-6">看起來這個頁面正在學習隱身術，但還沒學會現身...</p>
+            </div>
+            <!-- Helpful Links -->
+            <div class="mt-12">
+                <h3 class="text-xl font-semibold text-gray-800 mb-6">或許你在找這些？</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <a href="https://hsnucrc47.github.io/python-class/" class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <h4 class="font-semibold text-gray-800 mb-2">首頁</h4>
+                        <p class="text-gray-600 text-sm">回到主頁</p>
+                    </a>
+                    <a href="https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg" class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <h4 class="font-semibold text-gray-800 mb-2">社課內容</h4>
+                        <p class="text-gray-600 text-sm">查看行事曆</p>
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdza11kAhbhWBrZIB_0ATGWhdx0xyVnn6ric6VyNUfkO0pvEw/viewform" class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <h4 class="font-semibold text-gray-800 mb-2">回饋表單</h4>
+                        <p class="text-gray-600 text-sm">填寫回饋表單</p>
+                    </a>
+                </div>
+            </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">電算社47屆Python班</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">聯絡資訊</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>電算社IG：@hsnu_crc</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">課程時間</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>🗓️ 每週五 15:10-16:00</p>
+                        <p>⏰ 共15週課程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        
+        import { animate, stagger, splitText } from 'https://esm.sh/animejs';
+
+        const { chars } = splitText('h1', { words: false, chars: true });
+
+        animate(chars, {
+        y: [
+            { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+            { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+        ],
+        rotate: {
+            from: '-1turn',
+            delay: 0
+        },
+        delay: stagger(50),
+        ease: 'inOutCirc',
+        });
+    </script>
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        function scrollToLatest() {
+            const articles = document.querySelectorAll("article");
+            const latest = articles[articles.length - 7] ;
+            latest.scrollIntoView({ behavior: "smooth" });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        // 逃跑圖片
+        const img = document.getElementById('python-img');
+
+        // 逃跑參數
+        const escapeDistance = 80;  // 滑鼠靠多近才逃跑
+        const moveAmount = 80;       // 每次逃多遠
+
+        // 先讓圖片變成可移動定位（相對於父容器）
+        img.style.position = "relative";
+        let posX = 0;
+        let posY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            const rect = img.getBoundingClientRect();
+            const imgX = rect.left + rect.width / 2;
+            const imgY = rect.top + rect.height / 2;
+
+            const dx = mouseX - imgX;
+            const dy = mouseY - imgY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < escapeDistance) {
+                // 反方向
+                const ux = dx / distance;
+                const uy = dy / distance;
+
+                posX -= ux * moveAmount;
+                posY -= uy * moveAmount;
+
+                // 限制跑出螢幕
+                const maxX = window.innerWidth - rect.width;
+                const maxY = window.innerHeight - rect.height -200;
+
+                posX = Math.min(Math.max(posX, -rect.left), maxX - rect.left);
+                posY = Math.min(Math.max(posY, -rect.top), maxY - rect.top);
+
+                img.style.left = posX + "px";
+                img.style.top = posY + "px";
+                img.style.transform = `translate(${posX}px, ${posY}px)`;
+            }
+        });
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
