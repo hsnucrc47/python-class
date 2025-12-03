@@ -1,0 +1,30 @@
+
+#snow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: 5; 
+}
+
+/* 定義單片雪花的基本樣式 */
+.snowflake {
+    color: #fff;
+    font-size: 1em;
+    position: absolute;
+    top: -10%; 
+}
+
+/* ====== 下雪動畫的 Keyframes ====== */
+@keyframes fall {
+    to {
+        transform: translateY(100vh); 
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
