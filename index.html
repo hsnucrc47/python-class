@@ -533,7 +533,7 @@
         
         import { animate, stagger, splitText } from 'https://esm.sh/animejs';
 
-        // splitText 需要的是選擇器，而不是字串
+
         const { chars } = splitText('h1', { words: false, chars: true });
 
         animate(chars, {
@@ -551,9 +551,9 @@
     </script>
     <script>
         async function loadComponents() {
-            document.getElementById("nav").innerHTML     = await (await fetch("/assets/nav.html")).text();
-            document.getElementById("header").innerHTML  = await (await fetch("/assets/header.html")).text();
-            document.getElementById("footer").innerHTML  = await (await fetch("/assets/footer.html")).text();
+            document.getElementById("nav").innerHTML     = await (await fetch("https://hsnucrc47.github.io/python-class/assets/nav.html")).text();
+            document.getElementById("header").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/header.html")).text();
+            document.getElementById("footer").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/footer.html")).text();
         }
         loadComponents();
         const menuBtn = document.getElementById("menu-btn");
@@ -651,50 +651,7 @@
             }
         });
 
-        // 逃跑圖片
-        const img = document.getElementById('python-img');
 
-        // 逃跑參數
-        const escapeDistance = 80;  // 滑鼠靠多近才逃跑
-        const moveAmount = 80;       // 每次逃多遠
-
-        // 先讓圖片變成可移動定位（相對於父容器）
-        img.style.position = "relative";
-        let posX = 0;
-        let posY = 0;
-
-        window.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-
-            const rect = img.getBoundingClientRect();
-            const imgX = rect.left + rect.width / 2;
-            const imgY = rect.top + rect.height / 2;
-
-            const dx = mouseX - imgX;
-            const dy = mouseY - imgY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < escapeDistance) {
-                // 反方向
-                const ux = dx / distance;
-                const uy = dy / distance;
-
-                posX -= ux * moveAmount;
-                posY -= uy * moveAmount;
-
-                // 限制跑出螢幕
-                const maxX = window.innerWidth - rect.width;
-                const maxY = window.innerHeight - rect.height -200;
-
-                posX = Math.min(Math.max(posX, -rect.left), maxX - rect.left);
-                posY = Math.min(Math.max(posY, -rect.top), maxY - rect.top);
-
-                img.style.left = posX + "px";
-                img.style.top = posY + "px";
-                img.style.transform = `translate(${posX}px, ${posY}px)`;
-            }
-        });
     </script>
     <script src="js/Constitution_Day.js"></script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
