@@ -1,68 +1,58 @@
-<!-- Header -->
 <header class="gradient-bg text-white relative overflow-hidden">
     <div id="snow-container"></div>
-    
+
     <div class="container mx-auto px-6 py-16 relative z-10">
         <div class="text-center">
             <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
 
-            
             <div class="flex justify-center items-center space-x-8">
-                
                 <img src="img/Constitution.png" height="80" width="80" class="picture-post hidden sm:block">
-                
                 <img id="python-img" src="img/python_hat.png" height="110" width="110" class="block picture-post">
-                
                 <img src="img/snowman.png" height="80" width="80" class="picture-post hidden sm:block">
-            
+            </div>
         </div>
     </div>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <!-- 逃跑圖片 JS -->
     <script>
-        // 逃跑圖片
         const img = document.getElementById('python-img');
-
-        // 逃跑參數
-        const escapeDistance = 80;  // 滑鼠靠多近才逃跑
-        const moveAmount = 80;       // 每次逃多遠
-
-        // 先讓圖片變成可移動定位（相對於父容器）
         img.style.position = "relative";
+
         let posX = 0;
         let posY = 0;
 
-        window.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
+        const escapeDistance = 80;
+        const moveAmount = 80;
 
+        window.addEventListener('mousemove', (e) => {
             const rect = img.getBoundingClientRect();
             const imgX = rect.left + rect.width / 2;
             const imgY = rect.top + rect.height / 2;
 
-            const dx = mouseX - imgX;
-            const dy = mouseY - imgY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            const dx = e.clientX - imgX;
+            const dy = e.clientY - imgY;
+            const distance = Math.sqrt(dx*dx + dy*dy);
 
             if (distance < escapeDistance) {
-                // 反方向
                 const ux = dx / distance;
                 const uy = dy / distance;
 
                 posX -= ux * moveAmount;
                 posY -= uy * moveAmount;
 
-                // 限制跑出螢幕
                 const maxX = window.innerWidth - rect.width;
-                const maxY = window.innerHeight - rect.height -200;
+                const maxY = window.innerHeight - rect.height - 200;
 
                 posX = Math.min(Math.max(posX, -rect.left), maxX - rect.left);
                 posY = Math.min(Math.max(posY, -rect.top), maxY - rect.top);
 
-                img.style.left = posX + "px";
-                img.style.top = posY + "px";
                 img.style.transform = `translate(${posX}px, ${posY}px)`;
             }
         });
     </script>
-</body>
-
 </header>

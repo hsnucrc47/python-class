@@ -40,11 +40,12 @@
         }
     </style>
 </head>
-    <!-- Navigation -->
-    <div id="nav"></div>
+
 
 
 <body class="bg-gray-50">
+<!-- Navigation -->
+<div id="nav"></div>
 <!-- Header -->
 <div id="header"></div>
 
@@ -529,39 +530,54 @@
     <!-- Footer -->
     <div id="footer"></div>
 
-    <script type="module">
-        
-        import { animate, stagger, splitText } from 'https://esm.sh/animejs';
+<script>
+        // ... (保持您的 openCalendar, openForm, openSlide, etc. 函式不變) ...
 
-
-        const { chars } = splitText('h1', { words: false, chars: true });
-
-        animate(chars, {
-        y: [
-            { to: '-2.75rem', ease: 'outExpo', duration: 600 },
-            { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
-        ],
-        rotate: {
-            from: '-1turn',
-            delay: 0
-        },
-        delay: stagger(50),
-        ease: 'inOutCirc',
-        });
-    </script>
-    <script>
         async function loadComponents() {
-            document.getElementById("nav").innerHTML     = await (await fetch("https://hsnucrc47.github.io/python-class/assets/nav.html")).text();
-            document.getElementById("header").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/header.html")).text();
-            document.getElementById("footer").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/footer.html")).text();
-        }
-        loadComponents();
-        const menuBtn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
+            try {
+                // 載入並插入外部組件 (nav, header, footer)
+                document.getElementById("nav").innerHTML     = await (await fetch("https://hsnucrc47.github.io/python-class/assets/nav.html")).text();
+                document.getElementById("header").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/header.html")).text();
+                document.getElementById("footer").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/footer.html")).text();
 
-        menuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
+                // 1. 確保 header 內容（包含 <h1> 和 #snow-container）已插入 DOM 後，才執行動畫
+                initTitleAnimation();
+
+
+            } catch (error) {
+                console.error("載入組件時發生錯誤:", error);
+            }
+        }
+
+        // 執行 animejs 動畫的函式 (保持不變)
+        function initTitleAnimation() {
+            // ... (您的 animejs 程式碼) ...
+            import('https://esm.sh/animejs').then(({ animate, stagger, splitText }) => {
+                const h1Element = document.querySelector('h1');
+                
+                if (h1Element) {
+                    const { chars } = splitText(h1Element, { words: false, chars: true });
+
+                    animate(chars, {
+                        y: [
+                            { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+                            { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+                        ],
+                        rotate: {
+                            from: '-1turn',
+                            delay: 0
+                        },
+                        delay: stagger(50),
+                        ease: 'inOutCirc',
+                    });
+                }
+            }).catch(err => console.error("AnimeJS 載入失敗:", err));
+        }
+
+
+        // 啟動組件載入
+        loadComponents();
+
         // Calendar function
         function openCalendar() {
             window.open('https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg', '_blank');
@@ -650,10 +666,16 @@
                 nav.classList.remove('shadow-lg');
             }
         });
-
-
+        
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+        }
     </script>
-    <script src="js/Constitution_Day.js"></script>
+    <script src="https://hsnucrc47.github.io/python-class/js/Constitution_Day.js"></script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
 

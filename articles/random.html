@@ -181,7 +181,14 @@ print(winners)</code></pre>
             </div>
         </div>
     </footer>
-
+    <script>
+        async function loadComponents() {
+            document.getElementById("nav").innerHTML     = await (await fetch("https://hsnucrc47.github.io/python-class/assets/nav.html")).text();
+            document.getElementById("header").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/header.html")).text();
+            document.getElementById("footer").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/footer.html")).text();
+        }
+        loadComponents();
+    </script>
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
