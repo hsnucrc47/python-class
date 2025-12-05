@@ -40,14 +40,60 @@
         }
     </style>
 </head>
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 
+                    flex items-center 
+                    justify-between md:justify-center">
 
+            <div class="hidden md:flex space-x-6">
+                <a href="#calendar" class=" text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
+                <a href="#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+                <a href="#additional_information" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">補充資料</a>
+                <a href="#suggestion" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">回饋表單</a>
+                <a href="https://hsnucrc47.github.io/python-class/link" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">網站連結</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden focus:outline-none">
+                <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16 " />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden flex-col space-y-3 px-6 pb-4 md:hidden">
+            <a href="#calendar" class="block text-gray-700 hover:text-blue-600 font-medium">行事曆</a>
+            <a href="#materials" class="block text-gray-700 hover:text-blue-600 font-medium">課程簡報</a>
+            <a href="#additional_information" class="block text-gray-700 hover:text-blue-600 font-medium">補充資料</a>
+            <a href="#suggestion" class="block text-gray-700 hover:text-blue-600 font-medium">回饋表單</a>
+            <a href="https://hsnucrc47.github.io/python-class/link" class="block text-gray-700 hover:text-blue-600 font-medium">網站連結</a>
+        </div>
+    </nav>
 
 
 <body class="bg-gray-50">
-<!-- Navigation -->
-<div id="nav"></div>
-<!-- Header -->
-<div id="header"></div>
+    <!-- Header -->
+    <!-- Navigation -->
+
+<header class="gradient-bg text-white relative overflow-hidden">
+    <div id="snow-container"></div>
+    
+    <div class="container mx-auto px-6 py-16 relative z-10">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
+
+            
+            <div class="flex justify-center items-center space-x-8">
+                
+                <img src="img/Constitution.png" height="80" width="80" class="picture-post hidden sm:block">
+                
+                <img id="python-img" src="img/python_hat.png" height="110" width="110" class="block picture-post">
+                
+                <img src="img/snowman.png" height="80" width="80" class="picture-post hidden sm:block">
+            
+        </div>
+    </div>
+</header>
 
     <!-- Calendar Section -->
     <section id="calendar" class="py-16 bg-white">
@@ -528,56 +574,50 @@
         </div>
     </section>
     <!-- Footer -->
-    <div id="footer"></div>
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">電算社47屆Python班</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">聯絡資訊</h4>
+                    <div class="flex text-gray-300">
+                        <p>電算社IG：</p><a href="https://www.instagram.com/hsnu_crc/">@hsnu_crc</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">課程時間</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>🗓️ 每週五 15:10-16:00</p>
+                        <p>⏰ 共15週課程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
+    <script type="module">
+        import { animate, stagger, splitText } from 'https://esm.sh/animejs';
+
+
+        const { chars } = splitText('h1', { words: false, chars: true });
+
+        animate(chars, {
+        y: [
+            { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+            { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+        ],
+        rotate: {
+            from: '-1turn',
+            delay: 0
+        },
+        delay: stagger(50),
+        ease: 'inOutCirc',
+        });
+    </script>
 <script>
-        // ... (保持您的 openCalendar, openForm, openSlide, etc. 函式不變) ...
-
-        async function loadComponents() {
-            try {
-                // 載入並插入外部組件 (nav, header, footer)
-                document.getElementById("nav").innerHTML     = await (await fetch("https://hsnucrc47.github.io/python-class/assets/nav.html")).text();
-                document.getElementById("header").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/header.html")).text();
-                document.getElementById("footer").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/footer.html")).text();
-
-                // 1. 確保 header 內容（包含 <h1> 和 #snow-container）已插入 DOM 後，才執行動畫
-                initTitleAnimation();
-
-
-            } catch (error) {
-                console.error("載入組件時發生錯誤:", error);
-            }
-        }
-
-        // 執行 animejs 動畫的函式 (保持不變)
-        function initTitleAnimation() {
-            // ... (您的 animejs 程式碼) ...
-            import('https://esm.sh/animejs').then(({ animate, stagger, splitText }) => {
-                const h1Element = document.querySelector('h1');
-                
-                if (h1Element) {
-                    const { chars } = splitText(h1Element, { words: false, chars: true });
-
-                    animate(chars, {
-                        y: [
-                            { to: '-2.75rem', ease: 'outExpo', duration: 600 },
-                            { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
-                        ],
-                        rotate: {
-                            from: '-1turn',
-                            delay: 0
-                        },
-                        delay: stagger(50),
-                        ease: 'inOutCirc',
-                    });
-                }
-            }).catch(err => console.error("AnimeJS 載入失敗:", err));
-        }
-
-
-        // 啟動組件載入
-        loadComponents();
-
+ 
         // Calendar function
         function openCalendar() {
             window.open('https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg', '_blank');
@@ -674,6 +714,43 @@
                 mobileMenu.classList.toggle("hidden");
             });
         }
+
+    </script>
+    <script>
+        const img = document.getElementById('python-img');
+        img.style.position = "relative";
+
+        let posX = 0;
+        let posY = 0;
+
+        const escapeDistance = 80;
+        const moveAmount = 80;
+
+        window.addEventListener('mousemove', (e) => {
+            const rect = img.getBoundingClientRect();
+            const imgX = rect.left + rect.width / 2;
+            const imgY = rect.top + rect.height / 2;
+
+            const dx = e.clientX - imgX;
+            const dy = e.clientY - imgY;
+            const distance = Math.sqrt(dx*dx + dy*dy);
+
+            if (distance < escapeDistance) {
+                const ux = dx / distance;
+                const uy = dy / distance;
+
+                posX -= ux * moveAmount;
+                posY -= uy * moveAmount;
+
+                const maxX = window.innerWidth - rect.width;
+                const maxY = window.innerHeight - rect.height - 200;
+
+                posX = Math.min(Math.max(posX, -rect.left), maxX - rect.left);
+                posY = Math.min(Math.max(posY, -rect.top), maxY - rect.top);
+
+                img.style.transform = `translate(${posX}px, ${posY}px)`;
+            }
+        });
     </script>
     <script src="https://hsnucrc47.github.io/python-class/js/Constitution_Day.js"></script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
