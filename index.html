@@ -40,6 +40,12 @@
         }
     </style>
 </head>
+
+
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 
                     flex items-center 
@@ -69,12 +75,6 @@
             <a href="https://hsnucrc47.github.io/python-class/link" class="block text-gray-700 hover:text-blue-600 font-medium">網站連結</a>
         </div>
     </nav>
-
-
-<body class="bg-gray-50">
-    <!-- Header -->
-    <!-- Navigation -->
-
 <header class="gradient-bg text-white relative overflow-hidden">
     <div id="snow-container"></div>
     
@@ -597,26 +597,26 @@
         </div>
     </footer>
 
-    <script type="module">
-        import { animate, stagger, splitText } from 'https://esm.sh/animejs';
+        <script type="module">
+            import { animate, stagger, splitText } from 'https://esm.sh/animejs';
 
 
-        const { chars } = splitText('h1', { words: false, chars: true });
+            const { chars } = splitText('h1', { words: false, chars: true });
 
-        animate(chars, {
-        y: [
-            { to: '-2.75rem', ease: 'outExpo', duration: 600 },
-            { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
-        ],
-        rotate: {
-            from: '-1turn',
-            delay: 0
-        },
-        delay: stagger(50),
-        ease: 'inOutCirc',
-        });
-    </script>
-<script>
+            animate(chars, {
+            y: [
+                { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+                { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+            ],
+            rotate: {
+                from: '-1turn',
+                delay: 0
+            },
+            delay: stagger(50),
+            ease: 'inOutCirc',
+            });
+        </script>
+    <script>
  
         // Calendar function
         function openCalendar() {
