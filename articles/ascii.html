@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://hsnucrc47.github.io/python-class/img/favicon.png" type="image/x-icon">
-    <title>電算社47屆Python班 - 課程網站</title>
+    <title>電算社47屆Python班 - ASCII Code</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
@@ -48,21 +48,20 @@
             margin-bottom: 20px; 
         }
     </style>
-    <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex justify-center space-x-8 py-4">
                 <a href="https://hsnucrc47.github.io/python-class/#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
                 <a href="https://hsnucrc47.github.io/python-class/#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
                 <a href="https://hsnucrc47.github.io/python-class/#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+                <a href="https://hsnucrc47.github.io/python-class/#additional_information" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">補充資料</a>
+                <a href="https://hsnucrc47.github.io/python-class/#suggestion" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">回饋表單</a>
             </div>
         </div>
     </nav>
 </head>
 
 <body class="bg-gray-50">
-    <!-- Header -->
-
     <header class="gradient-bg text-white">
         <div class="container mx-auto px-6 py-16">
             <div class="text-center">
@@ -72,7 +71,6 @@
             </div>
         </div>
     </header>
-    <!-- Materials Section -->
     <section id="materials" class="py-16 bg-white">
         <div class="container mx-auto px-4 max-w-full md:max-w-3xl">
             <div class="mx-auto space-y-6">
@@ -81,84 +79,129 @@
                             <section class="text-gray-800 mb-8">
                             <div class="mb-4">
                                 <div class="text-center">
-                                    <h2 class="text-xl font-bold">random 模組</h2>
+                                    <h2 class="text-2xl font-bold text-gray-900 mb-4">ASCII Code</h2>
                                 </div>
                             </div>
-                            <section>
                             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
                             <script>hljs.highlightAll();</script>
-                            <h2>匯入模組</h2>
-                            <pre><code>import random</code></pre>
-                            </section>
 
-                            <section>
-                            <h2>生成隨機整數</h2>
-                            <p><code>random.randint(a, b)</code>：產生介於 <code>a</code> 和 <code>b</code>（含）的整數。</p>
-                            <pre><code>random.randint(1, 6)  # 模擬骰子點數</code></pre>
-                            </section>
+                            什麼是 ASCII Code？
 
-                            <section>
-                            <h2>生成隨機浮點數</h2>
-                            <p><code>random.random()</code>：產生 0.0 ≤ x &lt; 1.0 的浮點數。</p>
-                            <pre><code>random.random()  # 例如 0.374</code></pre>
+                            <p><strong>ASCII</strong>（American Standard Code for Information Interchange，美國標準資訊交換碼）是一種將文字字元對應到數字的編碼系統。</p>
+                            <p>它是電腦處理英文和基本符號的基礎。</p>
 
-                            <p><code>random.uniform(a, b)</code>：產生介於 <code>a</code> 和 <code>b</code> 的浮點數。</p>
-                            <pre><code>random.uniform(5, 10)  # 例如 7.328</code></pre>
-                            </section>
+                            <h3>Python 中的 ASCII 轉換函數</h3>
 
-                            <section>
-                            <h2>從序列中隨機選取元素</h2>
-                            <p><code>random.choice(seq)</code>：從序列（串列、字串等）中隨機選取一個元素。</p>
-                            <pre><code>random.choice(["剪刀", "石頭", "布"])
-random.choice("ABCDE")  # 例如 'C'</code></pre>
-                            </section>
+                            <p>在 Python 中，有兩個內建函數可以輕鬆地在字元和它們的 ASCII （ Unicode ∕ Ordinal ）數字之間進行轉換：</p>
+                            
+                            <p>1. <code>ord(char)</code>：字元轉數字（Ordinal）
 
-                            <section>
-                            <h2>隨機抽樣</h2>
-                            <p><code>random.sample(seq, k)</code>：從序列中選取 <strong>k 個不重複元素</strong>（回傳新串列）。</p>
-                            <pre><code>random.sample(range(10), 3)  # 例如 [1, 7, 4]</code></pre>
+                            <p><code>ord(char)</code> 接受一個單一字元的字串，並回傳其對應的 Unicode 整數。對於 ASCII 範圍內的字元，這個值就是它們的 ASCII 值。</p>
 
-                            <p><code>random.choices(seq, k=n)</code>：從序列中選取 <strong>k 個可重複元素</strong>。</p>
-                            <pre><code>random.choices("ABC", k=5)  # 例如 ['B', 'A', 'C', 'C', 'B']</code></pre>
-                            </section>
+                            <pre><code>字母轉換
+print(ord('A'))  # 輸出: 65
+print(ord('a'))  # 輸出: 97
 
-                            <section>
-                            <h2>打亂順序</h2>
-                            <p><code>random.shuffle(list)</code>：將串列內的元素隨機重新排序（直接改變原串列）。</p>
-                            <pre><code>cards = ["A", "B", "C", "D"]
-random.shuffle(cards)
-print(cards)  # 例如 ['C', 'A', 'D', 'B']</code></pre>
-                            </section>
+# 數字字元轉換
+print(ord('0'))  # 輸出: 48
+print(ord('9'))  # 輸出: 57
 
-                            <section>
-                            <h2>設定隨機種子（重現結果）</h2>
-                            <p><code>random.seed(x)</code>：設定隨機數種子，使結果可重現。</p>
-                            <pre><code>random.seed(10)
-print(random.random())  # 每次執行都會產生相同結果</code></pre>
-                            </section>
+# 符號轉換
+print(ord('!'))  # 輸出: 33
+print(ord(' '))  # 輸出: 32 (空格)</code></pre>
 
-                            <section>
-                            <h2>常見應用範例</h2>
+                            ### 2. `chr()`：數字轉字元 (Character)
 
-                            <h3>模擬擲硬幣</h3>
-                            <pre><code>coin = random.choice(["正面", "反面"])</code></pre>
+                            <p><code>chr(integer)</code> 接受一個整數，並回傳該整數對應的 **Unicode/ASCII 字元**。</p>
 
-                            <h3>產生隨機密碼</h3>
-                            <pre><code>import string
-pw = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
-print(pw)</code></pre>
+                            <pre><code># 數字轉字母
+print(chr(65))   # 輸出: A
+print(chr(97))   # 輸出: a
 
-                            <h3>模擬抽獎</h3>
-                            <pre><code>winners = random.sample(["小明", "小華", "小美", "小王"], 2)
-print(winners)</code></pre>
+# 數字轉數字字元
+print(chr(48))   # 輸出: 0
+
+# 輸出控制字元 (如換行)
+print(chr(10))   # 輸出: 換行符 (Line Feed)
+
+# 組合應用
+for i in range(ord('A'), ord('Z') + 1):
+    print(chr(i), end=' ')
+# 輸出: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code></pre>
+
+                            ---
+                            
+                            ## 常見應用與範例
+
+                            ### 應用一：判斷字元類型 (例如判斷大小寫)
+
+                            <p>利用 ASCII 值的連續性，我們可以判斷一個字元是否為字母或數字。例如，大寫字母 'A' 到 'Z' 的 ASCII 值是連續的 65 到 90。</p>
+
+                            <pre><code>char = 'G'
+ascii_val = ord(char)
+
+if 65 <= ascii_val <= 90:
+    print(f"'{char}' 是大寫字母")
+elif 97 <= ascii_val <= 122:
+    print(f"'{char}' 是小寫字母")
+else:
+    print(f"'{char}' 是其他符號")</code></pre>
+
+                            ### 應用二：大小寫轉換 (不使用內建方法)
+
+                            <p>大寫字母和小寫字母之間的 ASCII 值剛好相差 32。我們可以透過加減這個差值來進行轉換。</p>
+
+                            <pre><code># 小寫轉大寫
+lower_char = 'k'
+upper_char = chr(ord(lower_char) - 32)
+print(f"小寫 '{lower_char}' 轉大寫: {upper_char}") # 輸出: K
+
+# 大寫轉小寫
+upper_char_2 = 'C'
+lower_char_2 = chr(ord(upper_char_2) + 32)
+print(f"大寫 '{upper_char_2}' 轉小寫: {lower_char_2}") # 輸出: c</code></pre>
+
+                            ### 應用三：凱薩密碼 (Caesar Cipher)
+
+                            <p>在密碼學中，可以利用 ASCII 值進行位移，實現簡單的加密/解密，這被稱為凱薩密碼。</p>
+
+                            <pre><code>def caesar_encrypt(text, shift):
+    result = ""
+    for char in text:
+        # 只處理字母
+        if 'a' <= char <= 'z':
+            # 將字母轉為 0-25 的索引，進行位移，再轉回 ASCII
+            start = ord('a')
+            new_ord = (ord(char) - start + shift) % 26 + start
+            result += chr(new_ord)
+        elif 'A' <= char <= 'Z':
+            start = ord('A')
+            new_ord = (ord(char) - start + shift) % 26 + start
+            result += chr(new_ord)
+        else:
+            result += char # 非字母直接保留
+    return result
+
+encrypted = caesar_encrypt("Hello Python", 3)
+print("加密後:", encrypted) # 輸出: Kello Sbwhoq</code></pre>
+                            <p class="text-sm text-gray-500 mt-4">**注意**：在 Python 3 中，<code>ord()</code> 和 <code>chr()</code> 函數是針對 **Unicode** 碼點操作的，**ASCII** 只是 Unicode 的子集（前 128 個字元）。但對於英文和基本符號，它們的行為與傳統的 ASCII 轉換完全一致。</p>
+                            
+                                <div class="mt-8">
+                                    <button onclick="openSlide('ascii')"
+                                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                        📚 參考資料：Python Docs - 內建函數
+                                    </button>
+                                </div>
                             </section>
                         </div>
                     </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
     </section>
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-3 gap-8">
@@ -183,6 +226,12 @@ print(winners)</code></pre>
     </footer>
 
     <script>
+        function openSlide(week) {
+            const slideInfo = {
+                'ascii': 'https://docs.python.org/zh-tw/3.14/library/functions.html#ord', // 使用 ord 函數作為參考
+            };
+            window.open(`${slideInfo[week]}`, '_blank');
+        }
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
