@@ -544,6 +544,20 @@
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">【語法】ASCII Code</h3>
+                            <p class="text-gray-600 mb-4">美國標準資訊交換碼</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openArticlce('ascii')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看語法
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
                             <h3 class="text-xl font-bold text-gray-800 mb-2">【觀念】0.3 - 0.1 - 0.1 - 0.1 ≠ 0 ！？</h3>
                             <p class="text-gray-600 mb-4">浮點數運算問題與限制</p>
                             <div class="flex space-x-3">
@@ -655,7 +669,8 @@
                 'float':'https://hsnucrc47.github.io/python-class/articles/浮點數運算問題與限制',
                 'rails':'https://hsnucrc47.github.io/python-class/articles/rails',
                 'time':'https://hsnucrc47.github.io/python-class/articles/time',
-                'towel_of_Hanoi':'https://hsnucrc47.github.io/python-class/games/towel_of_Hanoi'
+                'towel_of_Hanoi':'https://hsnucrc47.github.io/python-class/games/towel_of_Hanoi',
+                'ascii':'https://hsnucrc47.github.io/python-class/articles/ascii'
             };
             window.open(`${articleInfo[num]}`, '_blank');
         }

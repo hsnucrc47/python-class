@@ -35,38 +35,139 @@
         .blog-post:hover {
             border-color: #764ba2;
         }
+
         .flex-1 {
             min-width: 0;
         }
-        code { 
-            background-color: #eee; padding: 2px 4px; border-radius: 4px; 
+
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
         }
-        pre { 
-            background-color: #00000086; padding: 2px; border-radius: 4px; overflow-x: auto; 
+
+/* 覆蓋現有的 pre 樣式，並設定新的程式碼區塊風格 */
+        pre {
+            /* 移除原有的背景色和 padding，由 .code-window 及其內部的 pre 處理 */
+            background-color: transparent;
+            padding: 0;
+            margin: 0; /* 移除瀏覽器的預設邊距 */
+            border-radius: 0;
         }
-        section { 
-            margin-bottom: 20px; 
+
+        /* 程式碼視窗容器樣式 */
+        .code-window {
+            background-color: #282c34; /* 深色背景，作為程式碼內容的背景 */
+            border-radius: 8px; /* 圓角 */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* 陰影 */
+            overflow: hidden; /* 確保內容不溢出圓角 */
+            margin: 20px 0; /* 讓程式碼區塊與其他內容區隔 */
+        }
+
+        /* 視窗標題欄樣式 */
+        .code-header {
+            background-color: #21252b; /* 標題欄顏色略淺 */
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* 將按鈕和標籤推開 */
+            color: #abb2bf; /* 標籤文字顏色 */
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        /* 視窗控制按鈕容器 */
+        .window-controls {
+            display: flex;
+            gap: 8px; /* 圓點之間的間距 */
+        }
+
+        /* 圓點按鈕樣式 */
+        .control-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%; /* 變成圓形 */
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .control-dot.red {
+            background-color: #ff5f56;
+        }
+
+        .control-dot.yellow {
+            background-color: #ffbd2e;
+        }
+
+        .control-dot.green {
+            background-color: #27c93f;
+        }
+
+        /* 確保程式碼區塊內部的高亮樣式適應深色背景 */
+        .code-window pre code {
+            /* 移除 Highlight.js 預設的 padding，我們將 padding 放在 <pre> 上 */
+            padding: 0;
+            /* 調整字體顏色以確保在深色背景下可見 */
+            color: #f8f8f2; 
+        }
+
+        /* 調整 <pre> 標籤的 padding，讓程式碼內容有空間 */
+        .code-window pre {
+            padding: 15px;
+            margin: 0;
+            /* 將 Highlight.js 的背景色設為透明，使用 .code-window 的背景色 */
+            background-color: transparent !important; 
+        }
+
+
+        pre code.hljs {
+            background: #282c34 !important;
+        }
+
+        section {
+            margin-bottom: 20px;
         }
     </style>
+
+</head>
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-center space-x-8 py-4">
-                <a href="https://hsnucrc47.github.io/python-class/#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
-                <a href="https://hsnucrc47.github.io/python-class/#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
-                <a href="https://hsnucrc47.github.io/python-class/#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
-                <a href="https://hsnucrc47.github.io/python-class/#additional_information" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">補充資料</a>
-                <a href="https://hsnucrc47.github.io/python-class/#suggestion" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">回饋表單</a>
+        <div class="container mx-auto px-6 py-4 
+                    flex items-center 
+                    justify-between md:justify-center">
+
+            <div class="hidden md:flex space-x-6">
+                <a href="#calendar" class=" text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
+                <a href="#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
+                <a href="#additional_information" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">補充資料</a>
+                <a href="#suggestion" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">回饋表單</a>
+                <a href="https://hsnucrc47.github.io/python-class/link" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">網站連結</a>
             </div>
+
+            <button id="menu-btn" class="md:hidden focus:outline-none">
+                <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16 " />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden flex-col space-y-3 px-6 pb-4 md:hidden">
+            <a href="#calendar" class="block text-gray-700 hover:text-blue-600 font-medium">行事曆</a>
+            <a href="#materials" class="block text-gray-700 hover:text-blue-600 font-medium">課程簡報</a>
+            <a href="#additional_information" class="block text-gray-700 hover:text-blue-600 font-medium">補充資料</a>
+            <a href="#suggestion" class="block text-gray-700 hover:text-blue-600 font-medium">回饋表單</a>
+            <a href="https://hsnucrc47.github.io/python-class/link" class="block text-gray-700 hover:text-blue-600 font-medium">網站連結</a>
         </div>
     </nav>
-</head>
-
 <body class="bg-gray-50">
     <header class="gradient-bg text-white">
         <div class="container mx-auto px-6 py-16">
             <div class="text-center">
                 <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
-                <img src="https://hsnucrc47.github.io/python-class/img/python.png" height="110" width="110" class="block mx-auto"></img>
+                <img src="https://hsnucrc47.github.io/python-class/img/python.png" height="110" width="110"
+                    class="block mx-auto"></img>
 
             </div>
         </div>
@@ -74,33 +175,43 @@
     <section id="materials" class="py-16 bg-white">
         <div class="container mx-auto px-4 max-w-full md:max-w-3xl">
             <div class="mx-auto space-y-6">
-                    <div class="flex items-start justify-between">
-                        <div class="flex-1">
-                            <section class="text-gray-800 mb-8">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <section class="text-gray-800 mb-8">
                             <div class="mb-4">
                                 <div class="text-center">
                                     <h2 class="text-2xl font-bold text-gray-900 mb-4">ASCII Code</h2>
                                 </div>
                             </div>
-                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+                            <script
+                                src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
                             <script>hljs.highlightAll();</script>
+                            <h3>什麼是 ASCII Code？</h3>
 
-                            什麼是 ASCII Code？
-
-                            <p><strong>ASCII</strong>（American Standard Code for Information Interchange，美國標準資訊交換碼）是一種將文字字元對應到數字的編碼系統。</p>
-                            <p>它是電腦處理英文和基本符號的基礎。</p>
-
+                            <p>　　<strong>ASCII</strong>（American Standard Code for Information
+                                Interchange，美國標準資訊交換碼）是一種將文字字元對應到數字的編碼系統，為電腦處理英文和基本符號的基礎。</p>
+                            <br><br/>
+                                <img src="https://hackmd.io/_uploads/Syl2llW-Jg.png">
+                            <br><br/>
                             <h3>Python 中的 ASCII 轉換函數</h3>
-
-                            <p>在 Python 中，有兩個內建函數可以輕鬆地在字元和它們的 ASCII （ Unicode ∕ Ordinal ）數字之間進行轉換：</p>
                             
-                            <p>1. <code>ord(char)</code>：字元轉數字（Ordinal）
+                            <p>　　在 Python 中，有兩個內建函數可以輕鬆地在字元和它們的 ASCII （ Unicode ∕ Ordinal ）數字之間進行轉換：</p>
+                            <br><br/>
+                            <p>1. <code>ord(char)</code>：字元轉數字
 
-                            <p><code>ord(char)</code> 接受一個單一字元的字串，並回傳其對應的 Unicode 整數。對於 ASCII 範圍內的字元，這個值就是它們的 ASCII 值。</p>
+                            <p><code>ord(char)</code> 接受一個單一字元的字串，並回傳其對應的 Unicode 整數。對於 ASCII 範圍內的字元，這個值就是它們的 ASCII 值。
+                            </p>
 
-                            <pre><code>字母轉換
-print(ord('A'))  # 輸出: 65
+<div class="code-window">
+    <div class="code-header">
+        <div class="window-controls">
+            <span class="control-dot red"></span>
+            <span class="control-dot yellow"></span>
+            <span class="control-dot green"></span>
+        </div>
+        <span class="language-label">PYTHON</span> </div>
+    <pre><code class="language-python">print(ord('A'))  # 輸出: 65
 print(ord('a'))  # 輸出: 97
 
 # 數字字元轉換
@@ -110,12 +221,30 @@ print(ord('9'))  # 輸出: 57
 # 符號轉換
 print(ord('!'))  # 輸出: 33
 print(ord(' '))  # 輸出: 32 (空格)</code></pre>
+</div>
 
-                            ### 2. `chr()`：數字轉字元 (Character)
+                            2. <code>chr()</code>：數字轉字元
 
-                            <p><code>chr(integer)</code> 接受一個整數，並回傳該整數對應的 **Unicode/ASCII 字元**。</p>
+                            <p><code>chr(integer)</code> 接受一個整數，並回傳該整數對應的 Unicode/ASCII 字元。</p>
 
-                            <pre><code># 數字轉字母
+<div class="code-window">
+    <div class="code-header">
+        <div class="window-controls">
+            <span class="control-dot red"></span>
+            <span class="control-dot yellow"></span>
+            <span class="control-dot green"></span>
+        </div>
+        <span class="language-label">PYTHON</span> </div>
+    <pre><code class="language-python">print(ord('A'))  # 輸出: 65
+print(ord('a'))  # 輸出: 97
+
+# 數字字元轉換
+print(ord('0'))  # 輸出: 48
+print(ord('9'))  # 輸出: 57
+
+# 符號轉換
+print(ord('!'))  # 輸出: 33
+print(ord(' '))  # 輸出: 32 (空格)
 print(chr(65))   # 輸出: A
 print(chr(97))   # 輸出: a
 
@@ -129,78 +258,23 @@ print(chr(10))   # 輸出: 換行符 (Line Feed)
 for i in range(ord('A'), ord('Z') + 1):
     print(chr(i), end=' ')
 # 輸出: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code></pre>
+</div>
 
-                            ---
-                            
-                            ## 常見應用與範例
 
-                            ### 應用一：判斷字元類型 (例如判斷大小寫)
-
-                            <p>利用 ASCII 值的連續性，我們可以判斷一個字元是否為字母或數字。例如，大寫字母 'A' 到 'Z' 的 ASCII 值是連續的 65 到 90。</p>
-
-                            <pre><code>char = 'G'
-ascii_val = ord(char)
-
-if 65 <= ascii_val <= 90:
-    print(f"'{char}' 是大寫字母")
-elif 97 <= ascii_val <= 122:
-    print(f"'{char}' 是小寫字母")
-else:
-    print(f"'{char}' 是其他符號")</code></pre>
-
-                            ### 應用二：大小寫轉換 (不使用內建方法)
-
-                            <p>大寫字母和小寫字母之間的 ASCII 值剛好相差 32。我們可以透過加減這個差值來進行轉換。</p>
-
-                            <pre><code># 小寫轉大寫
-lower_char = 'k'
-upper_char = chr(ord(lower_char) - 32)
-print(f"小寫 '{lower_char}' 轉大寫: {upper_char}") # 輸出: K
-
-# 大寫轉小寫
-upper_char_2 = 'C'
-lower_char_2 = chr(ord(upper_char_2) + 32)
-print(f"大寫 '{upper_char_2}' 轉小寫: {lower_char_2}") # 輸出: c</code></pre>
-
-                            ### 應用三：凱薩密碼 (Caesar Cipher)
-
-                            <p>在密碼學中，可以利用 ASCII 值進行位移，實現簡單的加密/解密，這被稱為凱薩密碼。</p>
-
-                            <pre><code>def caesar_encrypt(text, shift):
-    result = ""
-    for char in text:
-        # 只處理字母
-        if 'a' <= char <= 'z':
-            # 將字母轉為 0-25 的索引，進行位移，再轉回 ASCII
-            start = ord('a')
-            new_ord = (ord(char) - start + shift) % 26 + start
-            result += chr(new_ord)
-        elif 'A' <= char <= 'Z':
-            start = ord('A')
-            new_ord = (ord(char) - start + shift) % 26 + start
-            result += chr(new_ord)
-        else:
-            result += char # 非字母直接保留
-    return result
-
-encrypted = caesar_encrypt("Hello Python", 3)
-print("加密後:", encrypted) # 輸出: Kello Sbwhoq</code></pre>
-                            <p class="text-sm text-gray-500 mt-4">**注意**：在 Python 3 中，<code>ord()</code> 和 <code>chr()</code> 函數是針對 **Unicode** 碼點操作的，**ASCII** 只是 Unicode 的子集（前 128 個字元）。但對於英文和基本符號，它們的行為與傳統的 ASCII 轉換完全一致。</p>
-                            
-                                <div class="mt-8">
-                                    <button onclick="openSlide('ascii')"
-                                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                        📚 參考資料：Python Docs - 內建函數
-                                    </button>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-
-                        </div>
+                            <div class="mt-8">
+                                <button onclick="openSlide('ascii')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📚 參考資料：Python Docs - 內建函數
+                                </button>
+                            </div>
+                        </section>
                     </div>
                 </div>
+
             </div>
+        </div>
+        </div>
+        </div>
     </section>
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-6">
@@ -255,6 +329,14 @@ print("加密後:", encrypted) # 輸出: Kello Sbwhoq</code></pre>
                 nav.classList.remove('shadow-lg');
             }
         });
+        
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+        }
     </script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
