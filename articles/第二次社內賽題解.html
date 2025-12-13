@@ -374,7 +374,12 @@ print(count_partitions(n, n))
                                 <p>這次最難的一題由我出，非常考驗自己的邏輯是否清楚。
                                 <del>但不知道為什麼第三題答對比例比第二題高一點，甚至有人不知道為什麼可以只通過部分的測資。明明第二題比較容易想啊。</del></p>
                                 <p>我們可以利用遞迴解，選定長度後，我們要逐一比較當最長積木多長時要用什麼積木，因此我們在函式放兩個參數。 <code>n</code> 代表還剩下多長，如果最後 <code> n = 0 </code> 表示這組組合可以，但若最後 <code> n &lt; 0 </code> 表示這組組合不行。 <code>max_part</code> 代表我們在組合當中所使用的最大積木，如果 <code>max_part = 0</code> 也是不行的。</p>
-                                <p>遞迴的邏輯是先從最大的積木（也就是 <code>max_part = n = 最大值</code> 時）算起，如果成功讓 <code> n = 0 </code> 就回傳 <code> 1 </code> ， 但如果出現 <code> n &lt; 0 </code> 或 <code>max_part = 0</code> 就回傳 0 。上述都沒發生的話就繼續分割，有兩個路線，一種是將最大的積木長度減一分析。另一種是保留最大的積木長度，剩下長度為 n 減掉最大的積木長度，分析第二長的積木與其組合，以此類推。
+                                <p>遞迴的邏輯是先從最大的積木（也就是 <code>max_part = n = 最大值</code> 時）算起，如果成功讓 <code> n = 0 </code> 就回傳 <code> 1 </code> ， 但如果出現 <code> n &lt; 0 </code> 或 <code>max_part = 0</code> 就回傳 0 。上述都沒發生的話就繼續分割，有兩個路線，一種是將最大的積木長度減一分析。另一種是保留最大的積木長度，剩下長度為 n 減掉最大的積木長度，分析第二長的積木與其組合，以此類推。</p>
+                            </div>
+                            <br>
+                            <h4 class="text-xl font-bold">講義連結</h4>
+                            <br>
+                            <a class="text-blue-500" href="https://hackmd.io/@CRC-YUSHAN/SJyZKu2gbl#/">遞迴</a> 
                             </section>
                         </div>
                     </div>

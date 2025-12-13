@@ -463,8 +463,25 @@
                         </div>
                     </div>
                 </article>
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span
+                                    class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">第15週</span>
+                                <span class="text-gray-500 text-sm">114/12/12</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">第二次社內賽</h3>
+                            <div class="flex space-x-3">
+                                <button onclick="openArticlce('02')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看題解
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
-
             <div class="text-center mt-8">
                 <p class="text-gray-500">更多課程內容將陸續更新...</p>
             </div>
@@ -664,6 +681,7 @@
         function openArticlce(num) {
             const articleInfo = {
                 '01': 'articles/第一次社內賽詳解',
+                '02': 'articles/第二次社內賽題解',
                 'random':'https://hsnucrc47.github.io/python-class/articles/random',
                 'str':'https://hsnucrc47.github.io/python-class/articles/string',
                 'float':'https://hsnucrc47.github.io/python-class/articles/浮點數運算問題與限制',
