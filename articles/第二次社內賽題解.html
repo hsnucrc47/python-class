@@ -242,22 +242,19 @@ for _ in range(k):
                                     <span class="language-label">PYTHON</span>
                                 </div>
                                 <pre><code class="language-python">k, n = map(int, input().split()) 
-ans = [] # 創一個空串列
 for _ in range(k):
     l = list(map(int, input().split()))
     max_value = 0 # 每次測試前重製
     for i in range(n):
         if max_value < l[i]: # 如果第 i 個數字大於目前的最大值
             max_value = l[i] # 將最大值設為第 i 個數字
-    ans.append(max_value) # 將每個最大值放進 ans 串列裡
-for i in range(k):
-    print(ans[i])
+    print(max_value) # 將每個最大值放進 ans 串列裡
 </code></pre>
                             </div>
                              <h4 class="text-xl font-bold">解說</h4>
                             <br>
                             <div class="space-y-4" style="text-indent: 2em;">
-                                <p>根據解法一，第一題要先創一個空串列（ans）作為放每個測試中最大值的地方，再來利用迴圈執行 k 次找最大值。 l 為我們輸入進來的陣列。我們可以藉由 max(l) 找出最大值，再將其加進串列 ans 裡，最後利用迴圈將答案一個一個輸出。</p> 
+                                <p>根據解法一，要先利用迴圈執行 k 次找最大值。 l 為我們輸入進來的陣列。我們可以藉由 max(l) 找出最大值，再將其輸出。</p> 
                                 <p>值得注意的是，解法一不會用到輸入的 n ，如果要用的話，可以參考解法二，設定一個變數（max_value）預設為零，再逐一比較，如果比 max_value 還要大，就將 max_value 設為此數字。</p>
                             </div>
                             <br>
