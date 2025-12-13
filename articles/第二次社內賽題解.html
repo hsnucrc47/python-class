@@ -288,23 +288,19 @@ for i in range(k):
                                     <span class="language-label">【解法一】</span>
                                     <span class="language-label">PYTHON</span>
                                 </div>
-                                <pre><code class="language-python">T = int(input())
-b = [] # 先創好空陣列作為放反轉字串的地方
+                                <pre><code class="language-python">T = int(T_input)
 for _ in range(T):
-    string = input() # 輸入字串
-    a = string.split('_') # 將字串用 _ 分割成串列 a 
-    for i in range(len(a)): 
-        r = a[i] # 讀取串列 a 中的字串
-        b.append(r[::-1]) # 將反轉後的字串加入 b 中
-    b.append("\n") # 每次測試結束後加入 \n 表示換行
-for i in range(len(b)):
-# 判斷要輸出 _ 做區隔還是要換行輸出下一個字串
-    if b[i] == "\n": 
-        print(b[i], end="")
-    elif b[i+1] == "\n":
-        print(b[i], end="")
-    else:
-        print(b[i], end="_")
+    string = input()
+    parts = string.split('_')
+    reversed_parts = []
+    for part in parts:
+        reversed_part = part[::-1]
+        reversed_parts.append(reversed_part)
+    for i in range(len(reversed_parts)):
+        print(reversed_parts[i], end="")
+        if i < len(reversed_parts) - 1:
+            print("_", end="")
+    print() 
 </code></pre>
                             </div>
                             <div class="code-window">
@@ -328,8 +324,11 @@ for _ in range(T):
                             </div>
                             <h4 class="text-xl font-bold">解說</h4>
                             <div class="space-y-4" style="text-indent: 2em;">
-                                <p>在解法一中，這題要設兩層三個迴圈，第一層迴圈設為執行 T 次，再經由第二個迴圈處理反轉。在第二個迴圈中，我們利用 .split('_') 將字串分割成陣列，再逐一反轉。每組測試翻轉後加一個 "\n" 與其它測試做區隔。</p> 
-                                <p>第三個迴圈負責輸出，判斷該加 _ 或是換行，在偵測到這一項或下一項為 "\n" 時（也就是這組字串結束時）不輸出 _ ，但還是會輸出 "\n" （換行），如果不是這種情況下，結尾就加上 _ 。</p>
+                                <p>在解法一中，這題要設兩層三個迴圈，第一層迴圈設為執行 <code>T</code> 次，再經由第二個迴圈處理反轉，最後用第三個迴圈輸出答案。</p>
+                                <p>在第一層迴圈中，我們利用 <code>.split('_')</code> 將輸入進來的字串分割成串列，並創一個空串列（ <code>reversed_parts</code> ）用來放反轉後的結果。</p> 
+                                <p>第二層迴圈負責反轉字串，利用 <code>for</code> 迴圈遍歷每個字串，再利用 <code>[::-1]</code> 反轉字串，最後將其儲存至串列 <code>reversed_parts</code> 中。</p>
+                                <p>最後第三迴圈會將 <code>reversed_parts</code> 裡反轉後的字串逐一印出，並在間隔放上 _ 。當本組測試結束時，使用 <code>print()</code> 換行以區分下一組。</p>
+                                <p>解法二是比較簡潔的做法，不過會用到一些沒教過的東西。 <code>[s[::-1] for s in string.split('_')]</code> 是將字串直接分割成串列並反轉；<code> '_'.join(reversed_parts) </code>是將串列利用 _ 連接起來變回串列。</p>
                             </div>
                             <br><br>
                             <div class="mb-4">
@@ -362,6 +361,8 @@ print(count_partitions(n, n))
 </code></pre>
                             </div>
                             <h4 class="text-xl font-bold">解說</h4>
+                            <img src="https://hsnucrc47.github.io/python-class/img/count_partitions_solution.jpg" style="max-width: 100%; height: auto;" >
+                            <img src="https://hsnucrc47.github.io/python-class/img/count_partitions_recursion_tree.png" style="max-width: 100%; height: auto;" >
                             <div class="space-y-4" style="text-indent: 2em;">
                                 <p>這次最難的一題由我出，非常考驗自己的邏輯是否清楚。
                                 <del>但不知道為什麼第三題答對比例比第二題高一點，甚至有人不知道為什麼可以只通過部分的測資。明明第二題比較容易想啊。</del></p>
