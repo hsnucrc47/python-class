@@ -205,8 +205,9 @@
                                     <h3 class="text-xl font-bold">第一題　馬蹄鐵（horseshoe）</h3>
                                 </div>
                             </div>
-                            <h4>出題者：coix</h4>
                             
+                            <h4>出題者：coix</h4>
+                            <br>
                             <h4 class="text-xl font-bold">參考答案</h4>
                             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
@@ -264,7 +265,7 @@ for i in range(k):
                             </div>
                             <br>
                             <h4 class="text-xl font-bold">講義連結</h4>
-
+                            <br>
                             <a class="text-blue-500" href="https://hackmd.io/@CRC-YUSHAN/B1sorKHjlg#/2/2">max() 函數</a>
                             <p></p>
                             <a class="text-blue-500" href="https://hackmd.io/@CRC-YUSHAN/r1leEJQkZg#/3/1">迴圈與串列</a>
@@ -276,7 +277,7 @@ for i in range(k):
                                 </div>
                             </div>
                             <h4>出題者：Jasmine</h4>
-                            </section>
+                            <br>
                             <h4 class="text-xl font-bold">參考答案</h4>
                             <div class="code-window">
                                 <div class="code-header">
@@ -291,14 +292,14 @@ for i in range(k):
                                 <pre><code class="language-python">T = int(T_input)
 for _ in range(T):
     string = input()
-    parts = string.split('_')
-    reversed_parts = []
+    parts = string.split('_') # 分割
+    reversed_parts = [] # 創空串列用來放反轉後的結果
     for part in parts:
-        reversed_part = part[::-1]
-        reversed_parts.append(reversed_part)
-    for i in range(len(reversed_parts)):
+        reversed_part = part[::-1] # 反轉
+        reversed_parts.append(reversed_part) # 把反轉後的字串放回去
+    for i in range(len(reversed_parts)): # 把反轉後的字串逐一輸出
         print(reversed_parts[i], end="")
-        if i < len(reversed_parts) - 1:
+        if i < len(reversed_parts) - 1: # 在字串後加上 _ 除非是最後一個字串
             print("_", end="")
     print() 
 </code></pre>
@@ -330,6 +331,12 @@ for _ in range(T):
                                 <p>最後第三迴圈會將 <code>reversed_parts</code> 裡反轉後的字串逐一印出，並在間隔放上 _ 。當本組測試結束時，使用 <code>print()</code> 換行以區分下一組。</p>
                                 <p>解法二是比較簡潔的做法，不過會用到一些沒教過的東西。 <code>[s[::-1] for s in string.split('_')]</code> 是將字串直接分割成串列並反轉；<code> '_'.join(reversed_parts) </code>是將串列利用 _ 連接起來變回串列。</p>
                             </div>
+                            <br>
+                            <h4 class="text-xl font-bold">講義連結</h4>
+                            <br>
+                            <a class="text-blue-500" href="https://hackmd.io/@CRC-YUSHAN/ByRKai6--l#/1/6">字串分割</a>
+                            <p></p>
+                            <a class="text-blue-500" href="https://hackmd.io/@CRC-YUSHAN/ryb1DhYRlg#/6/7">反轉列表</a>
                             <br><br>
                             <div class="mb-4">
                                 <div class="text-center">
@@ -337,7 +344,7 @@ for _ in range(T):
                                 </div>
                             </div>
                             <h4>出題者：昱山</h4>
-                            
+                            <br>
                             <h4 class="text-xl font-bold">參考答案</h4>
                             <div class="code-window">
                                 <div class="code-header">
@@ -366,8 +373,8 @@ print(count_partitions(n, n))
                             <div class="space-y-4" style="text-indent: 2em;">
                                 <p>這次最難的一題由我出，非常考驗自己的邏輯是否清楚。
                                 <del>但不知道為什麼第三題答對比例比第二題高一點，甚至有人不知道為什麼可以只通過部分的測資。明明第二題比較容易想啊。</del></p>
-                                <p>我們可以利用遞迴解</p>
-                            </div>
+                                <p>我們可以利用遞迴解，選定長度後，我們要逐一比較當最長積木多長時要用什麼積木，因此我們在函式放兩個參數。 <code>n</code> 代表還剩下多長，如果最後 <code> n = 0 </code> 表示這組組合可以，但若最後 <code> n &lt; 0 </code> 表示這組組合不行。 <code>max_part</code> 代表我們在組合當中所使用的最大積木，如果 <code>max_part = 0</code> 也是不行的。</p>
+                                <p>遞迴的邏輯是先從最大的積木（也就是 <code>max_part = n = 最大值</code> 時）算起，如果成功讓 <code> n = 0 </code> 就回傳 <code> 1 </code> ， 但如果出現 <code> n &lt; 0 </code> 或 <code>max_part = 0</code> 就回傳 0 。上述都沒發生的話就繼續分割，有兩個路線，一種是將最大的積木長度減一分析。另一種是保留最大的積木長度，剩下長度為 n 減掉最大的積木長度，分析第二長的積木與其組合，以此類推。
                             </section>
                         </div>
                     </div>
