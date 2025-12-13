@@ -224,13 +224,10 @@
                                     <span class="language-label">PYTHON</span>
                                 </div>
                                 <pre><code class="language-python">k, n = map(int, input().split()) 
-ans = [] # 創一個空串列
 for _ in range(k):
     l = list(map(int, input().split()))
     max_value = max(l)
-    ans.append(max_value) # 將每個最大值放進 ans 串列裡
-for i in range(n): # 輸出答案
-    print(ans[i])
+    print(max_value)
 </code></pre>
                             </div>
                             <div class="code-window">
