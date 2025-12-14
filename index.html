@@ -477,6 +477,10 @@
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                                     📊 查看題解
                                 </button>
+                                <button onclick="openVideo('01')"
+                                    class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    🎬 影片解說
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -695,6 +699,7 @@
         function openVideo(mp4) {
             const videoInfo = {
                 '01': 'https://youtu.be/6h2xrxmE6ow?si=exWU2OPFs-WlQlqq',
+                '02': 'https://youtu.be/rW1fS5pxHvo?si=1tLLvVBa-ygLapYb',
                 'guess_num': 'https://youtu.be/j2o8WJn1yeY?si=yyvB8g5yMD5kL-qw'
             };
             window.open(`${videoInfo[mp4]}`, '_blank');
