@@ -455,10 +455,18 @@
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                                     📊 查看簡報
                                 </button>
+                                <button
+                                    class="bg-indigo-700 hover:bg-indigo-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    <a href="#datastructures-plus"
+                                    class="block w-full h-full">
+                                        📊 補充資料
+                                    </a>
+                                </button>
                                 <button onclick="downloadCode('week14')"
                                     class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                                     💾 題目解答
                                 </button>
+
                             </div>
                         </div>
                     </div>
@@ -501,7 +509,7 @@
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">【語法】math 模組</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">math 模組</h3>
                             <p class="text-gray-600 mb-4">數學函式</p>
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('math')"
@@ -515,7 +523,7 @@
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">【語法】random 模組</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">random 模組</h3>
                             <p class="text-gray-600 mb-4">亂數函式</p>
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('random')"
@@ -537,7 +545,7 @@
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">【語法】str 類別</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">str 類別</h3>
                             <p class="text-gray-600 mb-4">字串轉換方法</p>
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('str')"
@@ -551,7 +559,10 @@
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">【語法】time 模組</h3>
+                            <div class="flex items-center space-x-2">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">time 模組</h3>
+                                <img src="img/new.svg" width="25"></img>
+                            </div>
                             <p class="text-gray-600 mb-4">日期時間函式</p>
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('time')"
@@ -565,7 +576,10 @@
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">【語法】ASCII Code</h3>
+                            <div class="flex items-center space-x-2">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">ASCII Code</h3>
+                                <img src="img/new.svg" width="25"></img>
+                            </div>
                             <p class="text-gray-600 mb-4">美國標準資訊交換碼</p>
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('ascii')"
@@ -576,10 +590,27 @@
                         </div>
                     </div>
                 </article>
+                <article id="datastructures-plus" class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-2">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">資料結構+</h3>
+                                <img src="img/new.svg" width="25"></img>
+                            </div>
+                            <p class="text-gray-600 mb-4">#資料結構 #迭代器 #演算法</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openArticlce('datastructures+')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看語法
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">【觀念】0.3 - 0.1 - 0.1 - 0.1 ≠ 0 ！？</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">0.3 - 0.1 - 0.1 - 0.1 ≠ 0 ！？</h3>
                             <p class="text-gray-600 mb-4">浮點數運算問題與限制</p>
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('float')"
@@ -692,7 +723,8 @@
                 'rails':'https://hsnucrc47.github.io/python-class/articles/rails',
                 'time':'https://hsnucrc47.github.io/python-class/articles/time',
                 'towel_of_Hanoi':'https://hsnucrc47.github.io/python-class/games/towel_of_Hanoi',
-                'ascii':'https://hsnucrc47.github.io/python-class/articles/ascii'
+                'ascii':'https://hsnucrc47.github.io/python-class/articles/ascii',
+                'datastructures+':'https://hackmd.io/@CRC-YUSHAN/SydrdQxX-g'
             };
             window.open(`${articleInfo[num]}`, '_blank');
         }
@@ -722,7 +754,7 @@
 
         function scrollToLatest() {
             const articles = document.querySelectorAll("article");
-            const latest = articles[articles.length - 7] ;
+            const latest = articles[articles.length - 9] ;
             latest.scrollIntoView({ behavior: "smooth" });
         }
 
