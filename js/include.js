@@ -1,5 +1,3 @@
-// js/include.js
-
 async function loadComponents() {
     const components = [
         { id: 'nav-placeholder', url: 'https://hsnucrc47.github.io/python-class/assets/nav.html' },
@@ -20,18 +18,15 @@ async function loadComponents() {
         }
     }
 
-    // 重點：當 HTML 載入完成後，執行你的原始邏輯
     initNavbarLogic();
     window.dispatchEvent(new Event('componentsLoaded'));
 }
 
 function initNavbarLogic() {
-    // 1. 處理 Menu 按鈕切換 (你原本的邏輯)
     const menuBtn = document.getElementById("menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
     
     if (menuBtn && mobileMenu) {
-        // 先移除舊的監聽器（防止重複載入時重複觸發）
         menuBtn.replaceWith(menuBtn.cloneNode(true)); 
         const newMenuBtn = document.getElementById("menu-btn");
         
@@ -40,7 +35,7 @@ function initNavbarLogic() {
         });
     }
 
-    // 2. 處理導覽列平滑捲動 (解決你提到的滑動動畫不見的問題)
+
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -49,17 +44,17 @@ function initNavbarLogic() {
             
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 70, // 扣除 nav 高度
+                    top: targetElement.offsetTop -70, 
                     behavior: 'smooth'
                 });
-                // 點擊後關閉手機版選單
+                
                 if (mobileMenu) mobileMenu.classList.add("hidden");
             }
         });
     });
 }
 
-// 3. 處理 Scroll 陰影 (你原本的邏輯，直接放在 window 監聽即可)
+
 window.addEventListener('scroll', function () {
     const nav = document.querySelector('nav');
     if (nav) {
@@ -71,5 +66,5 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// 當頁面 DOM 準備好就執行
+
 document.addEventListener('DOMContentLoaded', loadComponents);
