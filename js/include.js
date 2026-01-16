@@ -3,6 +3,7 @@
 async function loadComponents() {
     const components = [
         { id: 'nav-placeholder', url: 'https://hsnucrc47.github.io/python-class/assets/nav.html' },
+        { id: 'header-placeholder', url: 'https://hsnucrc47.github.io/python-class/assets/header.html' },
         { id: 'footer-placeholder', url: 'https://hsnucrc47.github.io/python-class/assets/footer.html' }
     ];
 
@@ -21,6 +22,7 @@ async function loadComponents() {
 
     // 重點：當 HTML 載入完成後，執行你的原始邏輯
     initNavbarLogic();
+    window.dispatchEvent(new Event('componentsLoaded'));
 }
 
 function initNavbarLogic() {
