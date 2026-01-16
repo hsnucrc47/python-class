@@ -1,29 +1,28 @@
 // js/escaping_python.js
 
-function initEscapingPython() {
+window.addEventListener('componentsLoaded', () => {
     const img = document.getElementById('python-img');
     
-    // 檢查點：如果圖片還沒出現在畫面中，就不執行後續，避免報錯
-    if (!img) {
-        console.error("找不到 #python-img，逃跑功能無法啟動");
-        return;
-    }
+    // 如果這頁沒有這個圖標，就直接離開，不報錯
+    if (!img) return;
 
+    // 所有的 style 操作都要放在這下面
     img.style.position = "relative";
+
     let posX = 0;
     let posY = 0;
     const escapeDistance = 80;
     const moveAmount = 80;
 
-    // 將監聽器掛在 window
     window.addEventListener('mousemove', (e) => {
+        // ... 你原本的 mousemove 邏輯 ...
         const rect = img.getBoundingClientRect();
         const imgX = rect.left + rect.width / 2;
         const imgY = rect.top + rect.height / 2;
 
         const dx = e.clientX - imgX;
         const dy = e.clientY - imgY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        const distance = Math.sqrt(dx*dx + dy*dy);
 
         if (distance < escapeDistance) {
             const ux = dx / distance;
@@ -39,11 +38,6 @@ function initEscapingPython() {
             posY = Math.min(Math.max(posY, -rect.top), maxY - rect.top);
 
             img.style.transform = `translate(${posX}px, ${posY}px)`;
-            img.style.transition = "transform 0.2s ease-out"; 
         }
     });
-    console.log("Python 逃跑功能初始化成功！");
-}
-
-// 關鍵：監聽自定義事件
-window.addEventListener('componentsLoaded', initEscapingPython);
+});
