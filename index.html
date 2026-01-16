@@ -76,9 +76,9 @@
         </div>
     </nav>
 <header class="gradient-bg text-white relative overflow-hidden">
-    <!-- 下雪
+    
     <div id="snow-container"></div>
-    -->
+    
     <div class="container mx-auto px-6 py-16 relative z-10">
         <div class="text-center">
             <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
@@ -749,25 +749,7 @@
         </div>
     </footer>
 
-        <script type="module">
-            import { animate, stagger, splitText } from 'https://esm.sh/animejs';
-
-
-            const { chars } = splitText('h1', { words: false, chars: true });
-
-            animate(chars, {
-            y: [
-                { to: '-2.75rem', ease: 'outExpo', duration: 600 },
-                { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
-            ],
-            rotate: {
-                from: '-1turn',
-                delay: 0
-            },
-            delay: stagger(50),
-            ease: 'inOutCirc',
-            });
-        </script>
+    <script src="js/animation.js" type="module"></script>
     <script>
  
         // Calendar function
@@ -879,44 +861,14 @@
         }
 
     </script>
-    <script>
-        const img = document.getElementById('python-img');
-        img.style.position = "relative";
 
-        let posX = 0;
-        let posY = 0;
+    <!-- 逃跑 -->
+    <script src="js/escaping_python.js"></script>
 
-        const escapeDistance = 80;
-        const moveAmount = 80;
-
-        window.addEventListener('mousemove', (e) => {
-            const rect = img.getBoundingClientRect();
-            const imgX = rect.left + rect.width / 2;
-            const imgY = rect.top + rect.height / 2;
-
-            const dx = e.clientX - imgX;
-            const dy = e.clientY - imgY;
-            const distance = Math.sqrt(dx*dx + dy*dy);
-
-            if (distance < escapeDistance) {
-                const ux = dx / distance;
-                const uy = dy / distance;
-
-                posX -= ux * moveAmount;
-                posY -= uy * moveAmount;
-
-                const maxX = window.innerWidth - rect.width;
-                const maxY = window.innerHeight - rect.height - 200;
-
-                posX = Math.min(Math.max(posX, -rect.left), maxX - rect.left);
-                posY = Math.min(Math.max(posY, -rect.top), maxY - rect.top);
-
-                img.style.transform = `translate(${posX}px, ${posY}px)`;
-            }
-        });
-    </script>
+    <!-- 行憲紀念日下雪特效
     <script src="https://hsnucrc47.github.io/python-class/js/Constitution_Day.js"></script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    -->
 </body>
 
 </html>
