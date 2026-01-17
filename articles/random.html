@@ -48,30 +48,14 @@
             margin-bottom: 20px; 
         }
     </style>
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-center space-x-8 py-4">
-                <a href="https://hsnucrc47.github.io/python-class/#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
-                <a href="https://hsnucrc47.github.io/python-class/#instructors" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">講師介紹</a>
-                <a href="https://hsnucrc47.github.io/python-class/#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
-            </div>
-        </div>
-    </nav>
+
 </head>
 
 <body class="bg-gray-50">
+    <!-- Navigation -->
+    <div id="nav-placeholder" class="sticky top-0 z-50"></div>
     <!-- Header -->
-
-    <header class="gradient-bg text-white">
-        <div class="container mx-auto px-6 py-16">
-            <div class="text-center">
-                <h1 class="text-5xl font-bold mb-4">電算社47屆Python班</h1>
-                <img src="https://hsnucrc47.github.io/python-class/img/python.png" height="110" width="110" class="block mx-auto"></img>
-
-            </div>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
     <!-- Materials Section -->
     <section id="materials" class="py-16 bg-white">
         <div class="container mx-auto px-4 max-w-full md:max-w-3xl">
@@ -159,54 +143,23 @@ print(winners)</code></pre>
         </div>
     </section>
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">電算社47屆Python班</h3>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">聯絡資訊</h4>
-                    <div class="space-y-2 text-gray-300">
-                        <p>電算社IG：@hsnu_crc</p>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">課程時間</h4>
-                    <div class="space-y-2 text-gray-300">
-                        <p>🗓️ 每週五 15:10-16:00</p>
-                        <p>⏰ 共15週課程</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <!-- 上下學期 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/term.js"></script>
 
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function () {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('shadow-lg');
-            } else {
-                nav.classList.remove('shadow-lg');
-            }
-        });
-    </script>
+    <!-- 打開連結 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/functions.js"></script>
+
+    <!-- 載入HTML -->
+    <script src="https://hsnucrc47.github.io/python-class/js/include.js"></script>
+
+    <!-- 標題跳動 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/animation.js" type="module"></script>
+
+    <!-- 逃跑 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/escaping_python.js"></script>
+ 
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
 
