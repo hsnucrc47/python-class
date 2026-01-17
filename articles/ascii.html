@@ -46,32 +46,41 @@
             border-radius: 4px;
         }
 
-/* 覆蓋現有的 pre 樣式，並設定新的程式碼區塊風格 */
+        /* 覆蓋現有的 pre 樣式，並設定新的程式碼區塊風格 */
         pre {
             /* 移除原有的背景色和 padding，由 .code-window 及其內部的 pre 處理 */
             background-color: transparent;
             padding: 0;
-            margin: 0; /* 移除瀏覽器的預設邊距 */
+            margin: 0;
+            /* 移除瀏覽器的預設邊距 */
             border-radius: 0;
         }
 
         /* 程式碼視窗容器樣式 */
         .code-window {
-            background-color: #282c34; /* 深色背景，作為程式碼內容的背景 */
-            border-radius: 8px; /* 圓角 */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* 陰影 */
-            overflow: hidden; /* 確保內容不溢出圓角 */
-            margin: 20px 0; /* 讓程式碼區塊與其他內容區隔 */
+            background-color: #282c34;
+            /* 深色背景，作為程式碼內容的背景 */
+            border-radius: 8px;
+            /* 圓角 */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            /* 陰影 */
+            overflow: hidden;
+            /* 確保內容不溢出圓角 */
+            margin: 20px 0;
+            /* 讓程式碼區塊與其他內容區隔 */
         }
 
         /* 視窗標題欄樣式 */
         .code-header {
-            background-color: #21252b; /* 標題欄顏色略淺 */
+            background-color: #21252b;
+            /* 標題欄顏色略淺 */
             padding: 10px 15px;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* 將按鈕和標籤推開 */
-            color: #abb2bf; /* 標籤文字顏色 */
+            justify-content: space-between;
+            /* 將按鈕和標籤推開 */
+            color: #abb2bf;
+            /* 標籤文字顏色 */
             font-family: sans-serif;
             font-weight: bold;
             font-size: 0.9em;
@@ -80,7 +89,8 @@
         /* 視窗控制按鈕容器 */
         .window-controls {
             display: flex;
-            gap: 8px; /* 圓點之間的間距 */
+            gap: 8px;
+            /* 圓點之間的間距 */
         }
 
         /* 圓點按鈕樣式 */
@@ -88,7 +98,8 @@
             display: inline-block;
             width: 12px;
             height: 12px;
-            border-radius: 50%; /* 變成圓形 */
+            border-radius: 50%;
+            /* 變成圓形 */
             opacity: 0.8;
             transition: opacity 0.3s;
         }
@@ -110,7 +121,7 @@
             /* 移除 Highlight.js 預設的 padding，我們將 padding 放在 <pre> 上 */
             padding: 0;
             /* 調整字體顏色以確保在深色背景下可見 */
-            color: #f8f8f2; 
+            color: #f8f8f2;
         }
 
         /* 調整 <pre> 標籤的 padding，讓程式碼內容有空間 */
@@ -118,7 +129,7 @@
             padding: 15px;
             margin: 0;
             /* 將 Highlight.js 的背景色設為透明，使用 .code-window 的背景色 */
-            background-color: transparent !important; 
+            background-color: transparent !important;
         }
 
 
@@ -132,6 +143,7 @@
     </style>
 
 </head>
+
 <body class="bg-gray-50">
     <!-- Navigation -->
     <div id="nav-placeholder" class="sticky top-0 z-50"></div>
@@ -148,7 +160,8 @@
                                     <h2 class="text-2xl font-bold text-gray-900 mb-4">ASCII Code</h2>
                                 </div>
                             </div>
-                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+                            <link rel="stylesheet"
+                                href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
                             <script
                                 src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
                             <script>hljs.highlightAll();</script>
@@ -156,27 +169,28 @@
 
                             <p>　　<strong>ASCII</strong>（American Standard Code for Information
                                 Interchange，美國標準資訊交換碼）是一種將文字字元對應到數字的編碼系統，為電腦處理英文和基本符號的基礎。</p>
-                            <br><br/>
-                                <img src="https://hackmd.io/_uploads/Syl2llW-Jg.png">
-                            <br><br/>
+                            <br><br />
+                            <img src="https://hackmd.io/_uploads/Syl2llW-Jg.png">
+                            <br><br />
                             <h3>Python 中的 ASCII 轉換函數</h3>
-                            
+
                             <p>　　在 Python 中，有兩個內建函數可以輕鬆地在字元和它們的 ASCII （ Unicode ∕ Ordinal ）數字之間進行轉換：</p>
-                            <br><br/>
+                            <br><br />
                             <p>1. <code>ord(char)</code>：字元轉數字
 
                             <p><code>ord(char)</code> 接受一個單一字元的字串，並回傳其對應的 Unicode 整數。對於 ASCII 範圍內的字元，這個值就是它們的 ASCII 值。
                             </p>
 
-<div class="code-window">
-    <div class="code-header">
-        <div class="window-controls">
-            <span class="control-dot red"></span>
-            <span class="control-dot yellow"></span>
-            <span class="control-dot green"></span>
-        </div>
-        <span class="language-label">PYTHON</span> </div>
-    <pre><code class="language-python">print(ord('A'))  # 輸出: 65
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">print(ord('A'))  # 輸出: 65
 print(ord('a'))  # 輸出: 97
 
 # 數字字元轉換
@@ -186,21 +200,22 @@ print(ord('9'))  # 輸出: 57
 # 符號轉換
 print(ord('!'))  # 輸出: 33
 print(ord(' '))  # 輸出: 32 (空格)</code></pre>
-</div>
+                            </div>
 
                             2. <code>chr()</code>：數字轉字元
 
                             <p><code>chr(integer)</code> 接受一個整數，並回傳該整數對應的 Unicode/ASCII 字元。</p>
 
-<div class="code-window">
-    <div class="code-header">
-        <div class="window-controls">
-            <span class="control-dot red"></span>
-            <span class="control-dot yellow"></span>
-            <span class="control-dot green"></span>
-        </div>
-        <span class="language-label">PYTHON</span> </div>
-    <pre><code class="language-python">print(ord('A'))  # 輸出: 65
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">print(ord('A'))  # 輸出: 65
 print(ord('a'))  # 輸出: 97
 
 # 數字字元轉換
@@ -223,13 +238,16 @@ print(chr(10))   # 輸出: 換行符 (Line Feed)
 for i in range(ord('A'), ord('Z') + 1):
     print(chr(i), end=' ')
 # 輸出: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code></pre>
-</div>
+                            </div>
 
 
                             <div class="mt-8">
-                                <button onclick="openSlide('ascii')"
-                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    📚 參考資料：Python Docs - 內建函數
+                                <button
+                                    class="border border-blue-500 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    <a href="https://docs.python.org/zh-tw/3/library/functions.html#ord"
+                                        target="_blank">
+                                        參考資料：Python Docs - 內建函數
+                                    </a>
                                 </button>
                             </div>
                         </section>
