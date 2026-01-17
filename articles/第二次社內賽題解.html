@@ -35,6 +35,7 @@
         .blog-post:hover {
             border-color: #764ba2;
         }
+
         .flex-1 {
             min-width: 0;
         }
@@ -43,27 +44,36 @@
             /* 移除原有的背景色和 padding，由 .code-window 及其內部的 pre 處理 */
             background-color: transparent;
             padding: 0;
-            margin: 0; /* 移除瀏覽器的預設邊距 */
+            margin: 0;
+            /* 移除瀏覽器的預設邊距 */
             border-radius: 0;
         }
 
         /* 程式碼視窗容器樣式 */
         .code-window {
-            background-color: #282c34; /* 深色背景，作為程式碼內容的背景 */
-            border-radius: 8px; /* 圓角 */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* 陰影 */
-            overflow: hidden; /* 確保內容不溢出圓角 */
-            margin: 20px 0; /* 讓程式碼區塊與其他內容區隔 */
+            background-color: #282c34;
+            /* 深色背景，作為程式碼內容的背景 */
+            border-radius: 8px;
+            /* 圓角 */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            /* 陰影 */
+            overflow: hidden;
+            /* 確保內容不溢出圓角 */
+            margin: 20px 0;
+            /* 讓程式碼區塊與其他內容區隔 */
         }
 
         /* 視窗標題欄樣式 */
         .code-header {
-            background-color: #21252b; /* 標題欄顏色略淺 */
+            background-color: #21252b;
+            /* 標題欄顏色略淺 */
             padding: 10px 15px;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* 將按鈕和標籤推開 */
-            color: #abb2bf; /* 標籤文字顏色 */
+            justify-content: space-between;
+            /* 將按鈕和標籤推開 */
+            color: #abb2bf;
+            /* 標籤文字顏色 */
             font-family: sans-serif;
             font-weight: bold;
             font-size: 0.9em;
@@ -72,7 +82,8 @@
         /* 視窗控制按鈕容器 */
         .window-controls {
             display: flex;
-            gap: 8px; /* 圓點之間的間距 */
+            gap: 8px;
+            /* 圓點之間的間距 */
         }
 
         /* 圓點按鈕樣式 */
@@ -80,7 +91,8 @@
             display: inline-block;
             width: 12px;
             height: 12px;
-            border-radius: 50%; /* 變成圓形 */
+            border-radius: 50%;
+            /* 變成圓形 */
             opacity: 0.8;
             transition: opacity 0.3s;
         }
@@ -102,7 +114,7 @@
             /* 移除 Highlight.js 預設的 padding，我們將 padding 放在 <pre> 上 */
             padding: 0;
             /* 調整字體顏色以確保在深色背景下可見 */
-            color: #f8f8f2; 
+            color: #f8f8f2;
         }
 
         /* 調整 <pre> 標籤的 padding，讓程式碼內容有空間 */
@@ -110,7 +122,7 @@
             padding: 15px;
             margin: 0;
             /* 將 Highlight.js 的背景色設為透明，使用 .code-window 的背景色 */
-            background-color: transparent !important; 
+            background-color: transparent !important;
         }
 
 
@@ -133,9 +145,9 @@
     <section id="materials" class="py-16 bg-white">
         <div class="container mx-auto px-4 max-w-full md:max-w-3xl">
             <div class="mx-auto space-y-6">
-                    <div class="flex items-start justify-between">
-                        <div class="flex-1">
-                            <section class="text-gray-800 mb-8">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <section class="text-gray-800 mb-8">
                             <div class="mb-4">
                                 <div class="text-center">
                                     <h2 class="text-xl font-bold">114 學年度師大附中電算社第二次社內賽題解</h2>
@@ -143,23 +155,23 @@
                             </div>
                             <br></br>
                             <div class="text-center">
-                                <button onclick="openSlide('pdf')"
-                                    class="border border-blue-500 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    預覽題本
-                                </button>
                                 <button
-        class="border border-blue-500 text-blue-500 bg-white 
+                                    class="border border-blue-500 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    <a href="https://hsnucrc47.github.io/python-class/files/114第二次社內賽題本.pdf">
+                                        預覽題本
+                                    </a>
+                                </button>
+                                <button class="border border-blue-500 text-blue-500 bg-white 
             hover:bg-blue-50 
             px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <a href="https://hsnucrc47.github.io/python-class/files/114第二次社內賽題本.pdf"
-                                    download
-                                    class="block w-full h-full text-blue-500">
+                                    <a href="https://hsnucrc47.github.io/python-class/files/114第二次社內賽題本.pdf" download
+                                        class="block w-full h-full text-blue-500">
                                         下載題本
                                     </a>
                                 </button>
                             </div>
                             <br></br>
-                            
+
                             <div class="space-y-4" style="text-indent: 2em;">
                                 <p></p>
                             </div>
@@ -168,20 +180,22 @@
                                     <h3 class="text-xl font-bold">第一題　馬蹄鐵（horseshoe）</h3>
                                 </div>
                             </div>
-                            
+
                             <h4>出題者：coix</h4>
                             <br>
                             <h4 class="text-xl font-bold">參考答案</h4>
-                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                            <link rel="stylesheet"
+                                href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+                            <script
+                                src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
                             <script>hljs.highlightAll();</script>
                             <div class="code-window">
                                 <div class="code-header">
-                                        <div class="window-controls">
-                                            <span class="control-dot red"></span>
-                                            <span class="control-dot yellow"></span>
-                                            <span class="control-dot green"></span>
-                                        </div>
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
                                     <span class="language-label">【解法一】</span>
 
                                     <span class="language-label">PYTHON</span>
@@ -195,11 +209,11 @@ for _ in range(k):
                             </div>
                             <div class="code-window">
                                 <div class="code-header">
-                                        <div class="window-controls">
-                                            <span class="control-dot red"></span>
-                                            <span class="control-dot yellow"></span>
-                                            <span class="control-dot green"></span>
-                                        </div>
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
                                     <span class="language-label">【解法二】</span>
 
                                     <span class="language-label">PYTHON</span>
@@ -214,11 +228,12 @@ for _ in range(k):
     print(max_value) # 將每個最大值放進 ans 串列裡
 </code></pre>
                             </div>
-                             <h4 class="text-xl font-bold">解說</h4>
+                            <h4 class="text-xl font-bold">解說</h4>
                             <br>
                             <div class="space-y-4" style="text-indent: 2em;">
-                                <p>根據解法一，要先利用迴圈執行 k 次找最大值。 l 為我們輸入進來的陣列。我們可以藉由 max(l) 找出最大值，再將其輸出。</p> 
-                                <p>值得注意的是，解法一不會用到輸入的 n ，如果要用的話，可以參考解法二，設定一個變數（max_value）預設為零，再逐一比較，如果比 max_value 還要大，就將 max_value 設為此數字。</p>
+                                <p>根據解法一，要先利用迴圈執行 k 次找最大值。 l 為我們輸入進來的陣列。我們可以藉由 max(l) 找出最大值，再將其輸出。</p>
+                                <p>值得注意的是，解法一不會用到輸入的 n ，如果要用的話，可以參考解法二，設定一個變數（max_value）預設為零，再逐一比較，如果比 max_value 還要大，就將
+                                    max_value 設為此數字。</p>
                             </div>
                             <br>
                             <h4 class="text-xl font-bold">講義連結</h4>
@@ -226,11 +241,11 @@ for _ in range(k):
                             <a class="text-blue-500" href="https://hackmd.io/@CRC-YUSHAN/B1sorKHjlg#/2/2">max() 函數</a>
                             <p></p>
                             <a class="text-blue-500" href="https://hackmd.io/@CRC-YUSHAN/r1leEJQkZg#/3/1">迴圈與串列</a>
-                            
+
                             <br><br>
                             <div class="mb-4">
                                 <div class="text-center">
-                                    <h3 class="text-xl font-bold">第二題  底線蛇（_snake）</h3>
+                                    <h3 class="text-xl font-bold">第二題 底線蛇（_snake）</h3>
                                 </div>
                             </div>
                             <h4>出題者：Jasmine</h4>
@@ -238,11 +253,11 @@ for _ in range(k):
                             <h4 class="text-xl font-bold">參考答案</h4>
                             <div class="code-window">
                                 <div class="code-header">
-                                        <div class="window-controls">
-                                            <span class="control-dot red"></span>
-                                            <span class="control-dot yellow"></span>
-                                            <span class="control-dot green"></span>
-                                        </div>
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
                                     <span class="language-label">【解法一】</span>
                                     <span class="language-label">PYTHON</span>
                                 </div>
@@ -263,11 +278,11 @@ for _ in range(T):
                             </div>
                             <div class="code-window">
                                 <div class="code-header">
-                                        <div class="window-controls">
-                                            <span class="control-dot red"></span>
-                                            <span class="control-dot yellow"></span>
-                                            <span class="control-dot green"></span>
-                                        </div>
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
                                     <span class="language-label">【解法二】</span>
                                     <span class="language-label">PYTHON</span>
                                 </div>
@@ -283,10 +298,14 @@ for _ in range(T):
                             <h4 class="text-xl font-bold">解說</h4>
                             <div class="space-y-4" style="text-indent: 2em;">
                                 <p>在解法一中，這題要設兩層三個迴圈，第一層迴圈設為執行 <code>T</code> 次，再經由第二個迴圈處理反轉，最後用第三個迴圈輸出答案。</p>
-                                <p>在第一層迴圈中，我們利用 <code>.split('_')</code> 將輸入進來的字串分割成串列，並創一個空串列（ <code>reversed_parts</code> ）用來放反轉後的結果。</p> 
-                                <p>第二層迴圈負責反轉字串，利用 <code>for</code> 迴圈遍歷每個字串，再利用 <code>[::-1]</code> 反轉字串，最後將其儲存至串列 <code>reversed_parts</code> 中。</p>
-                                <p>最後第三迴圈會將 <code>reversed_parts</code> 裡反轉後的字串逐一印出，並在間隔放上 _ 。當本組測試結束時，使用 <code>print()</code> 換行以區分下一組。</p>
-                                <p>解法二是比較簡潔的做法，不過會用到一些沒教過的東西。 <code>[s[::-1] for s in string.split('_')]</code> 是將字串直接分割成串列並反轉；<code> '_'.join(reversed_parts) </code>是將串列利用 _ 連接起來變回串列。</p>
+                                <p>在第一層迴圈中，我們利用 <code>.split('_')</code> 將輸入進來的字串分割成串列，並創一個空串列（
+                                    <code>reversed_parts</code> ）用來放反轉後的結果。</p>
+                                <p>第二層迴圈負責反轉字串，利用 <code>for</code> 迴圈遍歷每個字串，再利用 <code>[::-1]</code> 反轉字串，最後將其儲存至串列
+                                    <code>reversed_parts</code> 中。</p>
+                                <p>最後第三迴圈會將 <code>reversed_parts</code> 裡反轉後的字串逐一印出，並在間隔放上 _ 。當本組測試結束時，使用
+                                    <code>print()</code> 換行以區分下一組。</p>
+                                <p>解法二是比較簡潔的做法，不過會用到一些沒教過的東西。 <code>[s[::-1] for s in string.split('_')]</code>
+                                    是將字串直接分割成串列並反轉；<code> '_'.join(reversed_parts) </code>是將串列利用 _ 連接起來變回串列。</p>
                             </div>
                             <br>
                             <h4 class="text-xl font-bold">講義連結</h4>
@@ -305,11 +324,11 @@ for _ in range(T):
                             <h4 class="text-xl font-bold">參考答案</h4>
                             <div class="code-window">
                                 <div class="code-header">
-                                        <div class="window-controls">
-                                            <span class="control-dot red"></span>
-                                            <span class="control-dot yellow"></span>
-                                            <span class="control-dot green"></span>
-                                        </div>
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
 
                                     <span class="language-label">PYTHON</span>
                                 </div>
@@ -325,21 +344,29 @@ print(count_partitions(n, n))
 </code></pre>
                             </div>
                             <h4 class="text-xl font-bold">解說</h4>
-                            <img src="https://hsnucrc47.github.io/python-class/img/count_partitions_solution.jpg" style="max-width: 100%; height: auto;" >
-                            <img src="https://hsnucrc47.github.io/python-class/img/count_partitions_recursion_tree.png" style="max-width: 100%; height: auto;" >
+                            <img src="https://hsnucrc47.github.io/python-class/img/count_partitions_solution.jpg"
+                                style="max-width: 100%; height: auto;">
+                            <img src="https://hsnucrc47.github.io/python-class/img/count_partitions_recursion_tree.png"
+                                style="max-width: 100%; height: auto;">
                             <div class="space-y-4" style="text-indent: 2em;">
                                 <p>這次最難的一題由我出，非常考驗自己的邏輯是否清楚。
-                                <del>但不知道為什麼第三題答對比例比第二題高一點，甚至有人不知道為什麼可以只通過部分的測資。明明第二題比較容易想啊。</del></p>
-                                <p>我們可以利用遞迴解，選定長度後，我們要逐一比較當最長積木多長時要用什麼積木，因此我們在函式放兩個參數。 <code>n</code> 代表還剩下多長，如果最後 <code> n = 0 </code> 表示這組組合可以，但若最後 <code> n &lt; 0 </code> 表示這組組合不行。 <code>max_part</code> 代表我們在組合當中所使用的最大積木，如果 <code>max_part = 0</code> 也是不行的。</p>
-                                <p>遞迴的邏輯是先從最大的積木（也就是 <code>max_part = n = 最大值</code> 時）算起，如果成功讓 <code> n = 0 </code> 就回傳 <code> 1 </code> ， 但如果出現 <code> n &lt; 0 </code> 或 <code>max_part = 0</code> 就回傳 0 。上述都沒發生的話就繼續分割，有兩個路線，一種是將最大的積木長度減一分析。另一種是保留最大的積木長度，剩下長度為 n 減掉最大的積木長度，分析第二長的積木與其組合，以此類推。</p>
+                                    <del>但不知道為什麼第三題答對比例比第二題高一點，甚至有人不知道為什麼可以只通過部分的測資。明明第二題比較容易想啊。</del>
+                                </p>
+                                <p>我們可以利用遞迴解，選定長度後，我們要逐一比較當最長積木多長時要用什麼積木，因此我們在函式放兩個參數。 <code>n</code> 代表還剩下多長，如果最後
+                                    <code> n = 0 </code> 表示這組組合可以，但若最後 <code> n &lt; 0 </code> 表示這組組合不行。
+                                    <code>max_part</code> 代表我們在組合當中所使用的最大積木，如果 <code>max_part = 0</code> 也是不行的。</p>
+                                <p>遞迴的邏輯是先從最大的積木（也就是 <code>max_part = n = 最大值</code> 時）算起，如果成功讓 <code> n = 0 </code> 就回傳
+                                    <code> 1 </code> ， 但如果出現 <code> n &lt; 0 </code> 或 <code>max_part = 0</code> 就回傳 0
+                                    。上述都沒發生的話就繼續分割，有兩個路線，一種是將最大的積木長度減一分析。另一種是保留最大的積木長度，剩下長度為 n
+                                    減掉最大的積木長度，分析第二長的積木與其組合，以此類推。</p>
                             </div>
                             <br>
                             <h4 class="text-xl font-bold">講義連結</h4>
                             <br>
-                            <a class="text-blue-500" href="https://hackmd.io/@CRC-YUSHAN/SJyZKu2gbl#/">遞迴</a> 
-                            </section>
-                        </div>
+                            <a class="text-blue-500" href="https://hackmd.io/@CRC-YUSHAN/SJyZKu2gbl#/">遞迴</a>
+                        </section>
                     </div>
+                </div>
             </div>
         </div>
     </section>
