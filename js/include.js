@@ -1,139 +1,86 @@
 async function loadComponents() {
-
     const components = [
-
         { id: 'nav-placeholder', url: 'https://hsnucrc47.github.io/python-class/assets/nav.html' },
-
         { id: 'header-placeholder', url: 'https://hsnucrc47.github.io/python-class/assets/header.html' },
-
         { id: 'footer-placeholder', url: 'https://hsnucrc47.github.io/python-class/assets/footer.html' }
-
     ];
 
 
-
-    for (const comp of components) {
-
+    await Promise.all(components.map(async (comp) => {
         const placeholder = document.getElementById(comp.id);
-
-        if (!placeholder) continue;
-
-
-
+        if (!placeholder) return;
         try {
-
             const response = await fetch(comp.url);
-
             const html = await response.text();
-
             placeholder.innerHTML = html;
-
         } catch (err) {
-
             console.error(`載入 ${comp.url} 失敗:`, err);
-
         }
-
-    }
-
-
+    }));
 
     initNavbarLogic();
-
     window.dispatchEvent(new Event('componentsLoaded'));
-
 }
 
-
-
 function initNavbarLogic() {
-
     const menuBtn = document.getElementById("menu-btn");
-
     const mobileMenu = document.getElementById("mobile-menu");
-
-   
+    
 
     if (menuBtn && mobileMenu) {
-
-        menuBtn.replaceWith(menuBtn.cloneNode(true));
-
-        const newMenuBtn = document.getElementById("menu-btn");
-
-       
-
+        const newMenuBtn = menuBtn.cloneNode(true);
+        menuBtn.replaceWith(newMenuBtn);
         newMenuBtn.addEventListener("click", () => {
-
             mobileMenu.classList.toggle("hidden");
-
         });
-
     }
 
 
-
-
+    const isHomePage = window.location.pathname === '/' || 
+                       window.location.pathname.endsWith('index.html') || 
+                       window.location.pathname.includes('/python-class/') && !window.location.pathname.includes('.html');
+    
+    const homeBaseUrl = "https://hsnucrc47.github.io/python-class/index.html";
 
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        const targetId = anchor.getAttribute('href'); 
 
-        anchor.addEventListener('click', function (e) {
+        if (!isHomePage) {
 
-            e.preventDefault();
+            anchor.href = homeBaseUrl + targetId;
+        } else {
 
-            const targetId = this.getAttribute('href');
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
 
-            const targetElement = document.querySelector(targetId);
+                    const navHeight = document.getElementById('nav-placeholder').offsetHeight || 70;
+                    const targetPosition = targetElement.offsetTop - navHeight - 10; // 多留 10px 呼吸空間
 
-           
-
-            if (targetElement) {
-
-                window.scrollTo({
-
-                    top: targetElement.offsetTop -70,
-
-                    behavior: 'smooth'
-
-                });
-
-               
-
-                if (mobileMenu) mobileMenu.classList.add("hidden");
-
-            }
-
-        });
-
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    if (mobileMenu) mobileMenu.classList.add("hidden");
+                }
+            });
+        }
     });
-
 }
-
-
-
 
 
 window.addEventListener('scroll', function () {
-
-    const nav = document.querySelector('nav');
-
-    if (nav) {
-
-        if (window.scrollY > 100) {
-
-            nav.classList.add('shadow-lg');
-
+    const navPlaceholder = document.getElementById('nav-placeholder');
+    if (navPlaceholder) {
+        if (window.scrollY > 50) {
+            navPlaceholder.classList.add('shadow-lg');
         } else {
-
-            nav.classList.remove('shadow-lg');
-
+            navPlaceholder.classList.remove('shadow-lg');
         }
-
     }
-
 });
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', loadComponents);
