@@ -38,7 +38,8 @@ function openArticlce(num) {
         'time':'https://hsnucrc47.github.io/python-class/articles/time',
         'towel_of_Hanoi':'https://hsnucrc47.github.io/python-class/games/towel_of_Hanoi',
         'ascii':'https://hsnucrc47.github.io/python-class/articles/ascii',
-        'datastructures+':'https://hackmd.io/@CRC-YUSHAN/SydrdQxX-g'
+        'datastructures+':'https://hackmd.io/@CRC-YUSHAN/SydrdQxX-g',
+        'qrcode':'https://hsnucrc47.github.io/python-class/articles/qrcode'
     };
     window.open(`${articleInfo[num]}`, '_blank');
 }
@@ -70,33 +71,10 @@ function downloadCode(week) {
 
 function scrollToLatest() {
     const articles = document.querySelectorAll("article");
-    const latest = articles[articles.length - 9] ;
+    const latest = articles[articles.length - 10] ;
     latest.scrollIntoView({ behavior: "smooth" });
 }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Add scroll effect to navigation
-window.addEventListener('scroll', function () {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
-        nav.classList.add('shadow-lg');
-    } else {
-        nav.classList.remove('shadow-lg');
-    }
-});
 
 const menuBtn = document.getElementById("menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");

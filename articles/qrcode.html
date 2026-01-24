@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://hsnucrc47.github.io/python-class/img/favicon.png" type="image/x-icon">
+    <title>電算社47屆Python班 - 課程網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .blog-post {
+            transition: border-color 0.3s ease;
+        }
+
+        .blog-post:hover {
+            border-color: #764ba2;
+        }
+
+        .flex-1 {
+            min-width: 0;
+        }
+
+        pre {
+            /* 移除原有的背景色和 padding，由 .code-window 及其內部的 pre 處理 */
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+            /* 移除瀏覽器的預設邊距 */
+            border-radius: 0;
+        }
+
+        /* 程式碼視窗容器樣式 */
+        .code-window {
+            background-color: #282c34;
+            /* 深色背景，作為程式碼內容的背景 */
+            border-radius: 8px;
+            /* 圓角 */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            /* 陰影 */
+            overflow: hidden;
+            /* 確保內容不溢出圓角 */
+            margin: 20px 0;
+            /* 讓程式碼區塊與其他內容區隔 */
+        }
+
+        /* 視窗標題欄樣式 */
+        .code-header {
+            background-color: #21252b;
+            /* 標題欄顏色略淺 */
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* 將按鈕和標籤推開 */
+            color: #abb2bf;
+            /* 標籤文字顏色 */
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        /* 視窗控制按鈕容器 */
+        .window-controls {
+            display: flex;
+            gap: 8px;
+            /* 圓點之間的間距 */
+        }
+
+        /* 圓點按鈕樣式 */
+        .control-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            /* 變成圓形 */
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .control-dot.red {
+            background-color: #ff5f56;
+        }
+
+        .control-dot.yellow {
+            background-color: #ffbd2e;
+        }
+
+        .control-dot.green {
+            background-color: #27c93f;
+        }
+
+        .code-window pre code {
+
+            padding: 0;
+
+            color: #f8f8f2;
+        }
+
+
+        .code-window pre {
+            padding: 15px;
+            margin: 0;
+
+            background-color: transparent !important;
+        }
+
+
+        pre code.hljs {
+            background: #282c34 !important;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+    </style>
+
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <div id="nav-placeholder" class="sticky top-0 z-50"></div>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- Materials Section -->
+    <section id="materials" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-full md:max-w-3xl">
+            <div class="mx-auto space-y-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <section class="text-gray-800 mb-8">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <h2 class="text-xl font-bold">qrcode 模組</h2>
+                                </div>
+                            </div>
+                            <br>
+
+                            <p>我們可以藉由 qrcode 模組生成網站的 qrcode 。</p>
+                            <br>
+                            <h4 class="text-xl font-bold">安裝 qrcode 套件</h4>
+                            <br>
+                            <p>在終端機輸入並執行：</p>
+                            <link rel="stylesheet"
+                                href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+                            <script
+                                src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                            <script>hljs.highlightAll();</script>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+
+                                    <span class="language-label">BASH</span>
+                                </div>
+                                <pre><code class="language-python">pip install qrcode
+</code></pre>
+                            </div>
+
+                            <br>
+                            <h4 class="text-xl font-bold">程式碼</h4>
+                            <br>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import qrcode # 載入模組
+
+img = qrcode.make("https://youtu.be/dQw4w9WgXcQ?si=i-hdYLGEzGTLUW_K") # 要使用的網址
+img.show() # 開視窗顯示
+img.save("qrcode.png") # 存檔
+</code></pre>
+                            </div>
+                            <br>
+                            <div class="space-y-4" style="text-indent: 2em;">
+                                <p>這樣簡單打上程式碼就 OK 了，會產生如下的圖片。</p>
+                            </div>
+                            <br>
+                            <div class="flex justify-center items-center space-x-8">
+                                <img class="flex justify-center items-center space-x-8" alt="qrcode"
+                                    src="https://hsnucrc47.github.io/python-class/img/qrcode.png" height="110"
+                                    width="110" class="block picture-post">
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 上下學期 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/term.js"></script>
+
+    <!-- 打開連結 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/functions.js"></script>
+
+    <!-- 載入HTML -->
+    <script src="https://hsnucrc47.github.io/python-class/js/include.js"></script>
+
+    <!-- 標題跳動 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/animation.js" type="module"></script>
+
+    <!-- 逃跑 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/escaping_python.js"></script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
