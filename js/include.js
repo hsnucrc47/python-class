@@ -5,7 +5,6 @@ async function loadComponents() {
         { id: 'footer-placeholder', url: 'https://hsnucrc47.github.io/python-class/assets/footer.html' }
     ];
 
-
     await Promise.all(components.map(async (comp) => {
         const placeholder = document.getElementById(comp.id);
         if (!placeholder) return;
@@ -26,7 +25,6 @@ function initNavbarLogic() {
     const menuBtn = document.getElementById("menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
     
-
     if (menuBtn && mobileMenu) {
         const newMenuBtn = menuBtn.cloneNode(true);
         menuBtn.replaceWith(newMenuBtn);
@@ -35,10 +33,10 @@ function initNavbarLogic() {
         });
     }
 
-
-    const isHomePage = window.location.pathname === '/' || 
-                       window.location.pathname.endsWith('index.html') || 
-                       window.location.pathname.includes('/python-class/') && !window.location.pathname.includes('.html');
+    const path = window.location.pathname;
+    const isHomePage = path.endsWith('/python-class/') || 
+                       path.endsWith('/index.html') || 
+                       path === '/python-class';
     
     const homeBaseUrl = "https://hsnucrc47.github.io/python-class/index.html";
 
@@ -46,18 +44,15 @@ function initNavbarLogic() {
         const targetId = anchor.getAttribute('href'); 
 
         if (!isHomePage) {
-
             anchor.href = homeBaseUrl + targetId;
         } else {
-
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-
                     const navHeight = document.getElementById('nav-placeholder').offsetHeight || 70;
-                    const targetPosition = targetElement.offsetTop - navHeight - 10; // 多留 10px 呼吸空間
+                    const targetPosition = targetElement.offsetTop - navHeight - 10;
 
                     window.scrollTo({
                         top: targetPosition,
@@ -70,7 +65,6 @@ function initNavbarLogic() {
         }
     });
 }
-
 
 window.addEventListener('scroll', function () {
     const navPlaceholder = document.getElementById('nav-placeholder');
