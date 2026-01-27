@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://hsnucrc47.github.io/python-class/img/favicon.png" type="image/x-icon">
+    <title>電算社47屆Python班 - 課程網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .code-window {
+            background-color: #282c34;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .code-header {
+            background-color: #21252b;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #abb2bf;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .control-dot.red { background-color: #ff5f56; }
+        .control-dot.yellow { background-color: #ffbd2e; }
+        .control-dot.green { background-color: #27c93f; }
+
+        .code-window pre {
+            padding: 15px;
+            margin: 0;
+            background-color: transparent !important;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <div id="nav-placeholder" class="sticky top-0 z-50"></div>
+    <div id="header-placeholder"></div>
+
+    <section id="materials" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-full md:max-w-3xl">
+            <div class="mx-auto space-y-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <section class="text-gray-800 mb-8">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <h2 class="text-xl font-bold">turtle 模組</h2>
+                                </div>
+                            </div>
+                            <br>
+
+                            <p>turtle 是 Python 內建的一個繪圖模組，非常適合初學者學習程式邏輯與幾何圖形。</p>
+                            <br>
+                            <h4 class="text-xl font-bold">無需安裝</h4>
+                            <br>
+                            <p>這是 Python 標準函式庫的一部分，所以不需要執行 pip install，直接 import 即可使用！</p>
+                            
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+                            <script>hljs.highlightAll();</script>
+
+                            <br>
+                            <h4 class="text-xl font-bold">程式碼範例：畫一個正方形</h4>
+                            <br>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import turtle # 載入海龜繪圖模組
+
+t = turtle.Turtle() # 建立一隻海龜
+t.shape("turtle")   # 把圖示改成海龜形狀
+t.color("orange")   # 設定顏色
+
+for i in range(4):  # 重複四次
+    t.forward(100)  # 向前走 100 像素
+    t.left(90)      # 向左轉 90 度
+
+turtle.done()       # 繪圖結束，視窗不會立即關閉
+</code></pre>
+                            </div>
+                            <br>
+                            <div class="space-y-4" style="text-indent: 2em;">
+                                <p>透過簡單的 forward (前進) 與 left (左轉) 指令，我們就能在畫面上指揮海龜畫出各種繽紛的圖案。</p>
+                            </div>
+                            <br>
+                            <div class="flex justify-center items-center">
+                                <div class="p-8 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 text-gray-500">
+                                    [請在此處放入 turtle_result.png]
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://hsnucrc47.github.io/python-class/js/term.js"></script>
+    <script src="https://hsnucrc47.github.io/python-class/js/functions.js"></script>
+    <script src="https://hsnucrc47.github.io/python-class/js/include.js"></script>
+    <script src="https://hsnucrc47.github.io/python-class/js/animation.js" type="module"></script>
+    <script src="https://hsnucrc47.github.io/python-class/js/escaping_python.js"></script>
+</body>
+
+</html>

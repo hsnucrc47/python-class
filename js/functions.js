@@ -39,7 +39,8 @@ function openArticlce(num) {
         'towel_of_Hanoi':'https://hsnucrc47.github.io/python-class/games/towel_of_Hanoi',
         'ascii':'https://hsnucrc47.github.io/python-class/articles/ascii',
         'datastructures+':'https://hackmd.io/@CRC-YUSHAN/SydrdQxX-g',
-        'qrcode':'https://hsnucrc47.github.io/python-class/articles/qrcode'
+        'qrcode':'https://hsnucrc47.github.io/python-class/articles/qrcode',
+        'class':'https://hackmd.io/@CRC-YUSHAN/SJl-GKHLZx'
     };
     window.open(`${articleInfo[num]}`, '_blank');
 }

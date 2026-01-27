@@ -277,10 +277,23 @@
             transition: 0.2s;
         }
 
-        .download-btn { color: var(--primary-color); }
-        .download-btn:hover { background: var(--primary-color); color: white; }
-        .preview-btn { background: #fafbfc; color: #24292e; }
-        .preview-btn:hover { background: #f3f4f6; }
+        .download-btn {
+            color: var(--primary-color);
+        }
+
+        .download-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .preview-btn {
+            background: #fafbfc;
+            color: #24292e;
+        }
+
+        .preview-btn:hover {
+            background: #f3f4f6;
+        }
 
         /* 預覽視窗 */
         #preview-modal {
@@ -308,13 +321,25 @@
         }
 
         @keyframes modalSlide {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .modal-header {
@@ -340,12 +365,32 @@
             color: #aaa;
         }
 
-        .close-modal:hover { color: #333; }
-        .fa-folder { color: #54aeff; }
-        .fa-python { color: #3498db; }
-        .fa-markdown { color: #f1c40f; }
-        .fa-file-pdf { color: #e74c3c; }
-        .no-result { padding: 40px; text-align: center; color: #8c959f; grid-column: 1 / -1; }
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .fa-folder {
+            color: #54aeff;
+        }
+
+        .fa-python {
+            color: #3498db;
+        }
+
+        .fa-markdown {
+            color: #f1c40f;
+        }
+
+        .fa-file-pdf {
+            color: #e74c3c;
+        }
+
+        .no-result {
+            padding: 40px;
+            text-align: center;
+            color: #8c959f;
+            grid-column: 1 / -1;
+        }
     </style>
 </head>
 
@@ -413,23 +458,20 @@
         let currentDirFiles = [];
         let allRepoFiles = [];
 
-        // --- API 限制提醒功能 ---
+        // --- API 限制提醒 ---
         function checkRateLimit(response) {
             if (response.status === 403 && response.headers.get('X-RateLimit-Remaining') === '0') {
                 const resetTime = new Date(response.headers.get('X-RateLimit-Reset') * 1000);
                 const waitMinutes = Math.ceil((resetTime - new Date()) / 1000 / 60);
-                
                 const warningBox = document.getElementById('api-limit-warning');
                 const message = document.getElementById('limit-message');
-                
-                message.innerText = `GitHub API 存取過於頻繁，目前已達上限。請於 ${waitMinutes} 分鐘後再試，或嘗試更換網路環境。`;
+                message.innerText = `GitHub API 存取過於頻繁，目前已達上限。請於 ${waitMinutes} 分鐘後再試。`;
                 warningBox.style.display = 'flex';
                 return true;
             }
             return false;
         }
 
-        // --- 日期格式化 ---
         function toROCDate(dateString) {
             const d = new Date(dateString);
             return `${d.getFullYear() - 1911}/${d.getMonth() + 1}/${d.getDate()} ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
@@ -440,7 +482,6 @@
             try {
                 const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits?per_page=1`);
                 if (checkRateLimit(response)) return;
-                
                 const commits = await response.json();
                 updateContainer.innerHTML = '';
                 for (let item of commits) {
@@ -453,38 +494,86 @@
                         return `<div><span class="status-tag" style="background:${color}">${f.status === 'added' ? '新增' : '修改'}</span> ${f.filename}</div>`;
                     }).join('');
                     div.innerHTML = `<div style="font-weight:600; font-size:12px; color:#d73a49; margin-bottom:4px;">${toROCDate(item.commit.committer.date)}</div>
-                    <div style="font-weight:600; margin-bottom: 5px;">${item.commit.message}</div>
-                    <div style="font-size: 11px; color: #57606a;">${files}</div>`;
+                <div style="font-weight:600; margin-bottom: 5px;">${item.commit.message}</div>
+                <div style="font-size: 11px; color: #57606a;">${files}</div>`;
                     updateContainer.appendChild(div);
                 }
             } catch (e) { updateContainer.innerHTML = '無法讀取最近更新紀錄。'; }
         }
 
-        async function showPreview(name, downloadUrl) {
-            const modal = document.getElementById('preview-modal');
-            const modalBody = document.getElementById('modal-body');
-            document.getElementById('modal-title').innerText = `預覽檔案：${name}`;
-            modalBody.innerHTML = '<div style="text-align:center; padding:50px;">內容載入中...</div>';
-            modal.style.display = 'flex';
+        // --- 檔案處理核心 ---
+        async function fetchFiles(path = '') {
+            currentPath = path;
+            const container = document.getElementById('file-container');
+            document.getElementById('file-search').value = ''; // 切換資料夾時清空搜尋
+            document.getElementById('breadcrumb').innerHTML = `路徑: <span onclick="fetchFiles('')">root</span> / ${path.replace(/\//g, ' / ')}`;
 
             try {
-                const response = await fetch(downloadUrl);
-                const content = await response.text();
-                const ext = name.split('.').pop().toLowerCase();
+                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`);
+                if (checkRateLimit(response)) return;
+                currentDirFiles = await response.json();
 
-                if (ext === 'py') {
-                    modalBody.innerHTML = `<pre class="language-python"><code>${content.replace(/</g, '&lt;')}</code></pre>`;
-                    Prism.highlightAllUnder(modalBody);
-                } else if (ext === 'md') {
-                    modalBody.innerHTML = `<div class="markdown-body">${marked.parse(content)}</div>`;
-                } else {
-                    modalBody.innerHTML = `<div style="padding:20px;">此檔案類型暫不支援線上預覽。</div>`;
+                // 只有在沒勾選全域搜尋時才更新 filter，避免選單跳動
+                if (!document.getElementById('global-search-check').checked) {
+                    updateTypeFilterOptions(currentDirFiles);
                 }
-            } catch (e) { modalBody.innerHTML = '<div style="color:red; padding:20px;">載入內容失敗。</div>'; }
+
+                renderFileList(currentDirFiles);
+            } catch (e) { container.innerHTML = '讀取失敗'; }
         }
 
-        function closePreview() { document.getElementById('preview-modal').style.display = 'none'; }
-        window.onclick = (e) => { if (e.target == document.getElementById('preview-modal')) closePreview(); }
+        async function fetchFullTree() {
+            if (allRepoFiles.length > 0) return allRepoFiles;
+            try {
+                const resp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/trees/main?recursive=1`);
+                if (checkRateLimit(resp)) return null;
+                const data = await resp.json();
+                allRepoFiles = data.tree.map(i => ({
+                    name: i.path.split('/').pop(),
+                    path: i.path,
+                    type: i.type === 'tree' ? 'dir' : 'file',
+                    download_url: `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${i.path}`
+                }));
+                return allRepoFiles;
+            } catch (e) { return null; }
+        }
+
+        async function handleSearch() {
+            const query = document.getElementById('file-search').value.toLowerCase();
+            const type = document.getElementById('type-filter').value;
+            const isGlobalChecked = document.getElementById('global-search-check').checked;
+
+            // 修正邏輯：如果搜尋框是空的且沒有過濾條件，則始終顯示「當前資料夾」內容
+            if (query === '' && type === 'all') {
+                renderFileList(currentDirFiles);
+                return;
+            }
+
+            // 如果有輸入東西，再決定要從「全域」還是「當前資料夾」找
+            const source = isGlobalChecked ? await fetchFullTree() : currentDirFiles;
+            if (!source) return;
+
+            const filtered = source.filter(f => {
+                const mSearch = f.name.toLowerCase().includes(query);
+                const mType = type === 'all' || f.name.toLowerCase().endsWith('.' + type);
+                return mSearch && mType;
+            });
+
+            renderFileList(filtered, true, isGlobalChecked);
+        }
+
+        function onGlobalToggle() {
+            const isGlobal = document.getElementById('global-search-check').checked;
+            if (isGlobal) {
+                fetchFullTree().then(files => {
+                    if (files) updateTypeFilterOptions(files);
+                    handleSearch();
+                });
+            } else {
+                updateTypeFilterOptions(currentDirFiles);
+                handleSearch();
+            }
+        }
 
         function renderFileList(data, isFiltered = false, isGlobal = false) {
             const container = document.getElementById('file-container');
@@ -495,13 +584,14 @@
                 return;
             }
 
+            // 只有在「非過濾狀態」且「非根目錄」時顯示回上一層
             if (!isFiltered && currentPath !== '') {
                 const upLi = document.createElement('li');
                 upLi.className = 'file-item';
                 upLi.style.cursor = 'pointer';
                 upLi.innerHTML = `<div class="file-info" onclick="fetchFiles('${currentPath.split('/').slice(0, -1).join('/')}')">
-                <span style="font-size:18px; width:20px; text-align:center;"><i class="fa-solid fa-arrow-left"></i></span>
-                <span class="file-name">.. 回上一層</span></div>`;
+            <span style="font-size:18px; width:20px; text-align:center;"><i class="fa-solid fa-arrow-left"></i></span>
+            <span class="file-name">.. 回上一層</span></div>`;
                 container.appendChild(upLi);
             }
 
@@ -513,45 +603,21 @@
                 const canPreview = ['py', 'md'].includes(ext) && item.type !== 'dir';
 
                 li.innerHTML = `
-                <div class="file-info ${item.type === 'dir' ? 'folder-link' : ''}" 
-                     style="${item.type === 'dir' ? 'cursor:pointer' : ''}"
-                     onclick="${item.type === 'dir' ? `fetchFiles('${item.path}')` : ''}">
-                    <span style="font-size:18px; width:20px; text-align:center;">${icon}</span>
-                    <div style="overflow:hidden; margin-left:12px;">
-                        <div class="file-name">${item.name}</div>
-                        ${(isGlobal && item.path.includes('/')) ? `<div style="font-size:11px;color:#888">${item.path}</div>` : ''}
-                    </div>
+            <div class="file-info" 
+                 style="${item.type === 'dir' ? 'cursor:pointer' : ''}"
+                 onclick="${item.type === 'dir' ? `fetchFiles('${item.path}')` : ''}">
+                <span style="font-size:18px; width:20px; text-align:center;">${icon}</span>
+                <div style="overflow:hidden; margin-left:12px;">
+                    <div class="file-name">${item.name}</div>
+                    ${(isGlobal && item.path.includes('/')) ? `<div style="font-size:11px;color:#888">${item.path}</div>` : ''}
                 </div>
-                <div class="btn-group">
-                    ${canPreview ? `<button class="btn preview-btn" onclick="showPreview('${item.name}', '${item.download_url}')"><i class="fa-solid fa-eye"></i> 預覽</button>` : ''}
-                    ${item.type !== 'dir' ? `<a href="${item.download_url}" class="btn download-btn" target="_blank"><i class="fa-solid fa-download"></i> 下載</a>` : ''}
-                </div>`;
+            </div>
+            <div class="btn-group">
+                ${canPreview ? `<button class="btn preview-btn" onclick="showPreview('${item.name}', '${item.download_url}')"><i class="fa-solid fa-eye"></i> 預覽</button>` : ''}
+                ${item.type !== 'dir' ? `<a href="${item.download_url}" class="btn download-btn" target="_blank"><i class="fa-solid fa-download"></i> 下載</a>` : ''}
+            </div>`;
                 container.appendChild(li);
             });
-        }
-
-        function getFileIcon(name, type) {
-            if (type === 'dir') return '<i class="fa-solid fa-folder"></i>';
-            const ext = name.split('.').pop().toLowerCase();
-            const map = { 'py': '<i class="fa-brands fa-python"></i>', 'md': '<i class="fa-brands fa-markdown"></i>', 'pdf': '<i class="fa-solid fa-file-pdf"></i>' };
-            return map[ext] || '<i class="fa-solid fa-file-alt"></i>';
-        }
-
-        async function fetchFiles(path = '') {
-            currentPath = path;
-            const container = document.getElementById('file-container');
-            document.getElementById('file-search').value = '';
-            document.getElementById('breadcrumb').innerHTML = `路徑: <span onclick="fetchFiles('')">root</span> / ${path.replace(/\//g, ' / ')}`;
-            try {
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`);
-                if (checkRateLimit(response)) {
-                    container.innerHTML = '<li class="file-item">API 限制中，請稍後再試。</li>';
-                    return;
-                }
-                currentDirFiles = await response.json();
-                if (!document.getElementById('global-search-check').checked) updateTypeFilterOptions(currentDirFiles);
-                renderFileList(currentDirFiles);
-            } catch (e) { container.innerHTML = '讀取失敗'; }
         }
 
         function updateTypeFilterOptions(files) {
@@ -563,45 +629,35 @@
             select.innerHTML = html;
         }
 
-        async function handleSearch() {
-            const q = document.getElementById('file-search').value.toLowerCase();
-            const type = document.getElementById('type-filter').value;
-            const isGlobal = document.getElementById('global-search-check').checked;
-            const source = isGlobal ? await fetchFullTree() : currentDirFiles;
-            if (!source) return; // API 限制時 source 為空
-            const filtered = source.filter(f => {
-                const mSearch = f.name.toLowerCase().includes(q);
-                const mType = type === 'all' || f.name.toLowerCase().endsWith('.' + type);
-                return mSearch && mType;
-            });
-            renderFileList(filtered, q !== '' || type !== 'all', isGlobal);
+        function getFileIcon(name, type) {
+            if (type === 'dir') return '<i class="fa-solid fa-folder"></i>';
+            const ext = name.split('.').pop().toLowerCase();
+            const map = { 'py': '<i class="fa-brands fa-python"></i>', 'md': '<i class="fa-brands fa-markdown"></i>', 'pdf': '<i class="fa-solid fa-file-pdf"></i>' };
+            return map[ext] || '<i class="fa-solid fa-file-alt"></i>';
         }
 
-        async function fetchFullTree() {
-            if (allRepoFiles.length > 0) return allRepoFiles;
+        async function showPreview(name, downloadUrl) {
+            const modal = document.getElementById('preview-modal');
+            const modalBody = document.getElementById('modal-body');
+            document.getElementById('modal-title').innerText = `預覽：${name}`;
+            modalBody.innerHTML = '<div style="text-align:center; padding:50px;">載入中...</div>';
+            modal.style.display = 'flex';
             try {
-                const resp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/trees/main?recursive=1`);
-                if (checkRateLimit(resp)) return null;
-                const data = await resp.json();
-                allRepoFiles = data.tree.map(i => ({
-                    name: i.path.split('/').pop(), path: i.path, type: i.type === 'tree' ? 'dir' : 'file',
-                    download_url: `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${i.path}`
-                }));
-                return allRepoFiles;
-            } catch(e) { return null; }
+                const response = await fetch(downloadUrl);
+                const content = await response.text();
+                const ext = name.split('.').pop().toLowerCase();
+                if (ext === 'py') {
+                    modalBody.innerHTML = `<pre class="language-python"><code>${content.replace(/</g, '&lt;')}</code></pre>`;
+                    Prism.highlightAllUnder(modalBody);
+                } else if (ext === 'md') {
+                    modalBody.innerHTML = `<div class="markdown-body">${marked.parse(content)}</div>`;
+                } else {
+                    modalBody.innerHTML = `<div style="padding:20px;">此檔案類型暫不支援預覽。</div>`;
+                }
+            } catch (e) { modalBody.innerHTML = '<div style="color:red; padding:20px;">載入失敗。</div>'; }
         }
 
-        function onGlobalToggle() {
-            if (document.getElementById('global-search-check').checked) {
-                fetchFullTree().then(files => {
-                    if (files) updateTypeFilterOptions(files);
-                });
-            } else {
-                updateTypeFilterOptions(currentDirFiles);
-            }
-            handleSearch();
-        }
-
+        function closePreview() { document.getElementById('preview-modal').style.display = 'none'; }
         function toggleView(view) {
             document.getElementById('btn-list').classList.toggle('active', view === 'list');
             document.getElementById('btn-grid').classList.toggle('active', view === 'grid');
