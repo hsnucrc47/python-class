@@ -72,7 +72,7 @@ function downloadCode(week) {
 
 function scrollToLatest() {
     const articles = document.querySelectorAll("article");
-    const latest = articles[articles.length - 10] ;
+    const latest = articles[articles.length - 11] ;
     latest.scrollIntoView({ behavior: "smooth" });
 }
 
