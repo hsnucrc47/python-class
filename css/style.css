@@ -3,10 +3,13 @@
 body.loading {
     overflow: hidden;
 }
-
 .fade-out {
     opacity: 0;
     pointer-events: none;
+}
+/* 讓進度條增加一點發光感 (選配) */
+#progress-bar {
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
 }
 
 body {

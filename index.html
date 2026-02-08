@@ -17,8 +17,12 @@
 
 <body class="bg-gray-50">
     <div id="loader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white transition-opacity duration-500">
-        <img src="img/favicon.png" alt="Logo" class="w-32 h-32 animate-bounce mb-4">
-        <h2 class="text-2xl font-bold text-blue-600">載入中...</h2>
+        <img src="img/favicon.png" alt="Logo" class="w-24 h-24 mb-6 animate-bounce">
+        
+        <div class="w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div id="progress-bar" class="h-full bg-blue-600 transition-all duration-300 ease-out" style="width: 0%"></div>
+        </div>
+        <p id="progress-text" class="mt-2 text-sm text-gray-500 font-mono">0%</p>
     </div>
     <!-- Navigation -->
     <div id="nav-placeholder" class="sticky top-0 z-50"></div>
@@ -799,7 +803,7 @@
     <script src="https://hsnucrc47.github.io/python-class/js/escaping_python.js"></script>
     
     <!-- 載入動畫 -->
-    <script src="https://hsnucrc47.github.io/python-class/js/load.js"></script>
+    <script src="js/load.js"></script>
     
     <!-- 行憲紀念日雪花特效
     <script src="https://hsnucrc47.github.io/python-class/js/Constitution_Day.js"></script>
