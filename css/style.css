@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+/* 防止捲動 */
+body.loading {
+    overflow: hidden;
+}
+
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
 
 body {
     font-family: 'Noto Sans TC', sans-serif;

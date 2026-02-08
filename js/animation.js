@@ -16,7 +16,7 @@ export function initHeaderAnimation() {
     // 3. 執行動畫
     animate(chars, {
         y: [
-            { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+            { to: '-2.75rem', ease: 'outExpo', duration: 600, },
             { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
         ],
         rotate: {
