@@ -502,38 +502,96 @@
         }
 
         // --- 檔案處理核心 ---
+        // --- 快取設定 ---
+        const CACHE_CONFIG = {
+            enabled: true,
+            expiry: 5 * 60 * 1000, // 快取有效時間：5分鐘
+            keyPrefix: 'github_cache_'
+        };
+
+        // --- 檔案處理核心 (含快取機制) ---
         async function fetchFiles(path = '') {
             currentPath = path;
             const container = document.getElementById('file-container');
-            document.getElementById('file-search').value = ''; // 切換資料夾時清空搜尋
+            const searchInput = document.getElementById('file-search');
+            
+            // UI 狀態更新
+            searchInput.value = ''; 
             document.getElementById('breadcrumb').innerHTML = `路徑: <span onclick="fetchFiles('')">root</span> / ${path.replace(/\//g, ' / ')}`;
+            container.innerHTML = '<li class="file-item">載入中...</li>';
 
+            // 1. 嘗試從快取讀取
+            const cacheKey = CACHE_CONFIG.keyPrefix + (path || 'root');
+            const cachedData = sessionStorage.getItem(cacheKey);
+
+            if (CACHE_CONFIG.enabled && cachedData) {
+                const { data, timestamp } = JSON.parse(cachedData);
+                // 檢查快取是否過期
+                if (Date.now() - timestamp < CACHE_CONFIG.expiry) {
+                    console.log(`[Cache] 命中快取: ${path || 'root'}`);
+                    currentDirFiles = data;
+                    updateTypeFilterOptions(currentDirFiles);
+                    renderFileList(currentDirFiles);
+                    return; // 直接返回，不發起 fetch
+                }
+            }
+
+            // 2. 若無快取或已過期，則發起 Fetch
             try {
+                console.log(`[API] 發起網路請求: ${path || 'root'}`);
                 const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`);
+                
                 if (checkRateLimit(response)) return;
+                
                 currentDirFiles = await response.json();
 
-                // 只有在沒勾選全域搜尋時才更新 filter，避免選單跳動
+                // 3. 寫入快取
+                if (CACHE_CONFIG.enabled) {
+                    sessionStorage.setItem(cacheKey, JSON.stringify({
+                        data: currentDirFiles,
+                        timestamp: Date.now()
+                    }));
+                }
+
                 if (!document.getElementById('global-search-check').checked) {
                     updateTypeFilterOptions(currentDirFiles);
                 }
-
                 renderFileList(currentDirFiles);
-            } catch (e) { container.innerHTML = '讀取失敗'; }
+            } catch (e) { 
+                container.innerHTML = '<li class="file-item" style="color:red;">讀取失敗，請稍後再試</li>'; 
+            }
         }
 
         async function fetchFullTree() {
-            if (allRepoFiles.length > 0) return allRepoFiles;
+            const fullTreeKey = CACHE_CONFIG.keyPrefix + 'full_tree';
+            const cachedFullTree = sessionStorage.getItem(fullTreeKey);
+
+            if (cachedFullTree) {
+                const { data, timestamp } = JSON.parse(cachedFullTree);
+                if (Date.now() - timestamp < CACHE_CONFIG.expiry) {
+                    allRepoFiles = data;
+                    return allRepoFiles;
+                }
+            }
+
             try {
                 const resp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/trees/main?recursive=1`);
                 if (checkRateLimit(resp)) return null;
                 const data = await resp.json();
+                
                 allRepoFiles = data.tree.map(i => ({
                     name: i.path.split('/').pop(),
                     path: i.path,
                     type: i.type === 'tree' ? 'dir' : 'file',
                     download_url: `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${i.path}`
                 }));
+
+                // 寫入全域快取
+                sessionStorage.setItem(fullTreeKey, JSON.stringify({
+                    data: allRepoFiles,
+                    timestamp: Date.now()
+                }));
+                
                 return allRepoFiles;
             } catch (e) { return null; }
         }
