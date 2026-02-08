@@ -31,9 +31,11 @@
         .blog-post {
             transition: border-color 0.3s ease;
         }
-        .picture-post{
+
+        .picture-post {
             transition: transform 0.15s ease-out;
         }
+
         .blog-post:hover {
             border-color: #0c0711;
         }
@@ -122,42 +124,14 @@
         }
     </style>
 </head>
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 
-                    flex items-center 
-                    justify-between md:justify-center">
-
-            <div class="hidden md:flex space-x-8">
-                <a href="https://hsnucrc47.github.io/python-class/#calendar" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">行事曆</a>
-                <a href="https://hsnucrc47.github.io/python-class/#materials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">課程簡報</a>
-                <a href="https://hsnucrc47.github.io/python-class/#additional_information" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">補充資料</a>
-                <a href="https://hsnucrc47.github.io/python-class/#suggestion" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">回饋表單</a>
-                <a href="https://hsnucrc47.github.io/python-class/link" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">網站連結</a>
-            </div>
-
-            <button id="menu-btn" class="md:hidden focus:outline-none">
-                <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="hidden flex-col space-y-3 px-6 pb-4 md:hidden">
-            <a href="https://hsnucrc47.github.io/python-class/#calendar" class="block text-gray-700 hover:text-blue-600 font-medium">行事曆</a>
-            <a href="https://hsnucrc47.github.io/python-class/#materials" class="block text-gray-700 hover:text-blue-600 font-medium">課程簡報</a>
-            <a href="https://hsnucrc47.github.io/python-class/#additional_information" class="block text-gray-700 hover:text-blue-600 font-medium">補充資料</a>
-            <a href="https://hsnucrc47.github.io/python-class/#suggestion" class="block text-gray-700 hover:text-blue-600 font-medium">回饋表單</a>
-            <a href="https://hsnucrc47.github.io/python-class/link" class="block text-gray-700 hover:text-blue-600 font-medium">網站連結</a>
-        </div>
-    </nav>
 
 
 <body class="bg-gray-50">
+    <!-- Navigation -->
+    <div id="nav-placeholder" class="sticky top-0 z-50"></div>
     <!-- Header -->
 
-<div id="header-placeholder"></div>
+    <div id="header-placeholder"></div>
 
 
     <!-- Materials Section -->
@@ -177,15 +151,18 @@
             <div class="mt-12">
                 <h3 class="text-xl font-semibold text-gray-800 mb-6">或許你在找這些？</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                    <a href="https://hsnucrc47.github.io/python-class/" class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <a href="https://hsnucrc47.github.io/python-class/"
+                        class="bg-white rounded-xl p-6 shadow-lg card-hover">
                         <h4 class="font-semibold text-gray-800 mb-2">首頁</h4>
                         <p class="text-gray-600 text-sm">回到主頁</p>
                     </a>
-                    <a href="https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg" class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <a href="https://hackmd.io/@CRC-YUSHAN/rJFLIOFFlg"
+                        class="bg-white rounded-xl p-6 shadow-lg card-hover">
                         <h4 class="font-semibold text-gray-800 mb-2">社課內容</h4>
                         <p class="text-gray-600 text-sm">查看行事曆</p>
                     </a>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdza11kAhbhWBrZIB_0ATGWhdx0xyVnn6ric6VyNUfkO0pvEw/viewform" class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdza11kAhbhWBrZIB_0ATGWhdx0xyVnn6ric6VyNUfkO0pvEw/viewform"
+                        class="bg-white rounded-xl p-6 shadow-lg card-hover">
                         <h4 class="font-semibold text-gray-800 mb-2">回饋表單</h4>
                         <p class="text-gray-600 text-sm">填寫回饋表單</p>
                     </a>
@@ -194,14 +171,14 @@
     </section>
 
     <!-- Footer -->
-<div id="footer-placeholder"></div>
+    <div id="footer-placeholder"></div>
 
-    
+
     <script>
         async function loadComponents() {
-            document.getElementById("nav").innerHTML     = await (await fetch("https://hsnucrc47.github.io/python-class/assets/nav.html")).text();
-            document.getElementById("header").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/header.html")).text();
-            document.getElementById("footer").innerHTML  = await (await fetch("https://hsnucrc47.github.io/python-class/assets/footer.html")).text();
+            document.getElementById("nav").innerHTML = await (await fetch("https://hsnucrc47.github.io/python-class/assets/nav.html")).text();
+            document.getElementById("header").innerHTML = await (await fetch("https://hsnucrc47.github.io/python-class/assets/header.html")).text();
+            document.getElementById("footer").innerHTML = await (await fetch("https://hsnucrc47.github.io/python-class/assets/footer.html")).text();
         }
         loadComponents();
     </script>
@@ -217,7 +194,7 @@
 
         function scrollToLatest() {
             const articles = document.querySelectorAll("article");
-            const latest = articles[articles.length - 7] ;
+            const latest = articles[articles.length - 7];
             latest.scrollIntoView({ behavior: "smooth" });
         }
 
@@ -279,7 +256,7 @@
 
                 // 限制跑出螢幕
                 const maxX = window.innerWidth - rect.width;
-                const maxY = window.innerHeight - rect.height -200;
+                const maxY = window.innerHeight - rect.height - 200;
 
                 posX = Math.min(Math.max(posX, -rect.left), maxX - rect.left);
                 posY = Math.min(Math.max(posY, -rect.top), maxY - rect.top);
