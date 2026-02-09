@@ -31,9 +31,11 @@
         .blog-post {
             transition: border-color 0.3s ease;
         }
-        .picture-post{
+
+        .picture-post {
             transition: transform 0.15s ease-out;
         }
+
         .blog-post:hover {
             border-color: #0c0711;
         }
@@ -54,18 +56,33 @@
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">網站連結</h2>
-            <br></br>
+                <br></br>
 
             </div>
 
             <div class="max-w-4xl mx-auto space-y-6">
-                <!-- Week 1 -->
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <img src="img/cpp.svg" class="w-32 h-auto mr-4" alt="示意圖">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">114 學年度 | C++ 班</h3>
+                            <p class="text-gray-600 mb-4">一起來學習編譯式語言 — C++ 吧！</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openSlide('cpp')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    點此進入
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
                 <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <img src="img/github-mark.png" class="w-32 h-auto mr-4" alt="示意圖">
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">電算社47屆小社課</h3>
-                            <p class="text-gray-600 mb-4">來學習Github吧</p>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">電算社47屆小社課！</h3>
+                            <p class="text-gray-600 mb-4">來學習 Github 吧</p>
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('github')"
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -73,12 +90,10 @@
                                 </button>
                             </div>
                         </div>
-
-                        <!-- 右側圖片 -->
-                        
                     </div>
 
                 </article>
+
             </div>
         </div>
     </section>
@@ -94,12 +109,13 @@
 
         function scrollToLatest() {
             const articles = document.querySelectorAll("article");
-            const latest = articles[articles.length - 7] ;
+            const latest = articles[articles.length - 7];
             latest.scrollIntoView({ behavior: "smooth" });
         }
         function openSlide(week) {
             const slideInfo = {
-                'github':'https://hsnucrc47.github.io/github-class/',
+                'github': 'https://hsnucrc47.github.io/github-class/',
+                'cpp': 'https://hackmd.io/@jasmine-tyc/BJHP68LUZe'
 
             };
             window.open(`${slideInfo[week]}`, '_blank');
