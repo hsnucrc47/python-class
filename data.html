@@ -697,13 +697,27 @@
         async function showPreview(name, downloadUrl) {
             const modal = document.getElementById('preview-modal');
             const modalBody = document.getElementById('modal-body');
-            document.getElementById('modal-title').innerText = `預覽：${name}`;
+            const modalTitle = document.getElementById('modal-title');
+            
+            // 清空並重新設定標題列，加入複製按鈕
+            modalTitle.innerHTML = `
+                <span>預覽：${name}</span>
+                <button id="copy-btn" class="btn" style="margin-left: 10px; font-size: 0.7em; cursor: pointer;">
+                    <i class="fa-regular fa-copy"></i> 複製代碼
+                </button>
+            `;
+            
             modalBody.innerHTML = '<div style="text-align:center; padding:50px;">載入中...</div>';
             modal.style.display = 'flex';
+
             try {
                 const response = await fetch(downloadUrl);
                 const content = await response.text();
                 const ext = name.split('.').pop().toLowerCase();
+
+                // 綁定複製事件
+                document.getElementById('copy-btn').onclick = () => copyToClipboard(content);
+
                 if (ext === 'py') {
                     modalBody.innerHTML = `<pre class="language-python"><code>${content.replace(/</g, '&lt;')}</code></pre>`;
                     Prism.highlightAllUnder(modalBody);
@@ -711,9 +725,31 @@
                     modalBody.innerHTML = `<div class="markdown-body">${marked.parse(content)}</div>`;
                 } else {
                     modalBody.innerHTML = `<div style="padding:20px;">此檔案類型暫不支援預覽。</div>`;
+                    document.getElementById('copy-btn').style.display = 'none'; // 非代碼不顯示複製
                 }
-            } catch (e) { modalBody.innerHTML = '<div style="color:red; padding:20px;">載入失敗。</div>'; }
+            } catch (e) { 
+                modalBody.innerHTML = '<div style="color:red; padding:20px;">載入失敗。</div>'; 
+            }
         }
+        async function copyToClipboard(text) {
+        const btn = document.getElementById('copy-btn');
+        try {
+            await navigator.clipboard.writeText(text);
+            
+            // 成功回饋：變更按鈕文字與顏色
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> 已複製！';
+            btn.style.color = 'var(--success-color)';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.color = '';
+            }, 2000);
+        } catch (err) {
+            console.error('無法複製: ', err);
+            alert('複製失敗，請手動選取內容。');
+        }
+    }
 
         function closePreview() { document.getElementById('preview-modal').style.display = 'none'; }
         function toggleView(view) {
