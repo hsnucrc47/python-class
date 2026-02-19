@@ -8,6 +8,8 @@ function openForm() {
 // Slide functions
 function openSlide(week) {
     const slideInfo = {
+
+        // Semester 1
         'math':'https://hackmd.io/@CRC-YUSHAN/BkspH1Laxe',
         'kahoot1':'https://kahoot.it/solo/?quizId=07e1b7a3-e1c7-45ae-8821-4297c53209a6&gameMode=nano',
         'kahoot2':'https://kahoot.it/solo?quizId=2d6d49e6-b2a1-486f-9c98-f2b36915ae7d&gameMode=nano',
@@ -23,7 +25,10 @@ function openSlide(week) {
         'week14': 'https://hackmd.io/@CRC-YUSHAN/ByRKai6--l',
         'week17':'https://hackmd.io/@CRC-YUSHAN/S1NoUlVQWg',
         'week18':'https://hackmd.io/@CRC-YUSHAN/Hy9Hl63mZg',
-        'week19':'https://hackmd.io/@CRC-YUSHAN/H1BpcbS4-l'
+        'week19':'https://hackmd.io/@CRC-YUSHAN/H1BpcbS4-l',
+
+        // Semester 2
+        'week6-2':'https://hackmd.io/@CRC-YUSHAN/rktfib4dWe'
     };
     window.open(`${slideInfo[week]}`, '_blank');
 }

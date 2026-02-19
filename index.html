@@ -23,11 +23,13 @@
 
 
 <body class="bg-gray-50">
-    <div id="loader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white transition-opacity duration-500">
+    <div id="loader"
+        class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white transition-opacity duration-500">
         <img src="img/favicon.png" alt="Logo" class="w-24 h-24 mb-6 animate-bounce">
-        
+
         <div class="w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div id="progress-bar" class="h-full bg-blue-600 transition-all duration-300 ease-out" style="width: 0%"></div>
+            <div id="progress-bar" class="h-full bg-blue-600 transition-all duration-300 ease-out" style="width: 0%">
+            </div>
         </div>
         <p id="progress-text" class="mt-2 text-sm text-gray-500 font-mono">0%</p>
     </div>
@@ -99,24 +101,27 @@
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">課程簡報</h2>
                 <br>
                 <div class="flex flex-col items-center mb-8">
-                    <div class="relative bg-gray-200 p-1 rounded-xl flex w-64 cursor-pointer select-none" onclick="toggleTerm()">
-                        <div id="term-slider" 
+                    <div class="relative bg-gray-200 p-1 rounded-xl flex w-64 cursor-pointer select-none"
+                        onclick="toggleTerm()">
+                        <div id="term-slider"
                             class="absolute top-1 left-1 bottom-1 w-[calc(50%-4px)] bg-blue-600 rounded-lg shadow-md transition-all duration-300 ease-in-out transform">
                         </div>
-                        
-                        <div class="relative z-10 flex-1 text-center py-2 text-sm font-bold transition-colors duration-300" id="text-term1">
+
+                        <div class="relative z-10 flex-1 text-center py-2 text-sm font-bold transition-colors duration-300"
+                            id="text-term1">
                             上學期
                         </div>
-                        <div class="relative z-10 flex-1 text-center py-2 text-sm font-bold transition-colors duration-300 text-gray-500" id="text-term2">
+                        <div class="relative z-10 flex-1 text-center py-2 text-sm font-bold transition-colors duration-300 text-gray-500"
+                            id="text-term2">
                             下學期
                         </div>
                     </div>
-                    
+
                     <input type="checkbox" id="term-toggle" class="hidden">
                 </div>
-                <button onclick="scrollToLatest()" 
-                        class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg">
-                跳到最新內容
+                <button onclick="scrollToLatest()"
+                    class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg">
+                    跳到最新內容
                 </button>
 
             </div>
@@ -413,8 +418,7 @@
                                 </button>
                                 <button
                                     class="bg-indigo-700 hover:bg-indigo-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <a href="#datastructures-plus"
-                                    class="block w-full h-full">
+                                    <a href="#datastructures-plus" class="block w-full h-full">
                                         📊 補充資料
                                     </a>
                                 </button>
@@ -491,7 +495,7 @@
                             <div class="flex items-center space-x-3 mb-3">
                                 <span
                                     class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">第18週</span>
-                                <span class="text-gray-500 text-sm">114/1/2</span>
+                                <span class="text-gray-500 text-sm">115/1/2</span>
                             </div>
                             <h3 class="text-xl font-bold text-gray-800 mb-2">排序與搜尋</h3>
                             <p class="text-gray-600 mb-4">各種排序、 .sort() 、 sorted()</p>
@@ -518,7 +522,7 @@
                             <div class="flex items-center space-x-3 mb-3">
                                 <span
                                     class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">第19週</span>
-                                <span class="text-gray-500 text-sm">114/1/9</span>
+                                <span class="text-gray-500 text-sm">115/1/9</span>
                             </div>
                             <h3 class="text-xl font-bold text-gray-800 mb-2">考前自習＆介紹下學期規劃</h3>
                             <p class="text-gray-600 mb-4">暫停上課</p>
@@ -539,7 +543,7 @@
                             <div class="flex items-center space-x-3 mb-3">
                                 <span
                                     class="bg-red-200 text-red-900 px-3 py-1 rounded-full text-sm font-medium">第1週</span>
-                                <span class="text-gray-500 text-sm">114/1/23</span>
+                                <span class="text-gray-500 text-sm">115/1/23</span>
                             </div>
                             <div class="flex items-center space-x-3 mb-3">
                                 <h3 class="text-xl font-bold text-gray-800 mb-2">補行上課 - 環境整潔</h3>
@@ -555,7 +559,7 @@
                             <div class="flex items-center space-x-3 mb-3">
                                 <span
                                     class="bg-red-200 text-red-900 px-3 py-1 rounded-full text-sm font-medium">第2週</span>
-                                <span class="text-gray-500 text-sm">114/2/20</span>
+                                <span class="text-gray-500 text-sm">115/2/20</span>
                             </div>
                             <h3 class="text-xl font-bold text-gray-800 mb-2">春節放假</h3>
                             <p class="text-gray-600 mb-4">暫停上課</p>
@@ -568,7 +572,7 @@
                             <div class="flex items-center space-x-3 mb-3">
                                 <span
                                     class="bg-red-200 text-red-900 px-3 py-1 rounded-full text-sm font-medium">第3週</span>
-                                <span class="text-gray-500 text-sm">114/2/27</span>
+                                <span class="text-gray-500 text-sm">115/2/27</span>
                             </div>
                             <h3 class="text-xl font-bold text-gray-800 mb-2">和平紀念日補假</h3>
                             <p class="text-gray-600 mb-4">暫停上課</p>
@@ -581,7 +585,7 @@
                             <div class="flex items-center space-x-3 mb-3">
                                 <span
                                     class="bg-red-200 text-red-900 px-3 py-1 rounded-full text-sm font-medium">第4週</span>
-                                <span class="text-gray-500 text-sm">114/3/6</span>
+                                <span class="text-gray-500 text-sm">115/3/6</span>
                             </div>
                             <h3 class="text-xl font-bold text-gray-800 mb-2">一日講師</h3>
                             <p class="text-gray-600 mb-4">敬請期待</p>
@@ -594,10 +598,29 @@
                             <div class="flex items-center space-x-3 mb-3">
                                 <span
                                     class="bg-red-200 text-red-900 px-3 py-1 rounded-full text-sm font-medium">第5週</span>
-                                <span class="text-gray-500 text-sm">114/3/13</span>
+                                <span class="text-gray-500 text-sm">115/3/13</span>
                             </div>
                             <h3 class="text-xl font-bold text-gray-800 mb-2">高三畢業舞會場布</h3>
                             <p class="text-gray-600 mb-4">暫停上課</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1 ">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span
+                                    class="bg-red-200 text-red-900 px-3 py-1 rounded-full text-sm font-medium">第6週</span>
+                                <span class="text-gray-500 text-sm">114/3/20</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Pygame 遊戲開發基礎</h3>
+                            <p class="text-gray-600 mb-4">認識 Pygame</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openSlide('week6-2')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    📊 查看簡報
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -612,7 +635,7 @@
             -->
         </div>
     </section>
-    
+
     <!-- 補充資料 -->
     <section id="additional_information" class="py-16 bg-white">
         <div class="container mx-auto px-6">
@@ -675,7 +698,7 @@
                         <div class="flex-1">
                             <div class="flex items-center space-x-2">
                                 <h3 class="text-xl font-bold text-gray-800 mb-2">time 模組</h3>
-                                
+
                             </div>
                             <p class="text-gray-600 mb-4">日期時間函式</p>
                             <div class="flex space-x-3">
@@ -687,12 +710,13 @@
                         </div>
                     </div>
                 </article>
-                <article id="datastructures-plus" class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                <article id="datastructures-plus"
+                    class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
                             <div class="flex items-center space-x-2">
                                 <h3 class="text-xl font-bold text-gray-800 mb-2">ASCII Code</h3>
-                                
+
                             </div>
                             <p class="text-gray-600 mb-4">美國標準資訊交換碼</p>
                             <div class="flex space-x-3">
@@ -709,7 +733,7 @@
                         <div class="flex-1">
                             <div class="flex items-center space-x-2">
                                 <h3 class="text-xl font-bold text-gray-800 mb-2">資料結構+</h3>
-                                
+
                             </div>
                             <p class="text-gray-600 mb-4">#資料結構 #迭代器 #演算法</p>
                             <div class="flex space-x-3">
@@ -808,10 +832,10 @@
 
     <!-- 逃跑 -->
     <script src="https://hsnucrc47.github.io/python-class/js/escaping_python.js"></script>
-    
+
     <!-- 載入動畫 -->
     <script src="js/load.js"></script>
-    
+
     <!-- 行憲紀念日雪花特效
     <script src="https://hsnucrc47.github.io/python-class/js/Constitution_Day.js"></script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
