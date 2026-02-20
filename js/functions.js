@@ -53,7 +53,8 @@ function openVideo(mp4) {
     const videoInfo = {
         '01': 'https://youtu.be/6h2xrxmE6ow?si=exWU2OPFs-WlQlqq',
         '02': 'https://youtu.be/rW1fS5pxHvo?si=1tLLvVBa-ygLapYb',
-        'guess_num': 'https://youtu.be/j2o8WJn1yeY?si=yyvB8g5yMD5kL-qw'
+        'guess_num': 'https://youtu.be/j2o8WJn1yeY?si=yyvB8g5yMD5kL-qw',
+        'oo':'https://youtu.be/7qOKH4xMmQA?si=EwP532skKPeM2I5I'
     };
     window.open(`${videoInfo[mp4]}`, '_blank');
 }
