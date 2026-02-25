@@ -391,54 +391,132 @@
             color: #8c959f;
             grid-column: 1 / -1;
         }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            /* 讓標題在左，按鈕在右 */
+            align-items: center;
+            /* 垂直置中對齊 */
+            margin-bottom: 20px;
+            /* 與下方內容保持距離 */
+        }
+
+        .home-btn {
+            text-decoration: none;
+            background-color: #24292f;
+            /* 符合 GitHub 風格的深色 */
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            /* 圖標與文字的間距 */
+        }
+
+        .home-btn:hover {
+            background-color: #0969da;
+            /* 懸停時變藍色 */
+            color: white;
+        }
+
+        /* 確保原本的 h1 不要自帶太大的 margin 影響排版 */
+        .header-row h1 {
+            margin: 0;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="container">
+
         <div id="api-limit-warning">
+
             <i class="fa-solid fa-triangle-exclamation"></i>
+
             <span id="limit-message"></span>
+
         </div>
 
-        <h1><i class="fa-brands fa-github"></i> 檔案室</h1>
+        <div class="header-row">
+            <h1><i class="fa-brands fa-github"></i> 檔案室</h1>
+            <a href="/" class="home-btn">
+                <i class="fa-solid fa-house"></i> 回到首頁
+            </a>
+        </div>
+
 
         <div class="search-container">
+
             <div class="search-row">
+
                 <div class="search-input-group">
+
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
+
                     <input type="text" id="file-search" class="search-input" placeholder="搜尋檔名..."
                         oninput="handleSearch()">
+
                 </div>
+
                 <select id="type-filter" class="filter-select" onchange="handleSearch()">
+
                     <option value="all">所有類型</option>
+
                 </select>
+
             </div>
+
             <div style="font-size: 13px; color: #57606a;">
+
                 <label style="cursor: pointer;"><input type="checkbox" id="global-search-check"
                         onchange="onGlobalToggle()"> 搜尋全部的子資料夾</label>
+
             </div>
+
         </div>
+
+
 
         <div class="recent-box">
+
             <div class="recent-title"><i class="fa-solid fa-clock-rotate-left"></i> 最近更新動態</div>
+
             <div id="recent-updates">正在同步 GitHub 動態...</div>
+
         </div>
+
+
 
         <div class="controls">
+
             <div class="breadcrumb" id="breadcrumb">路徑: <span onclick="fetchFiles('')">root</span></div>
+
             <div class="view-switcher">
+
                 <button class="view-btn active" id="btn-list" onclick="toggleView('list')"><i
                         class="fa-solid fa-list"></i></button>
+
                 <button class="view-btn" id="btn-grid" onclick="toggleView('grid')"><i
                         class="fa-solid fa-table-cells-large"></i></button>
+
             </div>
+
         </div>
 
+
+
         <ul id="file-container" class="file-list">
+
             <li class="file-item">初始化中...</li>
+
         </ul>
+
     </div>
 
     <div id="preview-modal">
@@ -514,9 +592,9 @@
             currentPath = path;
             const container = document.getElementById('file-container');
             const searchInput = document.getElementById('file-search');
-            
+
             // UI 狀態更新
-            searchInput.value = ''; 
+            searchInput.value = '';
             document.getElementById('breadcrumb').innerHTML = `路徑: <span onclick="fetchFiles('')">root</span> / ${path.replace(/\//g, ' / ')}`;
             container.innerHTML = '<li class="file-item">載入中...</li>';
 
@@ -540,9 +618,9 @@
             try {
                 console.log(`[API] 發起網路請求: ${path || 'root'}`);
                 const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`);
-                
+
                 if (checkRateLimit(response)) return;
-                
+
                 currentDirFiles = await response.json();
 
                 // 3. 寫入快取
@@ -557,8 +635,8 @@
                     updateTypeFilterOptions(currentDirFiles);
                 }
                 renderFileList(currentDirFiles);
-            } catch (e) { 
-                container.innerHTML = '<li class="file-item" style="color:red;">讀取失敗，請稍後再試</li>'; 
+            } catch (e) {
+                container.innerHTML = '<li class="file-item" style="color:red;">讀取失敗，請稍後再試</li>';
             }
         }
 
@@ -578,7 +656,7 @@
                 const resp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/trees/main?recursive=1`);
                 if (checkRateLimit(resp)) return null;
                 const data = await resp.json();
-                
+
                 allRepoFiles = data.tree.map(i => ({
                     name: i.path.split('/').pop(),
                     path: i.path,
@@ -591,7 +669,7 @@
                     data: allRepoFiles,
                     timestamp: Date.now()
                 }));
-                
+
                 return allRepoFiles;
             } catch (e) { return null; }
         }
@@ -698,7 +776,7 @@
             const modal = document.getElementById('preview-modal');
             const modalBody = document.getElementById('modal-body');
             const modalTitle = document.getElementById('modal-title');
-            
+
             // 清空並重新設定標題列，加入複製按鈕
             modalTitle.innerHTML = `
                 <span>預覽：${name}</span>
@@ -706,7 +784,7 @@
                     <i class="fa-regular fa-copy"></i> 複製代碼
                 </button>
             `;
-            
+
             modalBody.innerHTML = '<div style="text-align:center; padding:50px;">載入中...</div>';
             modal.style.display = 'flex';
 
@@ -727,29 +805,29 @@
                     modalBody.innerHTML = `<div style="padding:20px;">此檔案類型暫不支援預覽。</div>`;
                     document.getElementById('copy-btn').style.display = 'none'; // 非代碼不顯示複製
                 }
-            } catch (e) { 
-                modalBody.innerHTML = '<div style="color:red; padding:20px;">載入失敗。</div>'; 
+            } catch (e) {
+                modalBody.innerHTML = '<div style="color:red; padding:20px;">載入失敗。</div>';
             }
         }
         async function copyToClipboard(text) {
-        const btn = document.getElementById('copy-btn');
-        try {
-            await navigator.clipboard.writeText(text);
-            
-            // 成功回饋：變更按鈕文字與顏色
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> 已複製！';
-            btn.style.color = 'var(--success-color)';
-            
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.style.color = '';
-            }, 2000);
-        } catch (err) {
-            console.error('無法複製: ', err);
-            alert('複製失敗，請手動選取內容。');
+            const btn = document.getElementById('copy-btn');
+            try {
+                await navigator.clipboard.writeText(text);
+
+                // 成功回饋：變更按鈕文字與顏色
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> 已複製！';
+                btn.style.color = 'var(--success-color)';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.color = '';
+                }, 2000);
+            } catch (err) {
+                console.error('無法複製: ', err);
+                alert('複製失敗，請手動選取內容。');
+            }
         }
-    }
 
         function closePreview() { document.getElementById('preview-modal').style.display = 'none'; }
         function toggleView(view) {
