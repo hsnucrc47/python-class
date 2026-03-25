@@ -28,7 +28,8 @@ function openSlide(week) {
         'week19':'https://hackmd.io/@CRC-YUSHAN/H1BpcbS4-l',
 
         // Semester 2
-        'week6-2':'https://hackmd.io/@CRC-YUSHAN/rktfib4dWe'
+        'week6-2':'https://hackmd.io/@CRC-YUSHAN/rktfib4dWe',
+        'week7-2':'https://hackmd.io/@CRC-YUSHAN/ryqa5_scZg'
     };
     window.open(`${slideInfo[week]}`, '_blank');
 }
