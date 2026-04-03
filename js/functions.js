@@ -46,7 +46,8 @@ function openArticlce(num) {
         'ascii':'https://hsnucrc47.github.io/python-class/articles/ascii',
         'datastructures+':'https://hackmd.io/@CRC-YUSHAN/SydrdQxX-g',
         'qrcode':'https://hsnucrc47.github.io/python-class/articles/qrcode',
-        'class':'https://hackmd.io/@CRC-YUSHAN/SJl-GKHLZx'
+        'class':'https://hackmd.io/@CRC-YUSHAN/SJl-GKHLZx',
+        'FFmpeg':'https://hsnucrc47.github.io/python-class/articles/FFmpeg'
     };
     window.open(`${articleInfo[num]}`, '_blank');
 }
@@ -81,7 +82,7 @@ function downloadCode(week) {
 
 function scrollToLatest() {
     const articles = document.querySelectorAll("article");
-    const latest = articles[articles.length - 11] ;
+    const latest = articles[articles.length - 12] ;
     latest.scrollIntoView({ behavior: "smooth" });
 }
 
