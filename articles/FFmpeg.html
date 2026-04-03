@@ -168,7 +168,7 @@
                             <h5 class="font-bold">2️⃣新增路徑</h5>
 
                             <p></p>
-                            <p style="text-indent: 2em;">在 C:\ 建立資料夾 ffmpeg ，並將 ffmpeg-release-essentials 資料夾中的 bin 資料夾移動到 ffmpeg 資料夾中，確認路徑為</p>
+                            <p style="text-indent: 2em;">在 C:\ 建立資料夾 ffmpeg ，並將 ffmpeg-release-essentials 資料夾中的 bin 資料夾移動到 ffmpeg 資料夾中，確認符合以下路徑：</p>
 
                             <div class="code-window">
                                 <div class="code-header">
@@ -189,9 +189,11 @@
                             <p></p>
                             <p style="text-indent: 2em;">按 Win 鍵搜尋「編輯系統環境變數」，點選「編輯系統環境變數」。彈出視窗後按「環境變數」。</p>
                             
-                            <img alt="環境變數設定圖一" src="https://hsnucrc47.github.io/python-class/img/ffmpeg_env_settings1.png">
-                            <p style="text-indent: 2em;">在「編輯系統環境變數」中按新增，貼上剛才的路徑，然後就連按確定把兩個視窗都關掉</p>
-                            <img alt="環境變數設定圖二" src="https://hsnucrc47.github.io/python-class/img/ffmpeg_env_settings2.png">
+                            <img width="70%" alt="環境變數設定圖一" src="https://hsnucrc47.github.io/python-class/img/ffmpeg_env_settings1.png">
+                            <p style="text-indent: 2em;">在「編輯系統環境變數」中按新增，貼上剛才的路徑，然後就連按確定把兩個視窗都關掉。</p>
+                            <img width="70%" alt="環境變數設定圖二" src="https://hsnucrc47.github.io/python-class/img/ffmpeg_env_settings2.png">
+                            <br>
+                            <p>這樣就完成了，可以開啟終端機輸入以下指令檢查（如果已經開的話要重開）。如果出現了版本資訊那恭喜你成功設定好環境變數了。</p>
                             <link rel="stylesheet"
                                 href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
                             <script
@@ -208,13 +210,11 @@
 
                                     <span class="language-label">BASH</span>
                                 </div>
-                                <pre><code class="language-python">pip install qrcode
+                                <pre><code class="language-python">ffmpeg -version
 </code></pre>
                             </div>
-
-                            <br>
-                            <h4 class="text-xl font-bold">程式碼</h4>
-                            <br>
+                            <h5 class="font-bold">4️⃣安裝套件</h5>
+                            <p>在終端機輸入以下指令：</p>
                             <div class="code-window">
                                 <div class="code-header">
                                     <div class="window-controls">
@@ -224,20 +224,11 @@
                                     </div>
                                     <span class="language-label"></span>
 
-                                    <span class="language-label">PYTHON</span>
+                                    <span class="language-label">BASH</span>
                                 </div>
-                                <pre><code class="language-python">import qrcode # 載入模組
-
-img = qrcode.make("https://youtu.be/dQw4w9WgXcQ?si=i-hdYLGEzGTLUW_K") # 要使用的網址
-img.show() # 開視窗顯示
-img.save("qrcode.png") # 存檔
+                                <pre><code class="language-python">pip install ffmpeg-python
 </code></pre>
                             </div>
-                            <br>
-                            <div class="space-y-4" style="text-indent: 2em;">
-                                <p>這樣簡單打上程式碼就 OK 了，會產生如下的圖片。</p>
-                            </div>
-                            <br>
                         </section>
                     </div>
                 </div>
