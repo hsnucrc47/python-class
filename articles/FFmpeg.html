@@ -132,6 +132,13 @@
         section {
             margin-bottom: 20px;
         }
+        html {
+        scroll-behavior: smooth;
+        }
+
+        section, h4, h5 {
+            scroll-margin-top: 80px;
+        }
     </style>
 
 
@@ -153,23 +160,55 @@
                                 </div>
                             </div>
                             <br>
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-6">
+                                <h3 class="text-lg font-bold mb-2">目錄</h3>
+                                <ul class="space-y-1 text-blue-500">
+                                    <li><a href="#setup" class="hover:underline">前置作業</a></li>
+                                    <ul class="ml-4">
+                                        <li><a href="#download" class="hover:underline">下載執行檔</a></li>
+                                        <li><a href="#path" class="hover:underline">新增路徑</a></li>
+                                        <li><a href="#env" class="hover:underline">設定環境變數</a></li>
+                                        <li><a href="#install" class="hover:underline">安裝套件</a></li>
+                                    </ul>
 
+                                    <li class="mt-2"><a href="#basic" class="hover:underline">程式實作</a></li>
+                                    <ul class="ml-4">
+                                        <li><a href="#convert">影片轉檔</a></li>
+                                        <li><a href="#audio">擷取音訊</a></li>
+                                        <li><a href="#image">擷取圖片</a></li>
+                                        <li><a href="#cut">影片裁切</a></li>
+                                        <li><a href="#resolution">改解析度</a></li>
+                                        <li><a href="#subtitle">加上字幕</a></li>
+                                        <li><a href="#stream">串流</a></li>
+                                        <li><a href="#speed">倍速</a></li>
+                                        <li><a href="#slow">慢速</a></li>
+                                        <li><a href="#reverse">倒放</a></li>
+                                        <li><a href="#merge">合併</a></li>
+                                        <li><a href="#watermark">浮水印</a></li>
+                                        <li><a href="#volume">音量</a></li>
+                                        <li><a href="#gif">GIF</a></li>
+                                        <li><a href="#rotate">旋轉</a></li>
+                                    </ul>
+                                </ul>
+                            </div>
                             <p>FFmpeg 是一個能夠解碼、編碼、轉碼、封裝、解封裝等影音處理的多媒體格式。</p>
                             <br>
-                            <h4 class="text-xl font-bold">前置作業</h4>
+                            <h4 id="setup" class="text-xl font-bold">前置作業</h4>
                             <br>
-                            <h5 class="font-bold">1️⃣下載執行檔</h5>
+                            <h5 id="download" class="font-bold">1️⃣下載執行檔</h5>
                             <p>進入網站：</p>
-                            <a class="text-blue-500" href="https://www.gyan.dev/ffmpeg/builds/">FFmpeg Build - binaries for Windows</a>
+                            <a class="text-blue-500" href="https://www.gyan.dev/ffmpeg/builds/">FFmpeg Build - binaries
+                                for Windows</a>
                             <p>下載 release builds 中的 ffmpeg-release-essentials.zip 並解壓縮。</p>
                             <br>
                             <img src="https://hsnucrc47.github.io/python-class/img/download_ffmpeg_zip.png">
                             <br>
 
-                            <h5 class="font-bold">2️⃣新增路徑</h5>
+                            <h5 id="path" class="font-bold">2️⃣新增路徑</h5>
 
                             <p></p>
-                            <p style="text-indent: 2em;">在 C:\ 建立資料夾 ffmpeg ，並將 ffmpeg-release-essentials 資料夾中的 bin 資料夾移動到 ffmpeg 資料夾中，確認符合以下路徑：</p>
+                            <p style="text-indent: 2em;">在 C:\ 建立資料夾 ffmpeg ，並將 ffmpeg-release-essentials 資料夾中的 bin
+                                資料夾移動到 ffmpeg 資料夾中，確認符合以下路徑：</p>
 
                             <div class="code-window">
                                 <div class="code-header">
@@ -185,20 +224,22 @@
                                 <pre><code>C:\ffmpeg\bin\FFmpeg.exe
 </code></pre>
                             </div>
-                            <h5 class="font-bold">3️⃣設定環境變數</h5>
+                            <h5 id="env" class="font-bold">3️⃣設定環境變數</h5>
 
                             <p></p>
                             <p style="text-indent: 2em;">按 Win 鍵搜尋「編輯系統環境變數」，點選「編輯系統環境變數」。彈出視窗後按「環境變數」。</p>
                             <p style="text-indent: 2em;">在「環境變數」視窗中點擊系統變數中的 Path ，然後按「編輯」。</p>
                             <br>
-                            <img width="70%" alt="環境變數設定圖一" src="https://hsnucrc47.github.io/python-class/img/ffmpeg_env_settings1.png">
+                            <img width="70%" alt="環境變數設定圖一"
+                                src="https://hsnucrc47.github.io/python-class/img/ffmpeg_env_settings1.png">
                             <br>
                             <p style="text-indent: 2em;">在「編輯系統環境變數」中按新增，貼上剛才的路徑，然後就連按確定把兩個視窗都關掉。</p>
                             <br>
-                            <img width="70%" alt="環境變數設定圖二" src="https://hsnucrc47.github.io/python-class/img/ffmpeg_env_settings2.png">
+                            <img width="70%" alt="環境變數設定圖二"
+                                src="https://hsnucrc47.github.io/python-class/img/ffmpeg_env_settings2.png">
                             <br>
                             <br>
-                            <p  style="text-indent: 2em;">這樣就完成了，可以開啟終端機輸入以下指令檢查（如果已經開的話要重開）。如果出現了版本資訊那恭喜你成功設定好環境變數了。</p>
+                            <p style="text-indent: 2em;">這樣就完成了，可以開啟終端機輸入以下指令檢查（如果已經開的話要重開）。如果出現了版本資訊那恭喜你成功設定好環境變數了。</p>
                             <link rel="stylesheet"
                                 href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
                             <script
@@ -218,7 +259,7 @@
                                 <pre><code class="language-python">ffmpeg -version
 </code></pre>
                             </div>
-                            <h5 class="font-bold">4️⃣安裝套件</h5>
+                            <h5 id="install" class="font-bold">4️⃣安裝套件</h5>
                             <p>在終端機輸入以下指令：</p>
                             <div class="code-window">
                                 <div class="code-header">
@@ -235,13 +276,13 @@
 </code></pre>
                             </div>
                             <br>
-                            <h4 class="text-xl font-bold">程式實作</h4>
+                            <h4 id="basic" class="text-xl font-bold">程式實作</h4>
                             <br>
                             <p>請先確認影片名稱與根目錄路徑：</p>
                             <br>
                             <img width="70%" src="https://hsnucrc47.github.io/python-class/img/ffmpeg_root.png">
                             <br>
-                            <h5 class="font-bold">影片轉檔</h5>
+                            <h5 id="convert" class="font-bold">影片轉檔</h5>
                             <div class="code-window">
                                 <div class="code-header">
                                     <div class="window-controls">
@@ -262,7 +303,7 @@
     .run()
 )</code></pre>
                             </div>
-                            <h5 class="font-bold">擷取音訊</h5>
+                            <h5 id="audio" class="font-bold">擷取音訊</h5>
                             <div class="code-window">
                                 <div class="code-header">
                                     <div class="window-controls">
@@ -282,7 +323,7 @@
     .run()
 )</code></pre>
                             </div>
-                            <h5 class="font-bold">擷取圖片</h5>
+                            <h5 id="image" class="font-bold">擷取圖片</h5>
                             <div class="code-window">
                                 <div class="code-header">
                                     <div class="window-controls">
@@ -302,7 +343,7 @@
     .run()
 )</code></pre>
                             </div>
-                            <h5 class="font-bold">影片裁切</h5>
+                            <h5 id="cut" class="font-bold">影片裁切</h5>
                             <div class="code-window">
                                 <div class="code-header">
                                     <div class="window-controls">
@@ -322,7 +363,7 @@
     .run()
 )</code></pre>
                             </div>
-                            <h5 class="font-bold">改解析度</h5>
+                            <h5 id="resolution" class="font-bold">改解析度</h5>
                             <div class="code-window">
                                 <div class="code-header">
                                     <div class="window-controls">
@@ -342,7 +383,7 @@
     .run()
 )</code></pre>
                             </div>
-                            <h5 class="font-bold">加上字幕</h5>
+                            <h5 id="subtitle" class="font-bold">加上字幕</h5>
                             <div class="code-window">
                                 <div class="code-header">
                                     <div class="window-controls">
@@ -365,7 +406,7 @@
     .run()
 )</code></pre>
                             </div>
-                            <h5 class="font-bold">串流 / 即時處理</h5>
+                            <h5 id="stream" class="font-bold">串流 / 即時處理</h5>
                             <p>將錄好的影片即時直播在直播平臺（以 YouTube 為例）。</p>
                             <div class="code-window">
                                 <div class="code-header">
@@ -395,11 +436,195 @@
     .run()
 )</code></pre>
                             </div>
+                            <h5 id="speed class="font-bold">影片倍速（n 倍速）</h5>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import ffmpeg
+(
+    ffmpeg
+    .input('input.mp4')
+    .output(
+        'output.mp4',
+        vf="setpts=0.5*PTS",   # 2 倍速
+        af="atempo=2.0"        # 音訊同步加速
+    )
+    .run()
+)</code></pre>
+                            </div>
+
+                            <h5 id="slow" class="font-bold">影片慢速播放</h5>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import ffmpeg
+(
+    ffmpeg
+    .input('input.mp4')
+    .output(
+        'output.mp4',
+        vf="setpts=2.0*PTS",   # 0.5 倍速
+        af="atempo=0.5"
+    )
+    .run()
+)</code></pre>
+                            </div>
+
+                            <h5 id="reverse" class="font-bold">影片倒放</h5>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import ffmpeg
+(
+    ffmpeg
+    .input('input.mp4')
+    .output(
+        'output.mp4',
+        vf="reverse",
+        af="areverse"
+    )
+    .run()
+)</code></pre>
+                            </div>
+
+                            <h5 id="merge" class="font-bold">合併影片</h5>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import ffmpeg
+
+input1 = ffmpeg.input('video1.mp4')
+input2 = ffmpeg.input('video2.mp4')
+
+(
+    ffmpeg
+    .concat(input1, input2, v=1, a=1)
+    .output('output.mp4')
+    .run()
+)</code></pre>
+                            </div>
+
+                            <h5 id="watermark" class="font-bold">加入浮水印</h5>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import ffmpeg
+
+video = ffmpeg.input('input.mp4')
+logo = ffmpeg.input('logo.png')
+
+(
+    ffmpeg
+    .overlay(video, logo, x=10, y=10) # 左上角
+    .output('output.mp4')
+    .run()
+)</code></pre>
+                            </div>
+
+                            <h5 id="volume" class="font-bold">調整音量</h5>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import ffmpeg
+(
+    ffmpeg
+    .input('input.mp4')
+    .output(
+        'output.mp4',
+        af="volume=2.0" # 音量放大 2 倍
+    )
+    .run()
+)</code></pre>
+                            </div>
+
+                            <h5 id="gif" class="font-bold">轉 GIF 動圖</h5>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import ffmpeg
+(
+    ffmpeg
+    .input('input.mp4', ss=0, t=3)
+    .output('output.gif')
+    .run()
+)</code></pre>
+                            </div>
+
+                            <h5 id="rotate" class="font-bold">旋轉影片</h5>
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <div class="window-controls">
+                                        <span class="control-dot red"></span>
+                                        <span class="control-dot yellow"></span>
+                                        <span class="control-dot green"></span>
+                                    </div>
+                                    <span class="language-label"></span>
+                                    <span class="language-label">PYTHON</span>
+                                </div>
+                                <pre><code class="language-python">import ffmpeg
+(
+    ffmpeg
+    .input('input.mp4')
+    .output(
+        'output.mp4',
+        vf="transpose=1" # 旋轉 90 度
+    )
+    .run()
+)</code></pre>
+                            </div>
                             <div class="mt-8">
                                 <button
                                     class="border border-blue-500 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <a href="https://kkroening.github.io/ffmpeg-python/"
-                                        target="_blank">
+                                    <a href="https://kkroening.github.io/ffmpeg-python/" target="_blank">
                                         官方說明文件
                                     </a>
                                 </button>
