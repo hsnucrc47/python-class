@@ -70,25 +70,69 @@
     </section>
 
     <!-- Instructors Section -->
-    <section id="instructors" class="py-16 bg-gray-50">
+    <section id="instructors" class="py-16 bg-gradient-to-b from-white to-purple-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">關於我</h2>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-1 gap-8">
-                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
-                    <div class="text-center mb-4">
-                        <div
-                            class="w-20 h-20 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
 
+                <p class="text-gray-500 tracking-widest uppercase text-sm">電算社幹部介紹</p>
+            </div>
+
+            <div class="max-w-md mx-auto">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 card-hover">
+                    <div class="text-center pt-10 pb-6 px-6">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 rounded-full mx-auto mb-4 p-1">
+                            <div class="relative w-full h-full bg-white rounded-full overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center"
+                                    style="background-image: url('img/yushan.svg');">
+                                </div>
+                                <div class="absolute inset-0 w-full h-full z-10 bg-transparent"
+                                    oncontextmenu="return false;"></div>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">昱山</h3>
+                        <h3 class="text-2xl font-black text-gray-800 mb-1">昱山</h3>
+                        <a class="text-blue-500 font-medium text-sm mb-4"
+                            href="https://www.instagram.com/ethan_e_p/">@ethan_e_p</a>
+                        <br>
+                        <div
+                            class="inline-block px-4 py-1 bg-gray-100 rounded-full text-xs font-bold text-gray-600 tracking-tighter">
+                            學術長—潘昱昕
+                        </div>
                     </div>
-                    <div class="space-y-2 text-sm text-gray-600 text-center mb-12">
-                        <p>大家好我是電算社的學術長</p>
-                        <p>也是Python班的講師</p>
-                        <p>關於課程的問題都能來問我呵</p>
+
+                    <div class="px-8 pb-10 space-y-6">
+                        <div>
+                            <h4 class="font-bold text-blue-500 mb-1"><a href="https://www.instagram.com/explore/search/keyword/?q=%23%E2%9A%A1%EF%B8%8F%E7%88%86">#⚡️爆</a></h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                扛起電算社的學術長（六百六十六）
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-blue-500 mb-1"><a href="https://www.instagram.com/explore/search/keyword/?q=%23%E9%9B%BB%E7%A5%9E%E2%9A%A1%EF%B8%8F">#電神⚡️</a></h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                具數理實力 程式編輯能力強大
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-blue-500 mb-1"><a href="https://www.instagram.com/explore/search/keyword/?q=%23%E4%B8%89%E6%B0%91%E4%B8%BB%E7%BE%A9%E7%B5%B1%E4%B8%80%E4%B8%AD%E5%9C%8B">#三民主義統一中國</a></h4>
+                            <p class="text-gray-500 text-xs italic mb-1">（盡忠職守的班長）</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                班裡不可或缺的領軍人物
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-blue-500 mb-1"><a href="https://www.instagram.com/explore/search/keyword/?q=%23%E8%B6%85%E7%B4%9A%E4%B9%96%E5%B0%8F%E5%AD%A9">#超級乖小孩</a></h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                絕對不闖任何紅燈，就算是在小的巷子
+                            </p>
+                        </div>
                     </div>
+
+                    <div class="h-2 bg-gradient-to-r from-yellow-400 via-red-500 to-purple-600"></div>
                 </div>
             </div>
         </div>
@@ -141,7 +185,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week1')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="downloadCode('week1')"
                                     class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -166,7 +211,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week2')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                             </div>
                         </div>
@@ -186,7 +232,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week3')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="downloadCode('zerojudge')"
                                     class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -211,7 +258,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week4')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                             </div>
                         </div>
@@ -231,7 +279,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week5')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="downloadCode('week5')"
                                     class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -251,8 +300,10 @@
                                 <span class="text-gray-500 text-sm">114/10/10</span>
                             </div>
 
-                                
-                            <h3 class="text-xl font-bold text-gray-800 mb-2"><img src="img/Flag_of_the_Republic_of_China.png" width="25" class="inline"></img> 國慶日</h3>
+
+                            <h3 class="text-xl font-bold text-gray-800 mb-2"><img
+                                    src="img/Flag_of_the_Republic_of_China.png" width="25" class="inline"></img> 國慶日
+                            </h3>
 
                             <p class="text-gray-600 mb-4">暫停上課</p>
                         </div>
@@ -271,7 +322,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('01')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看詳解
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看詳解
                                 </button>
                                 <button onclick="openVideo('01')"
                                     class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -309,7 +361,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week9')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="downloadCode('week9')"
                                     class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -336,7 +389,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week10')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="openArticlce('rails')"
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -359,7 +413,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week11')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                             </div>
                         </div>
@@ -378,7 +433,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week12')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="openArticlce('towel_of_Hanoi')"
                                     class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -414,7 +470,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week14')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button
                                     class="bg-indigo-700 hover:bg-indigo-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -443,7 +500,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('02')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看題解
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看題解
                                 </button>
                                 <button onclick="openVideo('02')"
                                     class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -479,7 +537,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week17')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="downloadCode('week17')"
                                     class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -502,7 +561,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week18')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="downloadCode('week18')"
                                     class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -529,7 +589,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week19')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                             </div>
                         </div>
@@ -588,7 +649,9 @@
                                 <span class="text-gray-500 text-sm">115/3/6</span>
                             </div>
 
-                            <h3 class="text-xl font-bold text-gray-800 mb-2"><img src="https://hsnucrc47.github.io/python-class/img/guestlecturerday.svg" width="25" class="inline"> BFS 和 queue</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2"><img
+                                    src="https://hsnucrc47.github.io/python-class/img/guestlecturerday.svg" width="25"
+                                    class="inline"> BFS 和 queue</h3>
 
                             <p class="text-gray-600 mb-4">一日講師活動</p>
                             <div class="flex space-x-3">
@@ -596,14 +659,15 @@
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                                     <a href="https://hsnucrc47.github.io/python-class/files/20260306社課教學(1679呂宥丞).pdf"
                                         target="_blank">
-                                        <img src="https://www.adobe.com/legal/permissions/media_137d7920c854aa7ddae37a3e4364ea34c6ebc5e8f.png" alt="pdf" width="16" class="inline"> 查看簡報
+                                        <img src="https://www.adobe.com/legal/permissions/media_137d7920c854aa7ddae37a3e4364ea34c6ebc5e8f.png"
+                                            alt="pdf" width="16" class="inline"> 查看簡報
                                     </a>
                                 </button>
                                 <button class="border border-blue-500 text-blue-500 bg-white 
                                                 hover:bg-blue-50 
                                                 px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <a href="https://hsnucrc47.github.io/python-class/files/20260306社課教學簡報(1679呂宥丞).pptx" download
-                                        class="block w-full h-full text-blue-500">
+                                    <a href="https://hsnucrc47.github.io/python-class/files/20260306社課教學簡報(1679呂宥丞).pptx"
+                                        download class="block w-full h-full text-blue-500">
                                         <img src="img/powerpoint.svg" alt="powerpoint" width="16" class="inline"> 下載簡報
                                     </a>
                                 </button>
@@ -637,7 +701,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week6-2')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                             </div>
                         </div>
@@ -656,7 +721,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('week7-2')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="downloadCode('week7-2')"
                                     class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
@@ -693,7 +759,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openSlide('math')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看語法
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看語法
                                 </button>
                             </div>
                         </div>
@@ -752,8 +819,7 @@
                         </div>
                     </div>
                 </article>
-                <article 
-                    class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
                             <div class="flex items-center space-x-2">
@@ -770,7 +836,8 @@
                         </div>
                     </div>
                 </article>
-                <article id="datastructures-plus" class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                <article id="datastructures-plus"
+                    class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
                             <div class="flex items-center space-x-2">
@@ -781,7 +848,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('datastructures+')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看語法
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看語法
                                 </button>
                             </div>
                         </div>
@@ -815,7 +883,8 @@
                             <div class="flex space-x-3">
                                 <button onclick="openArticlce('class')"
                                     class="bg-[#00bbff] hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16" class="inline"> 查看簡報
+                                    <img src="https://assets.hackmd.io/favicon.svg" alt="HackMD" width="16"
+                                        class="inline"> 查看簡報
                                 </button>
                                 <button onclick="openVideo('oo')"
                                     class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
