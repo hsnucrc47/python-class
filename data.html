@@ -532,6 +532,23 @@
     <script>
         const REPO_OWNER = 'hsnucrc47';
         const REPO_NAME = 'python-class-zerojudge';
+
+        // 定義資料夾別名對照表
+        const FOLDER_ALIAS = {
+            // 格式：'原始資料夾名稱': '想要顯示的名稱'
+            '114_9_26': '114/9/26-隨堂練習-條件判斷與基本運算子',
+            '114_10_3': '114/10/3-隨堂練習-迴圈 Ⅰ ',
+            '114_10_31': '114/10/31-隨堂練習-陣列',
+            '114_11_21': '114/11/21-隨堂練習-遞迴',
+            '114_12_5': '114/12/5-隨堂練習-資料結構',
+            '114_12_26': '114/12/5-隨堂練習-陣列二分演算法',
+            '115_1_2': '115/1/2-隨堂練習-排序與搜尋',
+            '115_3_27_遊戲範例': "115/3/27-遊戲範例-創立角色移動",
+            '115_4_27': "115/4/27-遊戲範例-輸入控制",
+            'random': '補充資料-終極密碼實作-random模組'
+
+        };
+
         let currentPath = '';
         let currentDirFiles = [];
         let allRepoFiles = [];
@@ -734,9 +751,14 @@
             data.forEach(item => {
                 const li = document.createElement('li');
                 li.className = 'file-item';
+                let displayName = item.name;
+                if (item.type === 'dir' && FOLDER_ALIAS[item.name]) {
+                    displayName = FOLDER_ALIAS[item.name];
+                }
                 const icon = getFileIcon(item.name, item.type);
                 const ext = item.name.split('.').pop().toLowerCase();
-                const canPreview = ['py', 'md'].includes(ext) && item.type !== 'dir';
+                const imgExts = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'];
+                const canPreview = ['py', 'md', ...imgExts].includes(ext) && item.type !== 'dir';
 
                 li.innerHTML = `
             <div class="file-info" 
@@ -744,12 +766,12 @@
                  onclick="${item.type === 'dir' ? `fetchFiles('${item.path}')` : ''}">
                 <span style="font-size:18px; width:20px; text-align:center;">${icon}</span>
                 <div style="overflow:hidden; margin-left:12px;">
-                    <div class="file-name">${item.name}</div>
+                    <div class="file-name">${displayName}</div>
                     ${(isGlobal && item.path.includes('/')) ? `<div style="font-size:11px;color:#888">${item.path}</div>` : ''}
                 </div>
             </div>
             <div class="btn-group">
-                ${canPreview ? `<button class="btn preview-btn" onclick="showPreview('${item.name}', '${item.download_url}')"><i class="fa-solid fa-eye"></i> 預覽</button>` : ''}
+                ${canPreview ? `<button class="btn preview-btn" onclick="showPreview('${displayName}', '${item.download_url}')"><i class="fa-solid fa-eye"></i> 預覽</button>` : ''}
                 ${item.type !== 'dir' ? `<a href="${item.download_url}" class="btn download-btn" target="_blank"><i class="fa-solid fa-download"></i> 下載</a>` : ''}
             </div>`;
                 container.appendChild(li);
@@ -768,7 +790,16 @@
         function getFileIcon(name, type) {
             if (type === 'dir') return '<i class="fa-solid fa-folder"></i>';
             const ext = name.split('.').pop().toLowerCase();
-            const map = { 'py': '<i class="fa-brands fa-python"></i>', 'md': '<i class="fa-brands fa-markdown"></i>', 'pdf': '<i class="fa-solid fa-file-pdf"></i>' };
+            const map = {
+                'py': '<i class="fa-brands fa-python"></i>',
+                'md': '<i class="fa-brands fa-markdown"></i>',
+                'pdf': '<i class="fa-solid fa-file-pdf"></i>',
+                'jpg': '<i class="fa-solid fa-image"></i>',
+                'jpeg': '<i class="fa-solid fa-image"></i>',
+                'png': '<i class="fa-solid fa-image"></i>',
+                'gif': '<i class="fa-solid fa-image"></i>',
+                'svg': '<i class="fa-solid fa-image"></i>'
+            };
             return map[ext] || '<i class="fa-solid fa-file-alt"></i>';
         }
 
@@ -776,34 +807,49 @@
             const modal = document.getElementById('preview-modal');
             const modalBody = document.getElementById('modal-body');
             const modalTitle = document.getElementById('modal-title');
+            const ext = name.split('.').pop().toLowerCase();
+            const imgExts = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'];
 
-            // 清空並重新設定標題列，加入複製按鈕
-            modalTitle.innerHTML = `
-                <span>預覽：${name}</span>
-                <button id="copy-btn" class="btn" style="margin-left: 10px; font-size: 0.7em; cursor: pointer;">
-                    <i class="fa-regular fa-copy"></i> 複製代碼
-                </button>
-            `;
+            // 設定標題
+            modalTitle.innerHTML = `<span>預覽：${name}</span>`;
+
+            // 如果是代碼，才加入複製按鈕
+            if (['py', 'md'].includes(ext)) {
+                modalTitle.innerHTML += `
+            <button id="copy-btn" class="btn" style="margin-left: 10px; font-size: 0.7em; cursor: pointer;">
+                <i class="fa-regular fa-copy"></i> 複製內容
+            </button>
+        `;
+            }
 
             modalBody.innerHTML = '<div style="text-align:center; padding:50px;">載入中...</div>';
             modal.style.display = 'flex';
 
             try {
+                // --- 圖片預覽邏輯 ---
+                if (imgExts.includes(ext)) {
+                    modalBody.innerHTML = `
+                <div style="text-align:center; padding:20px;">
+                    <img src="${downloadUrl}" style="max-width:100%; max-height:70vh; border-radius:4px; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+                </div>`;
+                    return; // 圖片處理完直接結束
+                }
+
+                // --- 原有的純文字/Markdown 處理邏輯 ---
                 const response = await fetch(downloadUrl);
                 const content = await response.text();
-                const ext = name.split('.').pop().toLowerCase();
-
-                // 綁定複製事件
-                document.getElementById('copy-btn').onclick = () => copyToClipboard(content);
 
                 if (ext === 'py') {
+                    const btn = document.getElementById('copy-btn');
+                    if (btn) btn.onclick = () => copyToClipboard(content);
                     modalBody.innerHTML = `<pre class="language-python"><code>${content.replace(/</g, '&lt;')}</code></pre>`;
                     Prism.highlightAllUnder(modalBody);
                 } else if (ext === 'md') {
+                    const btn = document.getElementById('copy-btn');
+                    if (btn) btn.onclick = () => copyToClipboard(content);
                     modalBody.innerHTML = `<div class="markdown-body">${marked.parse(content)}</div>`;
                 } else {
                     modalBody.innerHTML = `<div style="padding:20px;">此檔案類型暫不支援預覽。</div>`;
-                    document.getElementById('copy-btn').style.display = 'none'; // 非代碼不顯示複製
                 }
             } catch (e) {
                 modalBody.innerHTML = '<div style="color:red; padding:20px;">載入失敗。</div>';
