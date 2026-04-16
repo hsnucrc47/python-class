@@ -1,0 +1,134 @@
+[
+  {
+    "title": "體驗社課",
+    "week": "第1週",
+    "content": "認識電算社",
+    "link": "#materials"
+  },
+  {
+    "title": "基本輸入輸出",
+    "week": "第2週",
+    "content": "print()、input()、資料型別",
+    "link": "#materials"
+  },
+  {
+    "title": "變數與四則運算",
+    "week": "第3週",
+    "content": "Python 基礎運算與變數賦值",
+    "link": "#materials"
+  },
+  {
+    "title": "基本運算子與條件判斷",
+    "week": "第4週",
+    "content": "if、elif、else 邏輯判斷",
+    "link": "#materials"
+  },
+  {
+    "title": "迴圈 Ⅰ",
+    "week": "第5週",
+    "content": "while、for、break、continue",
+    "link": "#materials"
+  },
+  {
+    "title": "第一次社內賽",
+    "week": "第7週",
+    "content": "社內競賽題目詳解與影片解說",
+    "link": "#materials"
+  },
+  {
+    "title": "陣列",
+    "week": "第9週",
+    "content": "多變數輸入、串列、切片",
+    "link": "#materials"
+  },
+  {
+    "title": "迴圈 Ⅱ",
+    "week": "第10週",
+    "content": "例外處理、EOFError、stack、火車調度問題",
+    "link": "#materials"
+  },
+  {
+    "title": "函式",
+    "week": "第11週",
+    "content": "定義函式、回傳值、變數範圍",
+    "link": "#materials"
+  },
+  {
+    "title": "遞迴",
+    "week": "第12週",
+    "content": "遞迴函數、河內塔模擬",
+    "link": "#materials"
+  },
+  {
+    "title": "資料結構",
+    "week": "第14週",
+    "content": "list、set、tuple、dict、迭代器",
+    "link": "#materials"
+  },
+  {
+    "title": "第二次社內賽",
+    "week": "第15週",
+    "content": "社內競賽題解與影片解說",
+    "link": "#materials"
+  },
+  {
+    "title": "陣列二分演算法",
+    "week": "第17週",
+    "content": "二分搜尋法、 bisect 模組、時間複雜度",
+    "link": "#materials"
+  },
+  {
+    "title": "排序與搜尋",
+    "week": "第18週",
+    "content": "各種排序、 .sort() 、 sorted()",
+    "link": "#materials"
+  },
+  {
+    "title": "BFS 和 queue",
+    "week": "下學期第4週",
+    "content": "一日講師活動、佇列演算法",
+    "link": "#materials"
+  },
+  {
+    "title": "Pygame 遊戲開發基礎",
+    "week": "下學期第6週",
+    "content": "認識 Pygame 遊戲引擎",
+    "link": "#materials"
+  },
+  {
+    "title": "創立角色移動",
+    "week": "下學期第7週",
+    "content": "類別觀念、載入圖片、角色移動",
+    "link": "#materials"
+  },
+  {
+    "title": "輸入控制",
+    "week": "下學期第10週",
+    "content": "持續輸入、事件輸入",
+    "link": "#materials"
+  },
+  {
+    "title": "math 模組",
+    "week": "補充資料",
+    "content": "常用數學函式語法",
+    "link": "#additional_information"
+  },
+  {
+    "title": "random 模組",
+    "week": "補充資料",
+    "content": "亂數函式、終極密碼實作",
+    "link": "#additional_information"
+  },
+  {
+    "title": "FFmpeg",
+    "week": "補充資料",
+    "content": "超級實用的媒體處理工具、影片轉檔",
+    "link": "#additional_information"
+  },
+  {
+    "title": "浮點數運算問題",
+    "week": "補充資料",
+    "content": "0.3 - 0.1 - 0.1 - 0.1 ≠ 0 ！？ 浮點數限制",
+    "link": "#additional_information"
+  }
+]
