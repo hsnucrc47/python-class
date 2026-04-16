@@ -76,7 +76,8 @@ function downloadCode(week) {
         'week17':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/114_12_26',
         'week18':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/115_1_2',
 
-        'week7-2':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/115_3_27_%E9%81%8A%E6%88%B2%E7%AF%84%E4%BE%8B'
+        'week7-2':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/115_3_27_%E9%81%8A%E6%88%B2%E7%AF%84%E4%BE%8B',
+        'week10-2':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/115_4_27'
     };
     window.open(`${codeInfo[week]}`, '_blank');
 }
