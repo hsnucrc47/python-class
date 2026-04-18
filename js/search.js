@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. 監聽輸入事件
     searchInput.addEventListener('input', (e) => {
         const keyword = e.target.value.toLowerCase().trim();
-        
+
         // 如果輸入框是空的，隱藏結果區
         if (keyword === '') {
             searchResults.classList.add('hidden');
@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. 執行搜尋過濾
         const filteredResults = searchData.filter(item => {
-            return item.title.toLowerCase().includes(keyword) || 
-                   item.content.toLowerCase().includes(keyword) ||
-                   item.week.toLowerCase().includes(keyword);
+            return item.title.toLowerCase().includes(keyword) ||
+                item.content.toLowerCase().includes(keyword) ||
+                item.week.toLowerCase().includes(keyword);
         });
 
         renderResults(filteredResults);
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. 渲染搜尋結果
     function renderResults(results) {
         searchResults.innerHTML = '';
-        
+
         if (results.length === 0) {
             searchResults.innerHTML = `
                 <div class="p-4 text-gray-500 bg-white rounded-xl shadow-sm border border-gray-100 italic">
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resultItem = document.createElement('div');
                 // 使用 Tailwind CSS 打造符合你網頁風格的卡片
                 resultItem.className = "p-4 bg-white hover:bg-blue-50 rounded-xl shadow-sm border border-gray-100 transition-all duration-200 cursor-pointer mb-2 group";
-                
+
                 resultItem.innerHTML = `
                     <a href="${item.link}" class="block">
                         <div class="flex justify-between items-center mb-1">
@@ -63,17 +63,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
 
                 // 點擊搜尋結果後自動清空搜尋框並隱藏結果
-                resultItem.addEventListener('click', () => {
-                    setTimeout(() => {
-                        searchResults.classList.add('hidden');
-                        searchInput.value = '';
-                    }, 100);
-                });
+                // 在 renderResults 函數內的 resultItem.addEventListener('click', ...) 處替換
+                resultItem.addEventListener('click', (e) => {
+                    const link = item.link; // 取得如 "#next-week-4" 的連結
 
+                    // 檢查是否跳轉到下學期
+                    if (link.endsWith('-2')) {
+                        const toggle = document.getElementById('term-toggle');
+                        // 如果目前還在上學期 (checkbox 未被勾選)，就觸發切換
+                        if (toggle && !toggle.checked) {
+                            // 呼叫你原本 HTML 裡的切換函式
+                            toggleTerm();
+                        }
+                    }
+
+                    // 給瀏覽器一點時間（100ms）完成切換動畫，再進行滾動
+                    setTimeout(() => {
+                        const targetId = link.substring(1); // 去掉 # 號
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) {
+                            const offset = 100; // 避開導覽列的高度
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }
+                    }, 150); 
+
+                    searchResults.classList.add('hidden');
+                    searchInput.value = '';
+                });
                 searchResults.appendChild(resultItem);
             });
         }
-        
+
         searchResults.classList.remove('hidden');
     }
 });

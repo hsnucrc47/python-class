@@ -3,109 +3,109 @@
     "title": "體驗社課",
     "week": "第1週",
     "content": "認識電算社",
-    "link": "#materials"
+    "link": "#week-1-1"
   },
   {
     "title": "基本輸入輸出",
     "week": "第2週",
     "content": "print()、input()、資料型別",
-    "link": "#materials"
+    "link": "#week-2-1"
   },
   {
     "title": "變數與四則運算",
     "week": "第3週",
     "content": "Python 基礎運算與變數賦值",
-    "link": "#materials"
+    "link": "#week-3-1"
   },
   {
     "title": "基本運算子與條件判斷",
     "week": "第4週",
     "content": "if、elif、else 邏輯判斷",
-    "link": "#materials"
+    "link": "#week-4-1"
   },
   {
     "title": "迴圈 Ⅰ",
     "week": "第5週",
     "content": "while、for、break、continue",
-    "link": "#materials"
+    "link": "#week-5-1"
   },
   {
     "title": "第一次社內賽",
     "week": "第7週",
     "content": "社內競賽題目詳解與影片解說",
-    "link": "#materials"
+    "link": "#week-7-1"
   },
   {
     "title": "陣列",
     "week": "第9週",
     "content": "多變數輸入、串列、切片",
-    "link": "#materials"
+    "link": "#week-9-1"
   },
   {
     "title": "迴圈 Ⅱ",
     "week": "第10週",
     "content": "例外處理、EOFError、stack、火車調度問題",
-    "link": "#materials"
+    "link": "#week-10-1"
   },
   {
     "title": "函式",
     "week": "第11週",
     "content": "定義函式、回傳值、變數範圍",
-    "link": "#materials"
+    "link": "#week-11-1"
   },
   {
     "title": "遞迴",
     "week": "第12週",
     "content": "遞迴函數、河內塔模擬",
-    "link": "#materials"
+    "link": "#week-12-1"
   },
   {
     "title": "資料結構",
     "week": "第14週",
     "content": "list、set、tuple、dict、迭代器",
-    "link": "#materials"
+    "link": "#week-14-1"
   },
   {
     "title": "第二次社內賽",
     "week": "第15週",
     "content": "社內競賽題解與影片解說",
-    "link": "#materials"
+    "link": "#week-15-1"
   },
   {
     "title": "陣列二分演算法",
     "week": "第17週",
     "content": "二分搜尋法、 bisect 模組、時間複雜度",
-    "link": "#materials"
+    "link": "#week-17-1"
   },
   {
     "title": "排序與搜尋",
     "week": "第18週",
     "content": "各種排序、 .sort() 、 sorted()",
-    "link": "#materials"
+    "link": "#week-18-1"
   },
   {
     "title": "BFS 和 queue",
     "week": "下學期第4週",
     "content": "一日講師活動、佇列演算法",
-    "link": "#materials"
+    "link": "#week-4-2"
   },
   {
     "title": "Pygame 遊戲開發基礎",
     "week": "下學期第6週",
     "content": "認識 Pygame 遊戲引擎",
-    "link": "#materials"
+    "link": "#week-6-2"
   },
   {
     "title": "創立角色移動",
     "week": "下學期第7週",
     "content": "類別觀念、載入圖片、角色移動",
-    "link": "#materials"
+    "link": "#week-7-2"
   },
   {
     "title": "輸入控制",
     "week": "下學期第10週",
     "content": "持續輸入、事件輸入",
-    "link": "#materials"
+    "link": "#week-10-2"
   },
   {
     "title": "math 模組",
