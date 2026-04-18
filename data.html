@@ -536,15 +536,16 @@
         // 定義資料夾別名對照表
         const FOLDER_ALIAS = {
             // 格式：'原始資料夾名稱': '想要顯示的名稱'
-            '114_9_26': '114/9/26-隨堂練習-條件判斷與基本運算子',
-            '114_10_3': '114/10/3-隨堂練習-迴圈 Ⅰ ',
-            '114_10_31': '114/10/31-隨堂練習-陣列',
-            '114_11_21': '114/11/21-隨堂練習-遞迴',
-            '114_12_5': '114/12/5-隨堂練習-資料結構',
-            '114_12_26': '114/12/5-隨堂練習-陣列二分演算法',
-            '115_1_2': '115/1/2-隨堂練習-排序與搜尋',
-            '115_3_27_遊戲範例': "115/3/27-遊戲範例-創立角色移動",
-            '115_4_27': "115/4/27-遊戲範例-輸入控制",
+            '114_9_26': '1140926-隨堂練習-條件判斷與基本運算子',
+            '114_10_3': '1141003-隨堂練習-迴圈 Ⅰ ',
+            '114_10_31': '1141031-隨堂練習-陣列',
+            '114_11_21': '1141121-隨堂練習-遞迴',
+            '114_12_5': '1141205-隨堂練習-資料結構',
+            '114_12_26': '1141226-隨堂練習-陣列二分演算法',
+            '115_1_2': '1150102-隨堂練習-排序與搜尋',
+            '115_3_27_遊戲範例': "1150327-遊戲範例-創立角色移動",
+            '115_4_17': "1150417-遊戲範例-輸入控制",
+            '115_4_24': "1150424-遊戲範例-Sprite物件模具",
             'random': '補充資料-終極密碼實作-random模組'
 
         };
@@ -718,10 +719,18 @@
         function onGlobalToggle() {
             const isGlobal = document.getElementById('global-search-check').checked;
             if (isGlobal) {
-                fetchFullTree().then(files => {
-                    if (files) updateTypeFilterOptions(files);
+                // 如果已經有資料，直接搜尋，不要進 fetchFullTree 的 async 流程
+                if (allRepoFiles.length > 0) {
+                    updateTypeFilterOptions(allRepoFiles);
                     handleSearch();
-                });
+                } else {
+                    fetchFullTree().then(files => {
+                        if (files) {
+                            updateTypeFilterOptions(files);
+                            handleSearch();
+                        }
+                    });
+                }
             } else {
                 updateTypeFilterOptions(currentDirFiles);
                 handleSearch();
@@ -888,7 +897,6 @@
 
     <script src="https://hsnucrc47.github.io/python-class/js/include.js"></script>
     <script src="https://hsnucrc47.github.io/python-class/js/animation.js" type="module"></script>
-    <script src="https://hsnucrc47.github.io/python-class/js/escaping_python.js"></script>
 </body>
 
 </html>
