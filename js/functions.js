@@ -31,7 +31,8 @@ function openSlide(week) {
         'week6-2':'https://hackmd.io/@CRC-YUSHAN/rktfib4dWe',
         'week7-2':'https://hackmd.io/@CRC-YUSHAN/ryqa5_scZg',
         'week10-2':'https://hackmd.io/@CRC-YUSHAN/SyRoqy0oWe',
-        'week11-2':'https://hackmd.io/@CRC-YUSHAN/SyPgAcxaZe'
+        'week11-2':'https://hackmd.io/@CRC-YUSHAN/SyPgAcxaZe',
+        'week16-2':'https://hackmd.io/@CRC-YUSHAN/rJqeToSezl'
     };
     window.open(`${slideInfo[week]}`, '_blank');
 }
@@ -79,7 +80,8 @@ function downloadCode(week) {
 
         'week7-2':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/115_3_27_%E9%81%8A%E6%88%B2%E7%AF%84%E4%BE%8B',
         'week10-2':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/115_4_17',
-        'week11-2':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/115_4_24'
+        'week11-2':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/115_4_24',
+        'week16-2':'https://github.com/hsnucrc47/python-class-zerojudge/tree/main/115_5_22'
     };
     window.open(`${codeInfo[week]}`, '_blank');
 }
