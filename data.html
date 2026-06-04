@@ -768,7 +768,9 @@
                 const icon = getFileIcon(item.name, item.type);
                 const ext = item.name.split('.').pop().toLowerCase();
                 const imgExts = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'];
-                const canPreview = ['py', 'md', ...imgExts].includes(ext) && item.type !== 'dir';
+                const audioExts = ['mp3', 'wav', 'ogg', 'm4a'];
+                const canPreview = ['py', 'md', ...imgExts, ...audioExts].includes(ext) && item.type !== 'dir';
+                const downloadUrl = item.download_url || `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${item.path}`;
 
                 li.innerHTML = `
             <div class="file-info" 
@@ -781,8 +783,8 @@
                 </div>
             </div>
             <div class="btn-group">
-                ${canPreview ? `<button class="btn preview-btn" onclick="showPreview('${displayName}', '${item.download_url}')"><i class="fa-solid fa-eye"></i> 預覽</button>` : ''}
-                ${item.type !== 'dir' ? `<a href="${item.download_url}" class="btn download-btn" target="_blank"><i class="fa-solid fa-download"></i> 下載</a>` : ''}
+                ${canPreview ? `<button class="btn preview-btn" onclick="showPreview('${displayName}', '${downloadUrl}')"><i class="fa-solid fa-eye"></i> 預覽</button>` : ''}
+                ${item.type !== 'dir' ? `<a href="${downloadUrl}" class="btn download-btn" target="_blank"><i class="fa-solid fa-download"></i> 下載</a>` : ''}
             </div>`;
                 container.appendChild(li);
             });
@@ -804,6 +806,10 @@
                 'py': '<i class="fa-brands fa-python"></i>',
                 'md': '<i class="fa-brands fa-markdown"></i>',
                 'pdf': '<i class="fa-solid fa-file-pdf"></i>',
+                'mp3': '<i class="fa-solid fa-file-audio"></i>',
+                'wav': '<i class="fa-solid fa-file-audio"></i>',
+                'ogg': '<i class="fa-solid fa-file-audio"></i>',
+                'm4a': '<i class="fa-solid fa-file-audio"></i>',
                 'jpg': '<i class="fa-solid fa-image"></i>',
                 'jpeg': '<i class="fa-solid fa-image"></i>',
                 'png': '<i class="fa-solid fa-image"></i>',
@@ -819,6 +825,7 @@
             const modalTitle = document.getElementById('modal-title');
             const ext = name.split('.').pop().toLowerCase();
             const imgExts = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'];
+            const audioExts = ['mp3', 'wav', 'ogg', 'm4a'];
 
             // 設定標題
             modalTitle.innerHTML = `<span>預覽：${name}</span>`;
@@ -843,6 +850,18 @@
                     <img src="${downloadUrl}" style="max-width:100%; max-height:70vh; border-radius:4px; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
                 </div>`;
                     return; // 圖片處理完直接結束
+                }
+
+                // --- 音檔預覽邏輯 ---
+                if (audioExts.includes(ext)) {
+                    modalBody.innerHTML = `
+                <div style="text-align:center; padding:40px;">
+                    <audio controls preload="metadata" style="width:100%; max-width:760px;">
+                        <source src="${downloadUrl}" type="audio/${ext === 'm4a' ? 'mp4' : ext}">
+                        您的瀏覽器不支援音訊播放。
+                    </audio>
+                </div>`;
+                    return;
                 }
 
                 // --- 原有的純文字/Markdown 處理邏輯 ---
