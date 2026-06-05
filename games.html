@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <title>電算社47屆Python班 - 課程網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .blog-post {
+            transition: border-color 0.3s ease;
+        }
+
+        .picture-post {
+            transition: transform 0.15s ease-out;
+        }
+
+        .blog-post:hover {
+            border-color: #0c0711;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <div id="nav-placeholder" class="sticky top-0 z-50"></div>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+
+
+
+    <!-- Materials Section -->
+    <section id="materials" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">遊戲</h2>
+                <br></br>
+
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-6">
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <img src="img/47_python.svg" class="w-32 h-auto mr-4" alt="示意圖">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">河內塔模擬</h3>
+                            <p class="text-gray-600 mb-4">遞迴的常見應用</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openArticlce('towel_of_Hanoi')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    點此進入
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+                <article class="bg-white border rounded-lg p-6 blog-post hover:shadow-lg transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <img src="img/pygame-ce_game.png" class="w-32 h-auto mr-4" alt="示意圖">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Pygame-ce 遊戲示範</h3>
+                            <p class="text-gray-600 mb-4">學習使用 Pygame-ce 創建簡單遊戲</p>
+                            <div class="flex space-x-3">
+                                <button onclick="openArticlce('gameoptimization')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    點此進入
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script src="https://hsnucrc47.github.io/python-class/js/functions.js"></script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'978d6a13d5194a8b',t:'MTc1NjgyMDM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <!-- 載入HTML -->
+    <script src="https://hsnucrc47.github.io/python-class/js/include.js"></script>
+
+    <!-- 標題跳動 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/animation.js" type="module"></script>
+
+    <!-- 逃跑 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/escaping_python.js"></script>
+</body>
+
+</html>
