@@ -51,7 +51,8 @@ function openArticlce(num) {
         'datastructures+':'https://hackmd.io/@CRC-YUSHAN/SydrdQxX-g',
         'qrcode':'https://hsnucrc47.github.io/python-class/articles/qrcode',
         'class':'https://hackmd.io/@CRC-YUSHAN/SJl-GKHLZx',
-        'FFmpeg':'https://hsnucrc47.github.io/python-class/articles/FFmpeg'
+        'FFmpeg':'https://hsnucrc47.github.io/python-class/articles/FFmpeg',
+        'gameoptimization':'https://hsnucrc47.github.io/python-class/games/pygame-ce'
     };
     window.open(`${articleInfo[num]}`, '_blank');
 }
