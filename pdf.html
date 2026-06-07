@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電算社47屆Python班 - 簡報轉 PDF 工具</title>
+    <link rel="stylesheet" href="css/pdf.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div id="nav-placeholder" class="sticky top-0 z-50"></div>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <section class="body-pdf">
+        <h2 class="text-2xl font-bold">簡報轉 PDF 工具</h2>
+
+        <div class="container2">
+            <div class="input-group">
+                <input type="url" id="url-input" placeholder="請貼上網址（例如： https://hackmd.io/@CRC-YUSHAN/S1OomO2Fge?#/ ）" required>
+                <button id="convert-btn" class="btn-first">轉換並預覽</button>
+                <button id="print-btn" class="btn-secondary">列印 PDF</button>
+            </div>
+
+            <div id="info-zone" class="info-zone"></div>
+
+            <div class="preview-container">
+                <div id="placeholder" class="placeholder-text">
+                    <p>請在上方輸入網址並點擊轉換</p>
+                    <p style="font-size: 12px; margin-top: 8px;">提示：HackMD 簡報網址會自動切換為列印模式</p>
+                </div>
+                <iframe id="preview-iframe" style="display: none;"></iframe>
+            </div>
+        </div>
+    </section>
+        <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+        const urlInput = document.getElementById('url-input');
+        const convertBtn = document.getElementById('convert-btn');
+        const printBtn = document.getElementById('print-btn');
+        const infoZone = document.getElementById('info-zone');
+        const previewIframe = document.getElementById('preview-iframe');
+        const placeholder = document.getElementById('placeholder');
+
+        let processedUrl = '';
+        let isSlide = false;
+
+        convertBtn.addEventListener('click', function () {
+            let inputUrl = urlInput.value.trim();
+
+            if (!inputUrl) {
+                alert('請輸入有效的網址！');
+                return;
+            }
+
+            // 確保網址有包含 http:// 或 https://
+            if (!/^https?:\/\//i.test(inputUrl)) {
+                inputUrl = 'https://' + inputUrl;
+                urlInput.value = inputUrl;
+            }
+
+            try {
+                const urlObj = new URL(inputUrl);
+                isSlide = false;
+
+                // 1. 自動判斷是否為 HackMD 簡報
+                if (urlObj.hostname === 'hackmd.io') {
+                    isSlide = true;
+                    // 檢查是否已經有問號參數
+                    if (!urlObj.searchParams.has('print-pdf')) {
+                        urlObj.searchParams.append('print-pdf', '');
+                    }
+                }
+
+                processedUrl = urlObj.toString();
+
+                // 2. 更新 UI 資訊
+                infoZone.style.display = 'block';
+                if (isSlide) {
+                    infoZone.className = 'info-zone';
+                    infoZone.innerHTML = `✨ <strong>偵測到 HackMD 簡報！</strong>已自動轉換為列印網址：<a href="${processedUrl}" target="_blank">${processedUrl}</a><br>💡 <em>註：因 HackMD 有阻擋內嵌列印保護，建議點擊上方連結在新分頁中直接按 Ctrl+P (Cmd+P) 儲存 PDF。</em>`;
+                } else {
+                    infoZone.className = 'info-zone';
+                    infoZone.style.backgroundColor = '#f0f9ff';
+                    infoZone.style.borderColor = '#bae6fd';
+                    infoZone.style.color = '#0369a1';
+                    infoZone.innerHTML = `🌐 <strong>一般網頁模式：</strong>即將載入預覽區。`;
+                }
+
+                // 3. 在 iframe 開啟 (注意：部分網站如 Google、GitHub 設有 X-Frame-Options 會阻擋內嵌)
+                placeholder.style.display = 'none';
+                previewIframe.style.display = 'block';
+                previewIframe.src = processedUrl;
+
+            } catch (e) {
+                alert('網址格式錯誤，請重新輸入。');
+            }
+        });
+
+        // 4. 下載 / 列印功能
+        printBtn.addEventListener('click', function () {
+            if (!processedUrl) {
+                alert('請先輸入網址並點擊「轉換並預覽」！');
+                return;
+            }
+
+            if (isSlide) {
+                // 如果是簡報，引導使用者直接去專屬列印分頁，避免 iframe 跨域安全性阻擋
+                window.open(processedUrl, '_blank');
+            } else {
+                // 一般網頁嘗試呼叫 iframe 的列印，若跨域則降級呼叫本頁列印
+                try {
+                    previewIframe.contentWindow.print();
+                } catch (e) {
+                    // 跨域阻擋時，直接列印本頁（透過 CSS @media print 已經設定只顯示 iframe 內容）
+                    window.print();
+                }
+            }
+        });
+    </script>
+    <!-- 載入HTML -->
+    <script src="https://hsnucrc47.github.io/python-class/js/include.js"></script>
+
+    <!-- 標題跳動 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/animation.js" type="module"></script>
+
+    <!-- 逃跑 -->
+    <script src="https://hsnucrc47.github.io/python-class/js/escaping_python.js"></script>
+
+</body>
+
+</html>
