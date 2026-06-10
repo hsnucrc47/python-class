@@ -130,6 +130,90 @@
             text-align: center;
         }
 
+        /* 模式選項卡樣式 */
+        .mode-tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .mode-tab {
+            padding: 12px 24px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .mode-tab.active {
+            color: #0066cc;
+            border-bottom-color: #0066cc;
+        }
+
+        .mode-tab:hover {
+            color: #0066cc;
+        }
+
+        /* 模式內容樣式 */
+        .mode-content {
+            display: none;
+        }
+
+        .mode-content.active {
+            display: block;
+        }
+
+        /* 選擇框樣式 */
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            min-height: 40px;
+            background-color: white;
+            color: var(--text-color);
+            transition: border-color 0.2s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        select optgroup {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        select option {
+            padding: 8px;
+            color: var(--text-color);
+        }
+
+        /* 選擇模式輸入組樣式 */
+        .input-group.mode-select {
+            flex-direction: column;
+        }
+
+        .input-group.mode-select label {
+            margin-bottom: 12px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .input-group.mode-select select {
+            margin-bottom: 12px;
+        }
+
         /* 🖨️ PDF 輸出規則設定 */
         @media print {
             body * {

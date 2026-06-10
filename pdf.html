@@ -20,17 +20,67 @@
         <h2 class="text-2xl font-bold">簡報轉 PDF 工具</h2>
 
         <div class="container2">
-            <div class="input-group">
-                <input type="url" id="url-input" placeholder="請貼上網址（例如： https://hackmd.io/@CRC-YUSHAN/S1OomO2Fge?#/ ）" required>
-                <button id="convert-btn" class="btn-first">轉換並預覽</button>
-                <button id="print-btn" class="btn-secondary">列印 PDF</button>
+            <!-- 模式切換選項卡 -->
+            <div class="mode-tabs mb-4" style="display: flex; gap: 8px; border-bottom: 2px solid #e5e7eb; margin-bottom: 20px;">
+                <button id="mode-url" class="mode-tab active" style="padding: 12px 24px; border: none; background: none; cursor: pointer; font-size: 16px; font-weight: 500; color: #0066cc; border-bottom: 3px solid #0066cc;">
+                    連結
+                </button>
+                <button id="mode-select" class="mode-tab" style="padding: 12px 24px; border: none; background: none; cursor: pointer; font-size: 16px; font-weight: 500; color: #666;">
+                    選擇簡報
+                </button>
+            </div>
+
+            <!-- 模式 1: URL 輸入 -->
+            <div id="url-mode" class="mode-content">
+                <div class="input-group">
+                    <input type="url" id="url-input" placeholder="請貼上網址（例如： https://hackmd.io/@CRC-YUSHAN/S1OomO2Fge?#/ ）" required>
+                    <button id="convert-btn" class="btn-first">轉換並預覽</button>
+                    <button id="print-btn" class="btn-secondary">列印 PDF</button>
+                </div>
+            </div>
+
+            <!-- 模式 2: 選擇簡報 -->
+            <div id="select-mode" class="mode-content" style="display: none;">
+                <div class="input-group" style="flex-direction: column;">
+                    <label for="slides-select" style="margin-bottom: 12px; font-weight: 500; color: #333;">選擇要轉換的簡報：</label>
+                    <select id="slides-select" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; margin-bottom: 12px; cursor: pointer; min-height: 40px;">
+                        <option value="">-- 請選擇簡報 --</option>
+                        <optgroup label="上學期">
+                            <option value="week1">第1週：體驗社課</option>
+                            <option value="week2">第2週：基本輸入輸出</option>
+                            <option value="week3">第3週：變數與四則運算</option>
+                            <option value="week4">第4週：基本運算子與條件判斷</option>
+                            <option value="week5">第5週：迴圈 Ⅰ</option>
+                            <option value="week9">第9週：陣列</option>
+                            <option value="week10">第10週：迴圈 Ⅱ</option>
+                            <option value="week11">第11週：函式</option>
+                            <option value="week12">第12週：遞迴</option>
+                            <option value="week14">第14週：資料結構</option>
+                            <option value="week17">第17週：陣列二分演算法</option>
+                            <option value="week18">第18週：排序與搜尋</option>
+                            <option value="week19">第19週：下學期規劃</option>
+                        </optgroup>
+                        <optgroup label="下學期">
+                            <option value="week6-2">第6週：Pygame 遊戲開發基礎</option>
+                            <option value="week7-2">第7週：創立角色移動</option>
+                            <option value="week10-2">第10週：輸入控制</option>
+                            <option value="week11-2">第11週：Sprite 物件模具</option>
+                            <option value="week16-2">第16週：碰撞偵測</option>
+                            <option value="week17-2">第17週：聲光效果與優化</option>
+                        </optgroup>
+                    </select>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="select-convert-btn" class="btn-first" style="flex: 1;">轉換並預覽</button>
+                        <button id="select-print-btn" class="btn-secondary" style="flex: 1;">列印 PDF</button>
+                    </div>
+                </div>
             </div>
 
             <div id="info-zone" class="info-zone"></div>
 
             <div class="preview-container">
                 <div id="placeholder" class="placeholder-text">
-                    <p>請在上方輸入網址並點擊轉換</p>
+                    <p>請在上方輸入網址或選擇簡報並點擊轉換</p>
                     <p style="font-size: 12px; margin-top: 8px;">提示：HackMD 簡報網址會自動切換為列印模式</p>
                 </div>
                 <iframe id="preview-iframe" style="display: none;"></iframe>
@@ -47,12 +97,68 @@
         const previewIframe = document.getElementById('preview-iframe');
         const placeholder = document.getElementById('placeholder');
 
+        // 模式切換
+        const modeUrlTab = document.getElementById('mode-url');
+        const modeSelectTab = document.getElementById('mode-select');
+        const urlModeContent = document.getElementById('url-mode');
+        const selectModeContent = document.getElementById('select-mode');
+        const slidesSelect = document.getElementById('slides-select');
+        const selectConvertBtn = document.getElementById('select-convert-btn');
+        const selectPrintBtn = document.getElementById('select-print-btn');
+
+        // 簡報連結對應表
+        const slideInfo = {
+            'week1': 'https://hackmd.io/@CRC-YUSHAN/S1OomO2Fge',
+            'week2': 'https://hackmd.io/@CRC-YUSHAN/BySlh2r5ge#/',
+            'week3': 'https://hackmd.io/@CRC-YUSHAN/B1sorKHjlg',
+            'week4': 'https://hackmd.io/@CRC-YUSHAN/Sku3BKCslx',
+            'week5': 'https://hackmd.io/@CRC-YUSHAN/B1c4-HH2gx',
+            'week9': 'https://hackmd.io/@CRC-YUSHAN/ryb1DhYRlg',
+            'week10': 'https://hackmd.io/@CRC-YUSHAN/r1leEJQkZg#/',
+            'week11': 'https://hackmd.io/@CRC-YUSHAN/Skt2Hm3y-x',
+            'week12': 'https://hackmd.io/@CRC-YUSHAN/SJyZKu2gbl',
+            'week14': 'https://hackmd.io/@CRC-YUSHAN/ByRKai6--l',
+            'week17': 'https://hackmd.io/@CRC-YUSHAN/S1NoUlVQWg',
+            'week18': 'https://hackmd.io/@CRC-YUSHAN/Hy9Hl63mZg',
+            'week19': 'https://hackmd.io/@CRC-YUSHAN/H1BpcbS4-l',
+            'week6-2': 'https://hackmd.io/@CRC-YUSHAN/rktfib4dWe',
+            'week7-2': 'https://hackmd.io/@CRC-YUSHAN/ryqa5_scZg',
+            'week10-2': 'https://hackmd.io/@CRC-YUSHAN/SyRoqy0oWe',
+            'week11-2': 'https://hackmd.io/@CRC-YUSHAN/SyPgAcxaZe',
+            'week16-2': 'https://hackmd.io/@CRC-YUSHAN/rJqeToSezl',
+            'week17-2': 'https://hackmd.io/@CRC-YUSHAN/Hy2jvyk-Ml'
+
+        };
+
         let processedUrl = '';
         let isSlide = false;
 
-        convertBtn.addEventListener('click', function () {
-            let inputUrl = urlInput.value.trim();
+        // 模式切換邏輯
+        function switchMode(mode) {
+            if (mode === 'url') {
+                urlModeContent.style.display = 'block';
+                selectModeContent.style.display = 'none';
+                modeUrlTab.style.color = '#0066cc';
+                modeUrlTab.style.borderBottomColor = '#0066cc';
+                modeSelectTab.style.color = '#666';
+                modeSelectTab.style.borderBottomColor = 'transparent';
+                infoZone.style.display = 'none';
+            } else {
+                urlModeContent.style.display = 'none';
+                selectModeContent.style.display = 'block';
+                modeSelectTab.style.color = '#0066cc';
+                modeSelectTab.style.borderBottomColor = '#0066cc';
+                modeUrlTab.style.color = '#666';
+                modeUrlTab.style.borderBottomColor = 'transparent';
+                infoZone.style.display = 'none';
+            }
+        }
 
+        modeUrlTab.addEventListener('click', () => switchMode('url'));
+        modeSelectTab.addEventListener('click', () => switchMode('select'));
+
+        // 處理 URL 輸入模式
+        function processUrl(inputUrl) {
             if (!inputUrl) {
                 alert('請輸入有效的網址！');
                 return;
@@ -83,13 +189,13 @@
                 infoZone.style.display = 'block';
                 if (isSlide) {
                     infoZone.className = 'info-zone';
-                    infoZone.innerHTML = `✨ <strong>偵測到 HackMD 簡報！</strong>已自動轉換為列印網址：<a href="${processedUrl}" target="_blank">${processedUrl}</a><br>💡 <em>註：因 HackMD 有阻擋內嵌列印保護，建議點擊上方連結在新分頁中直接按 Ctrl+P (Cmd+P) 儲存 PDF。</em>`;
+                    infoZone.innerHTML = `已自動轉換為列印網址：<a href="${processedUrl}" target="_blank">${processedUrl}</a><br><em>註：因 HackMD 有阻擋內嵌列印保護，建議點擊上方連結在新分頁中直接按 Ctrl+P (Cmd+P) 儲存 PDF。</em>`;
                 } else {
                     infoZone.className = 'info-zone';
                     infoZone.style.backgroundColor = '#f0f9ff';
                     infoZone.style.borderColor = '#bae6fd';
                     infoZone.style.color = '#0369a1';
-                    infoZone.innerHTML = `🌐 <strong>一般網頁模式：</strong>即將載入預覽區。`;
+                    infoZone.innerHTML = `即將載入預覽區。`;
                 }
 
                 // 3. 在 iframe 開啟 (注意：部分網站如 Google、GitHub 設有 X-Frame-Options 會阻擋內嵌)
@@ -100,9 +206,13 @@
             } catch (e) {
                 alert('網址格式錯誤，請重新輸入。');
             }
+        }
+
+        convertBtn.addEventListener('click', function () {
+            processUrl(urlInput.value.trim());
         });
 
-        // 4. 下載 / 列印功能
+        // 4. URL 模式下載 / 列印功能
         printBtn.addEventListener('click', function () {
             if (!processedUrl) {
                 alert('請先輸入網址並點擊「轉換並預覽」！');
@@ -121,6 +231,43 @@
                     window.print();
                 }
             }
+        });
+
+        // 選擇簡報模式
+        selectConvertBtn.addEventListener('click', function () {
+            const selectedSlide = slidesSelect.value;
+            if (!selectedSlide) {
+                alert('請選擇一個簡報！');
+                return;
+            }
+
+            processedUrl = slideInfo[selectedSlide];
+            isSlide = true;
+
+            // 添加列印參數
+            const urlObj = new URL(processedUrl);
+            if (!urlObj.searchParams.has('print-pdf')) {
+                urlObj.searchParams.append('print-pdf', '');
+            }
+            processedUrl = urlObj.toString();
+
+            // 更新 UI 資訊
+            infoZone.style.display = 'block';
+            infoZone.className = 'info-zone';
+            infoZone.innerHTML = `<strong>已選擇 HackMD 簡報！</strong><a href="${processedUrl}" target="_blank">在新分頁中開啟</a><br><em>註：建議點擊上方連結直接按 Ctrl+P (Cmd+P) 儲存 PDF。</em>`;
+
+            // 在 iframe 開啟
+            placeholder.style.display = 'none';
+            previewIframe.style.display = 'block';
+            previewIframe.src = processedUrl;
+        });
+
+        selectPrintBtn.addEventListener('click', function () {
+            if (!processedUrl) {
+                alert('請先選擇簡報並點擊「轉換並預覽」！');
+                return;
+            }
+            window.open(processedUrl, '_blank');
         });
     </script>
     <!-- 載入HTML -->
