@@ -33,7 +33,8 @@ function openSlide(week) {
         'week10-2':'https://hackmd.io/@CRC-YUSHAN/SyRoqy0oWe',
         'week11-2':'https://hackmd.io/@CRC-YUSHAN/SyPgAcxaZe',
         'week16-2':'https://hackmd.io/@CRC-YUSHAN/rJqeToSezl',
-        'week17-2':'https://hackmd.io/@CRC-YUSHAN/Hy2jvyk-Ml'
+        'week17-2':'https://hackmd.io/@CRC-YUSHAN/Hy2jvyk-Ml',
+        'week18-2':'https://hackmd.io/@CRC-YUSHAN/HJhMJ7OWGe'
     };
     window.open(`${slideInfo[week]}`, '_blank');
 }
